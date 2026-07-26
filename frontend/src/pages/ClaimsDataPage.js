@@ -24,7 +24,7 @@ function ClaimsDataPage() {
       }));
       setClaims(claimsWithStatus);
     } catch (err) {
-      setError("Failed to fetch claims data from Firebase.");
+      setError(err.message || "Failed to fetch claims data from the API.");
       console.error("Error fetching claims:", err);
     } finally {
       setLoading(false);

@@ -20,7 +20,7 @@ function DashboardPage() {
       const data = await fetchClaims();
       setClaims(data);
     } catch (err) {
-      setError("Failed to fetch claims from Firebase.");
+      setError(err.message || "Failed to fetch claims from the API.");
       console.error("Error fetching claims:", err);
     } finally {
       setLoading(false);
@@ -58,6 +58,10 @@ function DashboardPage() {
             <Spinner animation="border" role="status">
               <span className="visually-hidden">Loading Dashboard...</span>
             </Spinner>
+            <p className="loading-hint">
+              Loading claims from the API… first load can take a minute on free
+              hosting.
+            </p>
           </div>
         ) : (
           <>

@@ -4,9 +4,19 @@
 
 .spinner-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
   min-height: 50vh;
+}
+
+.loading-hint {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+  text-align: center;
+  max-width: 36ch;
 }
 
 .map-panel,

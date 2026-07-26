@@ -16,7 +16,7 @@ function AnalyticsPage() {
       const data = await fetchClaims();
       setClaims(data);
     } catch (err) {
-      setError("Failed to fetch claims data from Firebase.");
+      setError(err.message || "Failed to fetch claims data from the API.");
       console.error("Failed to fetch claims:", err);
     } finally {
       setLoading(false);
