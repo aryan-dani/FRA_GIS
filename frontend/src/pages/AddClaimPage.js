@@ -9,7 +9,7 @@ import {
   Col,
   Spinner,
 } from "react-bootstrap";
-import { supabase } from "../supabaseClient"; // Import supabase client
+import { createClaim } from "../services/claimsService";
 import { toast } from "react-toastify";
 
 const AddClaimPage = () => {
@@ -26,7 +26,6 @@ const AddClaimPage = () => {
     latitude: "",
     longitude: "",
     raw_text: "",
-    // Supabase doesn't need the 'entities' field in the table
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -57,14 +56,8 @@ const AddClaimPage = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Remove the 'entities' field if it exists before sending to Supabase
-    const { entities, ...insertData } = formData;
-
     try {
-      const { error } = await supabase.from("FRA_Claims").insert([insertData]);
-
-      if (error) throw error;
-
+      await createClaim(formData);
       toast.success("Claim submitted successfully!");
       setTimeout(() => {
         navigate("/claims-data");

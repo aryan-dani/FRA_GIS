@@ -1,24 +1,15 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { BarChart, CheckCircle, ClockHistory } from "react-bootstrap-icons";
+import "./DashboardStats.css";
 
-function StatCard({ icon, value, label, color }) {
+function StatCard({ icon, value, label, tone }) {
   return (
-    <div className="stat-card card shadow-sm">
-      <div className="card-body d-flex align-items-center">
-        <div
-          className="stat-icon me-3"
-          style={{
-            backgroundColor: `rgba(${color}, 0.1)`,
-            color: `rgb(${color})`,
-          }}
-        >
-          {icon}
-        </div>
-        <div>
-          <h4 className="h2 mb-0 font-weight-bold">{value}</h4>
-          <p className="text-muted mb-0">{label}</p>
-        </div>
+    <div className={`stat-card tone-${tone}`}>
+      <div className="stat-icon">{icon}</div>
+      <div className="stat-copy">
+        <p className="stat-label">{label}</p>
+        <p className="stat-value">{value}</p>
       </div>
     </div>
   );
@@ -26,29 +17,29 @@ function StatCard({ icon, value, label, color }) {
 
 function DashboardStats({ stats }) {
   return (
-    <Row className="mb-4">
-      <Col md={4} className="mb-3 mb-md-0">
+    <Row className="mb-4 g-3">
+      <Col md={4}>
         <StatCard
-          icon={<BarChart size={24} />}
+          icon={<BarChart size={22} />}
           value={stats.totalClaims}
           label="Total Claims"
-          color="0, 123, 255"
-        />
-      </Col>
-      <Col md={4} className="mb-3 mb-md-0">
-        <StatCard
-          icon={<ClockHistory size={24} />}
-          value={stats.claimsInReview}
-          label="Pending Review"
-          color="255, 193, 7"
+          tone="forest"
         />
       </Col>
       <Col md={4}>
         <StatCard
-          icon={<CheckCircle size={24} />}
+          icon={<ClockHistory size={22} />}
+          value={stats.claimsInReview}
+          label="Pending Review"
+          tone="amber"
+        />
+      </Col>
+      <Col md={4}>
+        <StatCard
+          icon={<CheckCircle size={22} />}
           value={stats.claimsApproved}
-          label="Approved Claims"
-          color="40, 167, 69"
+          label="Approved"
+          tone="leaf"
         />
       </Col>
     </Row>

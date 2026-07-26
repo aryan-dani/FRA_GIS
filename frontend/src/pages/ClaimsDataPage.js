@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Container, Spinner, Alert } from "react-bootstrap";
-import { supabase } from "../supabaseClient"; // Import supabase client
+import {
+  fetchClaims,
+  updateClaimStatus,
+} from "../services/claimsService";
 
 import ClaimsTable from "../components/ClaimsTable";
 import "./ClaimsDataPage.css";
@@ -10,43 +13,34 @@ function ClaimsDataPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  const fetchClaims = useCallback(async () => {
+  const loadClaims = useCallback(async () => {
     setLoading(true);
     setError("");
     try {
-      const { data, error } = await supabase.from("FRA_Claims").select("*");
-      if (error) throw error;
-
+      const data = await fetchClaims();
       const claimsWithStatus = data.map((claim) => ({
         ...claim,
         status: claim.status || "Pending",
       }));
       setClaims(claimsWithStatus);
-    } catch (error) {
-      setError("Failed to fetch claims data. Check RLS policies in Supabase.");
-      console.error("Error fetching claims:", error);
+    } catch (err) {
+      setError("Failed to fetch claims data from Firebase.");
+      console.error("Error fetching claims:", err);
     } finally {
       setLoading(false);
     }
   }, []);
 
   useEffect(() => {
-    fetchClaims();
-  }, [fetchClaims]);
+    loadClaims();
+  }, [loadClaims]);
 
   const handleStatusChange = async (claimId, newStatus) => {
     try {
-      const { error } = await supabase
-        .from("FRA_Claims")
-        .update({ status: newStatus })
-        .eq("id", claimId);
-
-      if (error) throw error;
-
-      // Re-fetch claims to show the updated status
-      fetchClaims();
-    } catch (error) {
-      console.error("Failed to update status:", error);
+      await updateClaimStatus(claimId, newStatus);
+      loadClaims();
+    } catch (err) {
+      console.error("Failed to update status:", err);
       setError("Failed to update claim status.");
     }
   };
@@ -55,14 +49,18 @@ function ClaimsDataPage() {
     <div className="claims-data-page">
       <Container fluid>
         <div className="page-header">
-          <h1 className="page-title">Claims Database</h1>
+          <h1 className="page-title">Claims Ledger</h1>
           <p className="page-subtitle">
-            Search, filter, and manage all digitized claims.
+            Search, filter, and update FRA claim records.
           </p>
+          <div className="page-meta">
+            <span className="meta-chip">{claims.length} total</span>
+            <span className="meta-chip">SIH focus states ready</span>
+          </div>
         </div>
 
-        <div className="card shadow-sm">
-          <div className="card-body">
+        <div className="ledger-shell">
+          <div className="ledger-body">
             {error && <Alert variant="danger">{error}</Alert>}
             {loading ? (
               <div className="spinner-container">

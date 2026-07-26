@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Container, Spinner, Alert } from "react-bootstrap";
-import { supabase } from "../supabaseClient";
+import { fetchClaims } from "../services/claimsService";
 import Analytics from "../components/Analytics";
 import "./AnalyticsPage.css";
 
@@ -9,24 +9,23 @@ function AnalyticsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  const fetchClaims = useCallback(async () => {
+  const loadClaims = useCallback(async () => {
     setLoading(true);
     setError("");
     try {
-      const { data, error } = await supabase.from("FRA_Claims").select("*");
-      if (error) throw error;
+      const data = await fetchClaims();
       setClaims(data);
-    } catch (error) {
-      setError("Failed to fetch claims data from Supabase.");
-      console.error("Failed to fetch claims:", error);
+    } catch (err) {
+      setError("Failed to fetch claims data from Firebase.");
+      console.error("Failed to fetch claims:", err);
     } finally {
       setLoading(false);
     }
   }, []);
 
   useEffect(() => {
-    fetchClaims();
-  }, [fetchClaims]);
+    loadClaims();
+  }, [loadClaims]);
 
   return (
     <div className="analytics-page">
@@ -34,7 +33,7 @@ function AnalyticsPage() {
         <div className="page-header">
           <h1 className="page-title">Claims Analytics</h1>
           <p className="page-subtitle">
-            A detailed breakdown of FRA claims data.
+            Status, type, and regional patterns across the FRA ledger.
           </p>
         </div>
         {error && <Alert variant="danger">{error}</Alert>}

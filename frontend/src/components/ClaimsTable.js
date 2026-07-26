@@ -127,7 +127,7 @@ function ClaimsTable({ claims, onStatusChange }) {
 
   return (
     <div>
-      <Row className="filter-bar align-items-center mb-3">
+      <Row className="filter-bar align-items-center mb-2">
         <Col lg={3} md={6} className="mb-2 mb-md-0">
           <InputGroup>
             <InputGroup.Text>
@@ -135,7 +135,7 @@ function ClaimsTable({ claims, onStatusChange }) {
             </InputGroup.Text>
             <Form.Control
               type="text"
-              placeholder="Search..."
+              placeholder="Search name, village, district..."
               value={searchTerm}
               onChange={(e) => {
                 setSearchTerm(e.target.value);
@@ -209,14 +209,20 @@ function ClaimsTable({ claims, onStatusChange }) {
         </Col>
       </Row>
 
+      <div className="table-toolbar">
+        <p className="table-count">
+          Showing {paginatedClaims.length} of {filteredClaims.length} filtered
+          claims
+        </p>
+      </div>
+
       <div className="claims-table-container">
         <table className="claims-table">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Village</th>
-              <th>District</th>
-              <th>State</th>
+              <th>Claimant</th>
+              <th>Location</th>
+              <th>Type</th>
               <th>Status</th>
               <th>Actions</th>
             </tr>
@@ -224,7 +230,7 @@ function ClaimsTable({ claims, onStatusChange }) {
           <tbody>
             {loading && (
               <tr>
-                <td colSpan="6" className="text-center">
+                <td colSpan="5" className="text-center">
                   <Spinner animation="border" size="sm" /> Updating...
                 </td>
               </tr>
@@ -236,10 +242,29 @@ function ClaimsTable({ claims, onStatusChange }) {
                     onClick={() => handleRowClick(claim.id)}
                     className="clickable-row"
                   >
-                    <td>{claim.name || "N/A"}</td>
-                    <td>{claim.village || "N/A"}</td>
-                    <td>{claim.district || "N/A"}</td>
-                    <td>{claim.state || "N/A"}</td>
+                    <td>
+                      <span className="claim-name">
+                        {claim.name || "Unnamed claimant"}
+                      </span>
+                      <span className="claim-id">
+                        #{String(claim.id).slice(0, 8)}
+                      </span>
+                    </td>
+                    <td>
+                      <div className="claim-name">
+                        {claim.village || "Village N/A"}
+                      </div>
+                      <span className="claim-id">
+                        {[claim.district, claim.state]
+                          .filter(Boolean)
+                          .join(" · ") || "Location N/A"}
+                      </span>
+                    </td>
+                    <td>
+                      <span className="claim-type">
+                        {claim.claim_type || "Individual"}
+                      </span>
+                    </td>
                     <td>
                       <div
                         className={`status-indicator status-${
@@ -281,8 +306,11 @@ function ClaimsTable({ claims, onStatusChange }) {
                 ))
               : !loading && (
                   <tr>
-                    <td colSpan="6" className="text-center p-4">
-                      No claims match the current filters.
+                    <td colSpan="5">
+                      <div className="empty-state">
+                        No claims match the current filters. Try clearing
+                        filters or add a new claim.
+                      </div>
                     </td>
                   </tr>
                 )}

@@ -2,7 +2,6 @@ import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import {
-  Globe,
   House,
   InfoCircle,
   Speedometer2,
@@ -16,8 +15,11 @@ function AppNavbar() {
     <Navbar variant="light" expand="lg" className="floating-navbar" fixed="top">
       <Container>
         <Navbar.Brand as={NavLink} to="/" className="navbar-brand-custom">
-          <Globe className="me-2" />
-          FRA-GIS Platform
+          <span className="brand-mark" aria-hidden="true" />
+          <span className="brand-text">
+            <span className="brand-name">FRA Atlas</span>
+            <span className="brand-sub">WebGIS DSS</span>
+          </span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -29,7 +31,7 @@ function AppNavbar() {
               <Speedometer2 className="me-1" /> Dashboard
             </Nav.Link>
             <Nav.Link as={NavLink} to="/claims-data">
-              <Table className="me-1" /> Claims Data
+              <Table className="me-1" /> Claims
             </Nav.Link>
             <Nav.Link as={NavLink} to="/analytics">
               <BarChartLine className="me-1" /> Analytics

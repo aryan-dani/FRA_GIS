@@ -1,8 +1,22 @@
 .claims-data-page {
-  padding: 2rem;
-  background-color: var(--light-bg);
+  padding: 1.5rem 1rem 2.5rem;
 }
 
-.page-header {
-  margin-bottom: 2rem;
+.ledger-shell {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+.ledger-body {
+  padding: 0.5rem 0.75rem 1.25rem;
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40vh;
 }

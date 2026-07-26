@@ -1,10 +1,13 @@
+# Core API (required on Render)
 Flask
 python-dotenv
-supabase
+firebase-admin
 Flask-Cors
 gunicorn
-pytesseract
-spacy
-opencv-python
-pdf2image
-google-cloud-vision
+
+# OCR / NER (optional locally; heavy on free Render)
+# pytesseract
+# spacy
+# opencv-python
+# pdf2image
+# google-cloud-vision

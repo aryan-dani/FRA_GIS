@@ -1,0 +1,5 @@
+requirements.txt
+__pycache__
+*.py
+.env.vercel*
+.env*.local

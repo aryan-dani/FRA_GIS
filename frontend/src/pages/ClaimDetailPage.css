@@ -1,75 +1,84 @@
-.claim-detail-page .card {
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  margin-bottom: 1.5rem;
+.claim-detail-page {
+  padding: 1.5rem 1rem 2.5rem;
 }
 
-.claim-detail-page .card-header {
-  background-color: transparent;
-  border-bottom: 1px solid var(--border-color);
-  padding: 1.25rem 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.detail-panel {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  padding: 1.25rem 1.35rem;
+  height: 100%;
 }
 
-.claim-detail-page .card-header .h5,
-.claim-detail-page .card-header h5 {
-  color: var(--primary-color);
-  margin-bottom: 0;
-  font-weight: 600;
+.detail-panel h2,
+.detail-panel-header h2 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--forest-deep);
+  margin: 0 0 1rem;
 }
 
-.claim-detail-page .card-body {
-  padding: 1.5rem;
-}
-
-.detail-item {
-  display: flex;
-  margin-bottom: 1rem;
-}
-
-.detail-item-label {
-  font-weight: 600;
-  color: var(--accent-color);
-  width: 120px;
-  flex-shrink: 0;
-}
-
-.detail-item-value {
-  color: var(--text-color);
-}
-
-.raw-text-container {
-  background-color: var(--background-color-light);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 1rem;
-  max-height: 400px;
-  overflow-y: auto;
-  white-space: pre-wrap;
-  word-break: break-word;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 0.9rem;
-  color: var(--text-color);
-}
-
-.map-container-detail {
-  height: 500px;
-  border-radius: 0 0 15px 15px;
+.map-panel-detail {
+  padding: 0;
   overflow: hidden;
 }
 
-.back-button {
-  background-color: var(--accent-color);
-  border-color: var(--accent-color);
-  font-weight: 600;
-  transition: all 0.2s ease-in-out;
+.detail-panel-header {
+  padding: 1.15rem 1.35rem 0.5rem;
 }
 
-.back-button:hover {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
-  transform: translateY(-1px);
+.detail-item {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 0.5rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-item-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--moss);
+  padding-top: 0.15rem;
+}
+
+.detail-item-value {
+  color: var(--forest-deep);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.raw-text-container {
+  background-color: var(--mist);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+  max-height: 360px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.85rem;
+  color: var(--ink);
+  margin: 0;
+}
+
+.map-container-detail {
+  height: 460px;
+}
+
+.map-container-detail .leaflet-container {
+  height: 460px;
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+.back-button {
+  border-radius: 999px !important;
 }

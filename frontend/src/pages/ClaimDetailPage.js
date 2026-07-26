@@ -3,21 +3,20 @@ import {
   Container,
   Row,
   Col,
-  Card,
   Spinner,
   Alert,
   Button,
 } from "react-bootstrap";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft } from "react-bootstrap-icons";
-import { supabase } from "../supabaseClient"; // Import supabase client
+import { fetchClaimById } from "../services/claimsService";
 import WebGISMap from "../components/WebGISMap";
 import "./ClaimDetailPage.css";
 
 const DetailItem = ({ label, value }) => (
   <div className="detail-item">
-    <span className="detail-item-label">{label}:</span>
-    <span className="detail-item-value">{value || "N/A"}</span>
+    <span className="detail-item-label">{label}</span>
+    <span className="detail-item-value">{value || "—"}</span>
   </div>
 );
 
@@ -28,16 +27,10 @@ function ClaimDetailPage() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const fetchClaim = async () => {
+    const loadClaim = async () => {
       setLoading(true);
       try {
-        const { data, error } = await supabase
-          .from("FRA_Claims")
-          .select("*")
-          .eq("id", id)
-          .single(); // Fetch a single record
-
-        if (error) throw error;
+        const data = await fetchClaimById(id);
         setClaim(data);
       } catch (err) {
         setError("Failed to fetch claim details.");
@@ -47,7 +40,7 @@ function ClaimDetailPage() {
       }
     };
 
-    fetchClaim();
+    loadClaim();
   }, [id]);
 
   if (loading) {
@@ -62,7 +55,7 @@ function ClaimDetailPage() {
 
   if (error) {
     return (
-      <Container>
+      <Container className="py-4">
         <Alert variant="danger">{error}</Alert>
       </Container>
     );
@@ -70,7 +63,7 @@ function ClaimDetailPage() {
 
   if (!claim) {
     return (
-      <Container>
+      <Container className="py-4">
         <Alert variant="warning">Claim not found.</Alert>
       </Container>
     );
@@ -80,75 +73,65 @@ function ClaimDetailPage() {
     <div className="claim-detail-page">
       <Container fluid>
         <div className="page-header">
-          <h1 className="page-title">Claim Details</h1>
+          <h1 className="page-title">{claim.name || "Claim record"}</h1>
           <p className="page-subtitle">
-            Viewing full record for claim ID: <strong>{claim.id}</strong>
+            {[claim.village, claim.district, claim.state]
+              .filter(Boolean)
+              .join(" · ") || "Location not recorded"}
           </p>
+          <div className="page-meta">
+            <span className="meta-chip">#{String(claim.id).slice(0, 10)}</span>
+            <span className="meta-chip">{claim.claim_type || "Individual"}</span>
+            <span className={`status-indicator status-${claim.status || "Pending"}`}>
+              {claim.status || "Pending"}
+            </span>
+          </div>
         </div>
 
-        <Row>
-          <Col>
-            <Link to="/claims-data">
-              <Button variant="primary" className="back-button mb-3">
-                <ArrowLeft className="me-2" />
-                Back to Claims List
-              </Button>
-            </Link>
-          </Col>
-        </Row>
+        <Link to="/claims-data">
+          <Button variant="primary" className="back-button mb-3">
+            <ArrowLeft className="me-2" />
+            Back to Claims Ledger
+          </Button>
+        </Link>
 
-        <Row className="mb-4">
-          <Col lg={5} xl={4} className="mb-4 mb-lg-0">
-            <Card className="h-100">
-              <Card.Header>
-                <div className="d-flex justify-content-between align-items-center">
-                  <h5 className="mb-0">Claimant Information</h5>
-                  <div
-                    className={`status-indicator status-${
-                      claim.status || "Pending"
-                    }`}
-                  >
-                    {claim.status || "Pending"}
-                  </div>
-                </div>
-              </Card.Header>
-              <Card.Body>
-                <DetailItem label="Name" value={claim.name} />
-                <DetailItem label="Village" value={claim.village} />
-                <DetailItem label="District" value={claim.district} />
-                <DetailItem label="State" value={claim.state} />
-                <DetailItem label="Claim Type" value={claim.claim_type} />
-              </Card.Body>
-            </Card>
+        <Row className="g-3 mb-3">
+          <Col lg={5} xl={4}>
+            <div className="detail-panel">
+              <h2>Claimant</h2>
+              <DetailItem label="Name" value={claim.name} />
+              <DetailItem label="Village" value={claim.village} />
+              <DetailItem label="District" value={claim.district} />
+              <DetailItem label="State" value={claim.state} />
+              <DetailItem label="Claim type" value={claim.claim_type} />
+              <DetailItem
+                label="Coordinates"
+                value={
+                  claim.latitude != null && claim.longitude != null
+                    ? `${claim.latitude}, ${claim.longitude}`
+                    : null
+                }
+              />
+            </div>
           </Col>
           <Col lg={7} xl={8}>
-            <Card className="h-100">
-              <Card.Header>
-                <h5 className="mb-0">Geospatial Data</h5>
-              </Card.Header>
-              <Card.Body className="p-0">
-                <div className="map-container-detail">
-                  <WebGISMap claims={[claim]} />
-                </div>
-              </Card.Body>
-            </Card>
+            <div className="detail-panel map-panel-detail">
+              <div className="detail-panel-header">
+                <h2>Geospatial view</h2>
+              </div>
+              <div className="map-container-detail">
+                <WebGISMap claims={[claim]} />
+              </div>
+            </div>
           </Col>
         </Row>
 
-        <Row>
-          <Col>
-            <Card>
-              <Card.Header>
-                <h5 className="mb-0">Raw Extracted Text</h5>
-              </Card.Header>
-              <Card.Body>
-                <pre className="raw-text-container">
-                  {claim.raw_text || "No raw text available."}
-                </pre>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
+        <div className="detail-panel">
+          <h2>Extracted text</h2>
+          <pre className="raw-text-container">
+            {claim.raw_text || "No raw text available for this claim."}
+          </pre>
+        </div>
       </Container>
     </div>
   );

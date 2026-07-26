@@ -1,0 +1,59 @@
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.15rem 1.25rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: var(--shadow-soft);
+  height: 100%;
+  transition: transform 0.25s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stat-label {
+  margin: 0;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  color: var(--ink-muted);
+}
+
+.stat-value {
+  margin: 0.15rem 0 0;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  line-height: 1;
+  font-weight: 600;
+  color: var(--forest-deep);
+}
+
+.tone-forest .stat-icon {
+  background: rgba(12, 47, 36, 0.1);
+  color: var(--forest-deep);
+}
+
+.tone-amber .stat-icon {
+  background: rgba(201, 162, 39, 0.18);
+  color: #8a6b05;
+}
+
+.tone-leaf .stat-icon {
+  background: rgba(47, 107, 79, 0.14);
+  color: var(--forest-leaf);
+}

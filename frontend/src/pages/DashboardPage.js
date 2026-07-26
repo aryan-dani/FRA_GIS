@@ -1,37 +1,35 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Container, Row, Col, Spinner, Alert, Card } from "react-bootstrap";
-import { supabase } from "../supabaseClient"; // Import supabase client
+import { Container, Row, Col, Spinner, Alert } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { fetchClaims } from "../services/claimsService";
 
 import WebGISMap from "../components/WebGISMap";
 import DashboardStats from "../components/DashboardStats";
 import "./DashboardPage.css";
+import "../components/DashboardStats.css";
 
 function DashboardPage() {
   const [claims, setClaims] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  const fetchClaims = useCallback(async () => {
+  const loadClaims = useCallback(async () => {
     setLoading(true);
     setError("");
     try {
-      const { data, error } = await supabase.from("FRA_Claims").select("*");
-
-      if (error) {
-        throw error;
-      }
+      const data = await fetchClaims();
       setClaims(data);
-    } catch (error) {
-      setError("Failed to fetch claims from Supabase. Check RLS policies.");
-      console.error("Error fetching claims:", error);
+    } catch (err) {
+      setError("Failed to fetch claims from Firebase.");
+      console.error("Error fetching claims:", err);
     } finally {
       setLoading(false);
     }
   }, []);
 
   useEffect(() => {
-    fetchClaims();
-  }, [fetchClaims]);
+    loadClaims();
+  }, [loadClaims]);
 
   const stats = {
     totalClaims: claims.length,
@@ -45,8 +43,12 @@ function DashboardPage() {
         <div className="page-header">
           <h1 className="page-title">Claims Dashboard</h1>
           <p className="page-subtitle">
-            An overview of all digitized FRA claims.
+            Atlas overview of digitized FRA claims across focus states.
           </p>
+          <div className="page-meta">
+            <span className="meta-chip">{claims.length} records</span>
+            <span className="meta-chip">WebGIS live map</span>
+          </div>
         </div>
 
         {error && <Alert variant="danger">{error}</Alert>}
@@ -60,30 +62,29 @@ function DashboardPage() {
         ) : (
           <>
             <DashboardStats stats={stats} />
-            <Row>
-              <Col lg={8} className="mb-4 mb-lg-0">
-                <div className="card shadow-sm h-100">
-                  <div className="card-header">
-                    <h2 className="h5 mb-0">Geographical Claims View</h2>
+            <Row className="g-3">
+              <Col lg={8}>
+                <div className="map-panel">
+                  <div className="map-panel-header">
+                    <h2>Geographic Atlas</h2>
+                    <span>Claim locations on the map</span>
                   </div>
-                  <div className="card-body p-0">
+                  <div className="map-panel-body">
                     <WebGISMap claims={claims} />
                   </div>
                 </div>
               </Col>
               <Col lg={4}>
-                <Card className="shadow-sm">
-                  <Card.Header>
-                    <h2 className="h5 mb-0">Upload New Document</h2>
-                  </Card.Header>
-                  <Card.Body>
-                    <p className="text-muted">
-                      The document upload and OCR feature is disabled on the
-                      live site. Please use the "Add New Claim" button on the
-                      Claims Data page to add claims manually.
-                    </p>
-                  </Card.Body>
-                </Card>
+                <div className="side-panel">
+                  <h2>Next step</h2>
+                  <p>
+                    Add claims from the ledger, or connect the OCR API for
+                    document digitization.
+                  </p>
+                  <Link to="/claims-data" className="btn btn-primary">
+                    Open Claims Ledger
+                  </Link>
+                </div>
               </Col>
             </Row>
           </>

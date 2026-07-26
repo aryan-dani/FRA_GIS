@@ -1,11 +1,10 @@
 {
-  "homepage": "https://aryan-dani.github.io/FRA-GIS",
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@supabase/supabase-js": "^2.58.0",
     "@testing-library/dom": "^10.4.1",
+    "firebase": "^11.10.0",
     "@testing-library/jest-dom": "^6.8.0",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",

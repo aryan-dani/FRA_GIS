@@ -1,34 +1,75 @@
 .floating-navbar {
-  margin: 1rem 2rem;
-  border-radius: 1rem;
-  background-color: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  margin: 0.85rem 1.25rem;
+  border-radius: 999px;
+  background-color: rgba(244, 247, 242, 0.82);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(12, 47, 36, 0.08);
+  border: 1px solid rgba(12, 47, 36, 0.08);
+  padding: 0.25rem 0.5rem;
 }
 
 .navbar-brand-custom {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none !important;
+}
+
+.brand-mark {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, var(--forest-leaf), var(--forest-deep)),
+    radial-gradient(circle at 30% 30%, var(--amber-soft), transparent 55%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--forest-deep);
+  letter-spacing: -0.02em;
+}
+
+.brand-sub {
+  font-size: 0.65rem;
   font-weight: 700;
-  color: var(--primary-color) !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--moss);
 }
 
 .nav-link {
-  font-weight: 500;
-  color: var(--secondary-color) !important;
-  margin: 0 0.5rem;
-  padding: 0.5rem 1rem !important;
-  border-radius: 0.75rem;
-  transition: all 0.3s ease;
+  font-weight: 600 !important;
+  color: var(--forest-mid) !important;
+  margin: 0 0.15rem;
+  padding: 0.45rem 0.85rem !important;
+  border-radius: 999px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-size: 0.9rem;
 }
 
 .nav-link:hover {
-  background-color: var(--light-accent-color);
-  color: var(--primary-color) !important;
+  background-color: var(--mist);
+  color: var(--forest-deep) !important;
 }
 
 .nav-link.active {
-  background-color: var(--accent-color);
-  color: white !important;
-  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.3);
+  background-color: var(--forest-deep);
+  color: #fff !important;
+}
+
+@media (max-width: 991px) {
+  .floating-navbar {
+    border-radius: 18px;
+    margin: 0.65rem 0.75rem;
+  }
 }

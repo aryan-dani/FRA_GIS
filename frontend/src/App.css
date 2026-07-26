@@ -1,23 +1,67 @@
-/* App.css */
-
+/* Design tokens — forest atlas direction */
 :root {
-  --primary-color: #004d40; /* Dark Green for text, headers */
-  --secondary-color: #00695c; /* Medium Green for secondary elements */
-  --accent-color: #2e7d32; /* Solid Green for buttons, actions */
-  --light-accent-color: #a5d6a7; /* Light Green for highlights/backgrounds */
-  --background-color: #f0f4f0; /* Very light green/grey for page backgrounds */
-  --text-color: #212529; /* Dark grey for body text */
-  --secondary-text: #6c757d; /* Lighter grey for subtitles */
-  --card-bg-color: #ffffff;
-  --border-color: #dee2e6;
-  --dark-bg: #1a2a27; /* Very dark green for footers or special sections */
+  --forest-deep: #0c2f24;
+  --forest-mid: #1a4d3a;
+  --forest-leaf: #2f6b4f;
+  --moss: #6b8f71;
+  --mist: #e7efe8;
+  --mist-deep: #d5e4d8;
+  --parchment: #f4f7f2;
+  --ink: #14231c;
+  --ink-muted: #5a6f62;
+  --amber: #c9a227;
+  --amber-soft: #e8d48b;
+  --surface: rgba(255, 255, 255, 0.78);
+  --surface-solid: #ffffff;
+  --border: rgba(12, 47, 36, 0.12);
+  --radius: 14px;
+  --shadow-soft: 0 12px 40px rgba(12, 47, 36, 0.08);
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Manrope", system-ui, sans-serif;
+
+  /* Legacy aliases used across existing CSS */
+  --primary-color: var(--forest-deep);
+  --secondary-color: var(--forest-mid);
+  --accent-color: var(--forest-leaf);
+  --light-accent-color: var(--mist-deep);
+  --background-color: var(--parchment);
+  --background-color-light: var(--mist);
+  --text-color: var(--ink);
+  --secondary-text: var(--ink-muted);
+  --card-bg-color: var(--surface-solid);
+  --border-color: var(--border);
+  --dark-bg: var(--forest-deep);
+  --light-bg: var(--parchment);
+  --dark-text: var(--ink);
+  --primary-color-light: var(--moss);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  background-color: var(--parchment);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 10% -10%, rgba(107, 143, 113, 0.18), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(201, 162, 39, 0.1), transparent 45%),
+    linear-gradient(180deg, #eef4ef 0%, var(--parchment) 40%, #e9f0ea 100%);
+  background-attachment: fixed;
+}
+
+code {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
 }
 
 .App {
@@ -28,52 +72,62 @@ body {
 
 .main-content {
   flex: 1;
-  padding-top: 80px; /* Add padding to account for floating navbar */
+  padding-top: 88px;
 }
 
 .card {
-  border: 1px solid var(--border-color);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  border-radius: 0.75rem; /* Slightly more rounded corners */
-  transition: box-shadow 0.2s ease-in-out;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+  border-radius: var(--radius);
+  background-color: var(--surface-solid);
   height: 100%;
-  background-color: var(--card-bg-color);
-}
-
-.card:hover {
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .card-header {
-  background-color: var(--card-bg-color);
-  border-bottom: 1px solid var(--border-color);
-  color: var(--primary-color);
+  background: transparent;
+  border-bottom: 1px solid var(--border);
+  color: var(--forest-deep);
   font-weight: 600;
-  border-top-left-radius: 0.75rem;
-  border-top-right-radius: 0.75rem;
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
   padding: 1rem 1.25rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
 }
 
 .btn-primary {
-  background-color: var(--accent-color) !important;
-  border-color: var(--accent-color) !important;
+  background-color: var(--forest-deep) !important;
+  border-color: var(--forest-deep) !important;
   font-weight: 600 !important;
-  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  border-radius: 999px !important;
+  padding: 0.55rem 1.25rem !important;
+  letter-spacing: 0.01em;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease !important;
 }
 
-.btn-primary:hover {
-  background-color: var(--secondary-color) !important;
-  border-color: var(--secondary-color) !important;
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--forest-mid) !important;
+  border-color: var(--forest-mid) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(12, 47, 36, 0.22);
+}
+
+.btn-outline-secondary {
+  border-radius: 999px !important;
+  border-color: var(--border) !important;
+  color: var(--forest-mid) !important;
+  font-weight: 600 !important;
+}
+
+.btn-outline-secondary:hover {
+  background: var(--mist) !important;
+  border-color: var(--moss) !important;
+  color: var(--forest-deep) !important;
 }
 
 .leaflet-container {
-  border-radius: 0;
   border: none;
-  border-bottom-left-radius: 0.75rem;
-  border-bottom-right-radius: 0.75rem;
+  border-radius: 0 0 var(--radius) var(--radius);
 }
 
 .spinner-container {
@@ -85,30 +139,144 @@ body {
 }
 
 .page-header {
-  background: linear-gradient(
-    to right,
-    var(--primary-color),
-    var(--secondary-color)
-  );
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(120deg, rgba(12, 47, 36, 0.94), rgba(26, 77, 58, 0.88)),
+    radial-gradient(circle at 80% 20%, rgba(201, 162, 39, 0.35), transparent 40%);
   color: white;
-  padding: 2rem;
-  border-radius: 0.75rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 4px 15px rgba(0, 77, 64, 0.2);
+  padding: 1.75rem 2rem;
+  border-radius: var(--radius);
+  margin-bottom: 1.75rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.page-header::after {
+  content: "";
+  position: absolute;
+  inset: auto -10% -40% auto;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(232, 212, 139, 0.25), transparent 70%);
+  pointer-events: none;
 }
 
 .page-header .page-title {
-  color: white;
-  font-weight: 700;
-  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+  margin: 0 0 0.35rem;
+  color: #fff;
+  letter-spacing: -0.02em;
 }
 
 .page-header .page-subtitle {
-  color: rgba(255, 255, 255, 0.8);
   margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 52ch;
+  font-size: 0.98rem;
 }
 
-.developer-name {
-  font-weight: bold;
-  color: var(--primary-color);
+.page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.meta-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.developer-name,
+.team-name {
+  font-weight: 700;
+  color: var(--amber);
+}
+
+/* Shared status pills */
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  min-width: 88px;
+}
+
+.status-Approved {
+  background: rgba(47, 107, 79, 0.14);
+  color: #1b5e3b;
+}
+
+.status-Pending,
+.status-In\ Review {
+  background: rgba(201, 162, 39, 0.18);
+  color: #8a6b05;
+}
+
+.status-Rejected {
+  background: rgba(176, 67, 55, 0.12);
+  color: #9b2c20;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-soft {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.rise-in {
+  animation: rise-in 0.55s ease both;
+}
+
+.rise-in-delay-1 {
+  animation-delay: 0.08s;
+}
+
+.rise-in-delay-2 {
+  animation-delay: 0.16s;
+}
+
+.rise-in-delay-3 {
+  animation-delay: 0.24s;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding-top: 76px;
+  }
+
+  .page-header {
+    padding: 1.35rem 1.25rem;
+    border-radius: 12px;
+  }
 }

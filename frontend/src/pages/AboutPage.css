@@ -1,54 +1,101 @@
-.about-page .card {
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  background-color: var(--background-color);
-  color: var(--text-color);
+.about-page {
+  padding-bottom: 2rem;
 }
 
-.about-page .card-header {
-  background-color: transparent;
-  border-bottom: 1px solid var(--border-color);
-  padding: 1.5rem;
+.about-panel {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.6rem;
+  box-shadow: var(--shadow-soft);
+  height: 100%;
 }
 
-.about-page .card-header h2 {
-  color: var(--primary-color);
-  margin-bottom: 0;
+.about-panel h2 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--forest-deep);
+  margin: 0 0 0.85rem;
+}
+
+.problem-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--forest-mid);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.about-panel p {
+  color: var(--ink-muted);
+  line-height: 1.6;
+}
+
+.about-meta-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem 1rem;
+  margin: 1.25rem 0 0;
+}
+
+.about-meta-list div {
+  padding: 0.75rem 0.85rem;
+  border-radius: 10px;
+  background: var(--mist);
+}
+
+.about-meta-list dt {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--moss);
+  font-weight: 700;
+  margin: 0 0 0.2rem;
+}
+
+.about-meta-list dd {
+  margin: 0;
+  font-weight: 600;
+  color: var(--forest-deep);
+}
+
+.state-list,
+.stack-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+}
+
+.state-list li,
+.stack-list li {
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--forest-deep);
   font-weight: 600;
 }
 
-.about-page .card-body {
-  padding: 1.5rem;
+.state-list li:last-child,
+.stack-list li:last-child {
+  border-bottom: none;
 }
 
-.about-page h4 {
-  color: var(--accent-color);
-  font-weight: 600;
-  margin-top: 1.5rem;
+.stack-list strong {
+  display: inline-block;
+  min-width: 5.5rem;
+  color: var(--moss);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
-.about-page ul {
-  list-style-type: none;
-  padding-left: 0;
+.about-credit {
+  margin-top: 2rem;
+  color: var(--ink-muted);
+  font-size: 0.95rem;
 }
 
-.about-page ul li {
-  position: relative;
-  padding-left: 1.75rem;
-  margin-bottom: 0.75rem;
-}
-
-.about-page ul li::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  color: var(--primary-color);
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.about-page .team-name {
-  font-weight: bold;
-  color: var(--primary-color);
+@media (max-width: 576px) {
+  .about-meta-list {
+    grid-template-columns: 1fr;
+  }
 }

@@ -1,22 +1,54 @@
 .dashboard-page {
-  padding: 2rem;
-  background-color: var(--light-bg);
-}
-
-.page-title {
-  font-weight: 700;
-  color: var(--dark-text);
-  margin-bottom: 0.5rem;
-}
-
-.page-subtitle {
-  color: var(--secondary-text);
-  margin-bottom: 2rem;
+  padding: 1.5rem 1rem 2.5rem;
 }
 
 .spinner-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 60vh;
+  min-height: 50vh;
+}
+
+.map-panel,
+.side-panel {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  height: 100%;
+}
+
+.map-panel-header,
+.side-panel {
+  padding: 1.15rem 1.25rem;
+}
+
+.map-panel-header h2,
+.side-panel h2 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  margin: 0;
+  color: var(--forest-deep);
+}
+
+.map-panel-header span {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--ink-muted);
+  font-size: 0.88rem;
+}
+
+.map-panel-body {
+  min-height: 420px;
+}
+
+.map-panel-body .leaflet-container {
+  height: 420px;
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+.side-panel p {
+  color: var(--ink-muted);
+  line-height: 1.55;
+  margin: 0.75rem 0 1.15rem;
 }

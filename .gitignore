@@ -19,6 +19,17 @@ backend/OCR/fra_data.json
 # Backend
 backend/uploads/
 backend/.env
+backend/firebase-service-account.json
+**/firebase-service-account.json
+firebase-web-config.json
+.firebase-project-id
+
+# Frontend env (contains project keys; use .env.example as template)
+frontend/.env
+
+# Vercel
+.vercel
+frontend/.vercel
 
 # Build files
 /node_modules/
@@ -29,3 +40,5 @@ frontend/node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+backend/.env.render

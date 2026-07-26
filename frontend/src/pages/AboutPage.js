@@ -1,72 +1,104 @@
 import React from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import "./AboutPage.css";
+
+const FOCUS_STATES = [
+  "Madhya Pradesh",
+  "Tripura",
+  "Odisha",
+  "Telangana",
+];
 
 function AboutPage() {
   return (
     <div className="about-page">
-      <Container className="py-5">
+      <Container className="py-4 py-md-5">
         <div className="page-header">
-          <h1 className="page-title">About The Platform</h1>
+          <h1 className="page-title">About the Platform</h1>
           <p className="page-subtitle">
-            Digitizing Forest Rights Act claims with modern technology.
+            AI-powered FRA Atlas and WebGIS Decision Support System for Forest
+            Rights Act monitoring.
           </p>
+          <div className="page-meta">
+            <span className="meta-chip">SIH12508</span>
+            <span className="meta-chip">Ministry of Tribal Affairs</span>
+            <span className="meta-chip">Software · SIH 2025</span>
+          </div>
         </div>
-        <Row className="justify-content-center">
-          <Col md={9}>
-            <Card>
-              <Card.Header>
-                <h2>FRA-GIS: A Smart India Hackathon Project</h2>
-              </Card.Header>
-              <Card.Body>
-                <Card.Text>
-                  This platform is a proof-of-concept developed to address the
-                  challenges in managing and verifying claims made under The
-                  Scheduled Tribes and Other Traditional Forest Dwellers
-                  (Recognition of Forest Rights) Act, 2006.
-                </Card.Text>
-                <Card.Text>
-                  By leveraging modern technology, we aim to create a
-                  transparent, efficient, and accessible system for all
-                  stakeholders involved in the FRA claims process.
-                </Card.Text>
-                <hr />
-                <h4 className="mt-4">Core Technologies</h4>
-                <ul>
-                  <li>
-                    <strong>Frontend:</strong> A responsive and interactive UI
-                    built with React and React-Bootstrap.
-                  </li>
-                  <li>
-                    <strong>Backend:</strong> A robust Python-based Flask server
-                    to handle business logic and data processing.
-                  </li>
-                  <li>
-                    <strong>OCR Engine:</strong> Google Vision API for
-                    high-accuracy data extraction, with Tesseract as a fallback.
-                  </li>
-                  <li>
-                    <strong>Database:</strong> Secure and scalable data storage
-                    powered by Supabase.
-                  </li>
-                  <li>
-                    <strong>Mapping:</strong> Interactive geospatial
-                    visualizations using React-Leaflet.
-                  </li>
-                </ul>
-                <hr />
-                <h4 className="mt-4">
-                  Developed by <span className="team-name">Team Evonex</span>
-                </h4>
-                <Card.Text>
-                  We are a passionate team of developers dedicated to using
-                  technology to solve real-world problems and create impactful
-                  solutions.
-                </Card.Text>
-              </Card.Body>
-            </Card>
+
+        <Row className="g-4">
+          <Col lg={7}>
+            <article className="about-panel rise-in">
+              <h2>Problem Statement</h2>
+              <p className="problem-title">
+                Development of AI-powered FRA Atlas and WebGIS-based Decision
+                Support System (DSS) for Integrated Monitoring of Forest Rights
+                Act (FRA) Implementation.
+              </p>
+              <p>
+                The platform supports integrated monitoring of Individual Forest
+                Rights (IFR), Community Rights (CR), and Community Forest
+                Resource (CFR) rights — aligned with MoTA’s roadmap for
+                digitization, geotagging, and convergence of FRA records.
+              </p>
+              <dl className="about-meta-list">
+                <div>
+                  <dt>Problem ID</dt>
+                  <dd>SIH12508</dd>
+                </div>
+                <div>
+                  <dt>Organization</dt>
+                  <dd>Ministry of Tribal Affairs (MoTA)</dd>
+                </div>
+                <div>
+                  <dt>Category</dt>
+                  <dd>Software</dd>
+                </div>
+                <div>
+                  <dt>Theme</dt>
+                  <dd>Miscellaneous</dd>
+                </div>
+              </dl>
+            </article>
+          </Col>
+
+          <Col lg={5}>
+            <article className="about-panel rise-in rise-in-delay-1">
+              <h2>Focus States</h2>
+              <p>
+                Priority concentration states for the SIH solution prototype:
+              </p>
+              <ul className="state-list">
+                {FOCUS_STATES.map((state) => (
+                  <li key={state}>{state}</li>
+                ))}
+              </ul>
+            </article>
+
+            <article className="about-panel rise-in rise-in-delay-2 mt-4">
+              <h2>Stack</h2>
+              <ul className="stack-list">
+                <li>
+                  <strong>Frontend</strong> React · Leaflet WebGIS
+                </li>
+                <li>
+                  <strong>Backend</strong> Flask · OCR / NER pipeline
+                </li>
+                <li>
+                  <strong>Database</strong> Firebase Firestore
+                </li>
+                <li>
+                  <strong>AI / OCR</strong> Google Vision · Tesseract · spaCy
+                </li>
+              </ul>
+            </article>
           </Col>
         </Row>
+
+        <p className="about-credit">
+          Prototype by <span className="team-name">Team Evonex</span> ·{" "}
+          <span className="developer-name">Aryan Dani</span>
+        </p>
       </Container>
     </div>
   );

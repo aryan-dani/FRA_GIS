@@ -1,6 +1,12 @@
-# FRA-GIS Platform
+# FRA Atlas · WebGIS DSS
 
-The **FRA-GIS Platform** is a full-stack web application designed to digitize and streamline the management of claims under the Forest Rights Act (FRA) in India. It serves as a powerful "Smart India Hackathon" prototype, transforming a complex, paper-based process into an efficient, data-driven workflow for government agencies.
+AI-powered FRA Atlas and WebGIS-based Decision Support System for integrated monitoring of Forest Rights Act (FRA) implementation.
+
+**Live frontend:** [https://fra-atlas-one.vercel.app](https://fra-atlas-one.vercel.app) (Vercel)  
+**Backend:** Render (OCR API — set `REACT_APP_API_URL` on Vercel when live)
+
+The **FRA-GIS Platform** is a full-stack web application designed to digitize and streamline the management of claims under the Forest Rights Act (FRA) in India. It serves as a Smart India Hackathon prototype for MoTA’s FRA Atlas / DSS problem statement.
+
 
 ![FRA-GIS Platform Screenshot](URL_TO_SCREENSHOT_HERE) <!-- Add a screenshot of your application here -->
 
@@ -17,6 +23,7 @@ The **FRA-GIS Platform** is a full-stack web application designed to digitize an
 
 - **Frontend**: React, React Bootstrap, Chart.js, React Router, Axios
 - **Backend**: Python, Flask
+- **Database**: Firebase Firestore (Spark / free tier)
 - **APIs & Services**: Google Vision API
 - **Deployment**: GitHub Actions for CI/CD
 
@@ -28,6 +35,7 @@ To get a local copy up and running, follow these simple steps.
 
 - Node.js and npm
 - Python and pip
+- A Firebase project with Firestore enabled (Spark plan works)
 
 ### Installation
 
@@ -35,14 +43,25 @@ To get a local copy up and running, follow these simple steps.
     ```sh
     git clone https://github.com/aryan-dani/FRA-GIS.git
     ```
-2.  **Install Frontend Dependencies**
+2.  **Configure Frontend env**
     ```sh
     cd frontend
+    cp .env.example .env
+    ```
+    Fill in the Firebase web app config values from the Firebase console.
+3.  **Install Frontend Dependencies**
+    ```sh
     npm install
     ```
-3.  **Install Backend Dependencies**
+4.  **Configure Backend env**
     ```sh
     cd ../backend
+    cp .env.example .env
+    ```
+    Place a Firebase service account JSON at `backend/firebase-service-account.json`
+    (or set `FIREBASE_CREDENTIALS_PATH` to its path).
+5.  **Install Backend Dependencies**
+    ```sh
     pip install -r requirements.txt
     ```
 
@@ -53,6 +72,7 @@ To get a local copy up and running, follow these simple steps.
     # From the 'backend' directory
     python app.py
     ```
+    The API runs on `http://localhost:5001`.
 2.  **Start the Frontend Development Server**
     ```sh
     # From the 'frontend' directory

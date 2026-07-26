@@ -5,15 +5,19 @@ import "./Footer.css";
 function Footer() {
   return (
     <footer className="footer">
-      <Container className="text-center">
-        <p className="mb-0">
-          &copy; {new Date().getFullYear()} FRA-GIS Platform. All Rights
-          Reserved.
-        </p>
-        <small>
-          A Smart India Hackathon Prototype developed by{" "}
-          <span className="developer-name">Aryan Dani</span> from Team Evonex
-        </small>
+      <Container>
+        <div className="footer-inner">
+          <div>
+            <strong className="footer-brand">FRA Atlas</strong>
+            <p className="mb-0">
+              SIH12508 · Ministry of Tribal Affairs · WebGIS DSS prototype
+            </p>
+          </div>
+          <small>
+            Built by <span className="developer-name">Aryan Dani</span> · Team
+            Evonex · {new Date().getFullYear()}
+          </small>
+        </div>
       </Container>
     </footer>
   );
