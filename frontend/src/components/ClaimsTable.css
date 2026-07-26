@@ -5,8 +5,8 @@
 .filter-bar .form-select,
 .filter-bar .form-control {
   font-size: 0.9rem;
-  border-radius: 999px;
-  border-color: var(--border);
+  border-radius: 0.65rem;
+  border-color: var(--border-color);
 }
 
 .table-toolbar {
@@ -20,9 +20,9 @@
 
 .table-count {
   margin: 0;
-  color: var(--ink-muted);
+  color: var(--secondary-text);
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .claims-table-container {
@@ -37,22 +37,22 @@
 }
 
 .claims-table th {
-  color: var(--moss);
-  font-weight: 700;
+  color: var(--secondary-color);
+  font-weight: 600;
   text-align: left;
   padding: 0.85rem 1rem;
-  border-bottom: 1px solid var(--border);
-  font-size: 0.72rem;
+  border-bottom: 2px solid var(--primary-color);
+  font-size: 0.78rem;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   background: transparent;
 }
 
 .claims-table td {
   padding: 0.95rem 1rem;
   vertical-align: middle;
-  color: var(--ink);
-  border-bottom: 1px solid var(--border);
+  color: var(--text-color);
+  border-bottom: 1px solid var(--border-color);
   background: transparent;
 }
 
@@ -61,29 +61,29 @@
 }
 
 .claims-table tbody tr.clickable-row:hover {
-  background: rgba(232, 239, 232, 0.7);
+  background: var(--light-accent-color);
   cursor: pointer;
 }
 
 .claim-name {
-  font-weight: 700;
-  color: var(--forest-deep);
+  font-weight: 600;
+  color: var(--primary-color);
 }
 
 .claim-id {
   display: block;
   margin-top: 0.15rem;
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 0.72rem;
-  color: var(--ink-muted);
+  font-size: 0.75rem;
+  color: var(--secondary-text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 .claim-type {
   display: inline-block;
   padding: 0.2rem 0.55rem;
   border-radius: 999px;
-  background: var(--mist);
-  color: var(--forest-mid);
+  background: var(--light-accent-color);
+  color: var(--secondary-color);
   font-size: 0.75rem;
   font-weight: 600;
 }
@@ -91,7 +91,7 @@
 .empty-state {
   text-align: center;
   padding: 2.5rem 1rem;
-  color: var(--ink-muted);
+  color: var(--secondary-text);
 }
 
 .pagination {
@@ -100,50 +100,50 @@
 }
 
 .pagination .page-item .page-link {
-  color: var(--forest-deep);
-  border: 1px solid var(--border);
+  color: var(--primary-color);
+  border: 1px solid var(--border-color);
   margin: 0 2px;
-  border-radius: 999px;
+  border-radius: 0.5rem;
 }
 
 .pagination .page-item.active .page-link {
-  background-color: var(--forest-deep);
-  border-color: var(--forest-deep);
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
   color: #fff;
   font-weight: 600;
 }
 
 .action-button {
   background: none;
-  border: 1px solid var(--border);
-  color: var(--forest-mid);
+  border: 1px solid var(--border-color);
+  color: var(--secondary-color);
   cursor: pointer;
   font-size: 1rem;
   padding: 0.35rem 0.55rem;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   transition: all 0.2s;
 }
 
 .action-button:hover {
-  color: var(--forest-deep);
-  background: var(--mist);
+  color: var(--primary-color);
+  background: var(--light-accent-color);
 }
 
 .action-dropdown .dropdown-menu {
-  border-radius: 12px;
-  border: 1px solid var(--border);
+  border-radius: 0.7rem;
+  border: 1px solid var(--border-color);
   box-shadow: var(--shadow-soft);
   padding: 0.4rem;
 }
 
 .action-dropdown .dropdown-item {
-  color: var(--ink);
+  color: var(--text-color);
   font-weight: 500;
-  border-radius: 8px;
+  border-radius: 0.45rem;
   padding: 0.45rem 0.75rem;
 }
 
 .action-dropdown .dropdown-item:hover {
-  background-color: var(--mist);
-  color: var(--forest-deep);
+  background-color: var(--light-accent-color);
+  color: var(--primary-color);
 }

@@ -1,39 +1,22 @@
-/* Design tokens — forest atlas direction */
 :root {
-  --forest-deep: #0c2f24;
-  --forest-mid: #1a4d3a;
-  --forest-leaf: #2f6b4f;
-  --moss: #6b8f71;
-  --mist: #e7efe8;
-  --mist-deep: #d5e4d8;
-  --parchment: #f4f7f2;
-  --ink: #14231c;
-  --ink-muted: #5a6f62;
-  --amber: #c9a227;
-  --amber-soft: #e8d48b;
-  --surface: rgba(255, 255, 255, 0.78);
-  --surface-solid: #ffffff;
-  --border: rgba(12, 47, 36, 0.12);
-  --radius: 14px;
-  --shadow-soft: 0 12px 40px rgba(12, 47, 36, 0.08);
-  --font-display: "Fraunces", Georgia, serif;
-  --font-body: "Manrope", system-ui, sans-serif;
-
-  /* Legacy aliases used across existing CSS */
-  --primary-color: var(--forest-deep);
-  --secondary-color: var(--forest-mid);
-  --accent-color: var(--forest-leaf);
-  --light-accent-color: var(--mist-deep);
-  --background-color: var(--parchment);
-  --background-color-light: var(--mist);
-  --text-color: var(--ink);
-  --secondary-text: var(--ink-muted);
-  --card-bg-color: var(--surface-solid);
-  --border-color: var(--border);
-  --dark-bg: var(--forest-deep);
-  --light-bg: var(--parchment);
-  --dark-text: var(--ink);
-  --primary-color-light: var(--moss);
+  --primary-color: #004d40;
+  --secondary-color: #00695c;
+  --accent-color: #2e7d32;
+  --light-accent-color: #e8f5e9;
+  --background-color: #f3f7f4;
+  --background-color-light: #eef5f0;
+  --text-color: #1b2b27;
+  --secondary-text: #5f736c;
+  --card-bg-color: #ffffff;
+  --border-color: #d7e3dc;
+  --dark-bg: #12352e;
+  --light-bg: #f3f7f4;
+  --dark-text: #1b2b27;
+  --primary-color-light: #4caf50;
+  --shadow-soft: 0 8px 24px rgba(0, 77, 64, 0.08);
+  --radius: 0.85rem;
+  --font-body: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
 }
 
 *,
@@ -48,20 +31,16 @@ html {
 
 body {
   margin: 0;
-  background-color: var(--parchment);
-  color: var(--ink);
+  background-color: var(--background-color);
+  color: var(--text-color);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image:
-    radial-gradient(ellipse 80% 50% at 10% -10%, rgba(107, 143, 113, 0.18), transparent 55%),
-    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(201, 162, 39, 0.1), transparent 45%),
-    linear-gradient(180deg, #eef4ef 0%, var(--parchment) 40%, #e9f0ea 100%);
-  background-attachment: fixed;
 }
 
 code {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
 .App {
@@ -76,18 +55,22 @@ code {
 }
 
 .card {
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-color);
   box-shadow: var(--shadow-soft);
   border-radius: var(--radius);
-  background-color: var(--surface-solid);
+  background-color: var(--card-bg-color);
   height: 100%;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 12px 28px rgba(0, 77, 64, 0.12);
 }
 
 .card-header {
-  background: transparent;
-  border-bottom: 1px solid var(--border);
-  color: var(--forest-deep);
+  background-color: #fff;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--primary-color);
   font-weight: 600;
   border-top-left-radius: var(--radius);
   border-top-right-radius: var(--radius);
@@ -95,34 +78,33 @@ code {
 }
 
 .btn-primary {
-  background-color: var(--forest-deep) !important;
-  border-color: var(--forest-deep) !important;
+  background-color: var(--accent-color) !important;
+  border-color: var(--accent-color) !important;
   font-weight: 600 !important;
-  border-radius: 999px !important;
-  padding: 0.55rem 1.25rem !important;
-  letter-spacing: 0.01em;
-  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease !important;
+  border-radius: 0.65rem !important;
+  padding: 0.55rem 1.2rem !important;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    transform 0.15s ease !important;
 }
 
 .btn-primary:hover,
 .btn-primary:focus {
-  background-color: var(--forest-mid) !important;
-  border-color: var(--forest-mid) !important;
+  background-color: var(--secondary-color) !important;
+  border-color: var(--secondary-color) !important;
   transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(12, 47, 36, 0.22);
 }
 
 .btn-outline-secondary {
-  border-radius: 999px !important;
-  border-color: var(--border) !important;
-  color: var(--forest-mid) !important;
+  border-radius: 0.65rem !important;
+  border-color: var(--border-color) !important;
+  color: var(--secondary-color) !important;
   font-weight: 600 !important;
 }
 
 .btn-outline-secondary:hover {
-  background: var(--mist) !important;
-  border-color: var(--moss) !important;
-  color: var(--forest-deep) !important;
+  background: var(--light-accent-color) !important;
+  border-color: var(--accent-color) !important;
+  color: var(--primary-color) !important;
 }
 
 .leaflet-container {
@@ -132,49 +114,38 @@ code {
 
 .spinner-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 0.85rem;
   padding: 3rem;
-  min-height: 200px;
+  min-height: 220px;
 }
 
 .page-header {
-  position: relative;
-  overflow: hidden;
-  background:
-    linear-gradient(120deg, rgba(12, 47, 36, 0.94), rgba(26, 77, 58, 0.88)),
-    radial-gradient(circle at 80% 20%, rgba(201, 162, 39, 0.35), transparent 40%);
-  color: white;
+  background: linear-gradient(
+    120deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  color: #fff;
   padding: 1.75rem 2rem;
   border-radius: var(--radius);
   margin-bottom: 1.75rem;
-  box-shadow: var(--shadow-soft);
-}
-
-.page-header::after {
-  content: "";
-  position: absolute;
-  inset: auto -10% -40% auto;
-  width: 220px;
-  height: 220px;
-  background: radial-gradient(circle, rgba(232, 212, 139, 0.25), transparent 70%);
-  pointer-events: none;
+  box-shadow: 0 8px 22px rgba(0, 77, 64, 0.18);
 }
 
 .page-header .page-title {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(1.6rem, 2.5vw, 2.1rem);
-  margin: 0 0 0.35rem;
   color: #fff;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.45rem, 2.2vw, 1.9rem);
 }
 
 .page-header .page-subtitle {
+  color: rgba(255, 255, 255, 0.86);
   margin: 0;
-  color: rgba(255, 255, 255, 0.82);
-  max-width: 52ch;
-  font-size: 0.98rem;
+  max-width: 56ch;
 }
 
 .page-meta {
@@ -187,24 +158,21 @@ code {
 .meta-chip {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.3rem 0.75rem;
+  padding: 0.28rem 0.75rem;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: #fff;
   font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
 }
 
 .developer-name,
 .team-name {
   font-weight: 700;
-  color: var(--amber);
+  color: #a5d6a7;
 }
 
-/* Shared status pills */
 .status-indicator {
   display: inline-flex;
   align-items: center;
@@ -212,32 +180,30 @@ code {
   padding: 0.35rem 0.75rem;
   border-radius: 999px;
   font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
+  font-weight: 600;
+  text-transform: capitalize;
   min-width: 88px;
 }
 
 .status-Approved {
-  background: rgba(47, 107, 79, 0.14);
-  color: #1b5e3b;
+  background-color: rgba(46, 125, 50, 0.12);
+  color: #1e8e3e;
 }
 
-.status-Pending,
-.status-In\ Review {
-  background: rgba(201, 162, 39, 0.18);
-  color: #8a6b05;
+.status-Pending {
+  background-color: rgba(242, 153, 74, 0.16);
+  color: #c77700;
 }
 
 .status-Rejected {
-  background: rgba(176, 67, 55, 0.12);
-  color: #9b2c20;
+  background-color: rgba(235, 87, 87, 0.12);
+  color: #eb5757;
 }
 
 @keyframes rise-in {
   from {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -245,38 +211,28 @@ code {
   }
 }
 
-@keyframes fade-soft {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 .rise-in {
-  animation: rise-in 0.55s ease both;
+  animation: rise-in 0.45s ease both;
 }
 
 .rise-in-delay-1 {
-  animation-delay: 0.08s;
+  animation-delay: 0.06s;
 }
 
 .rise-in-delay-2 {
-  animation-delay: 0.16s;
+  animation-delay: 0.12s;
 }
 
 .rise-in-delay-3 {
-  animation-delay: 0.24s;
+  animation-delay: 0.18s;
 }
 
 @media (max-width: 768px) {
   .main-content {
-    padding-top: 76px;
+    padding-top: 78px;
   }
 
   .page-header {
-    padding: 1.35rem 1.25rem;
-    border-radius: 12px;
+    padding: 1.35rem 1.2rem;
   }
 }

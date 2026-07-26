@@ -1,10 +1,8 @@
 .footer {
-  background:
-    linear-gradient(120deg, #0c2f24, #163f30),
-    radial-gradient(circle at 90% 20%, rgba(201, 162, 39, 0.2), transparent 40%);
-  color: rgba(247, 251, 247, 0.85);
+  background-color: var(--dark-bg);
+  color: #ecf0f1;
   padding: 1.75rem 0;
-  margin-top: 2rem;
+  margin-top: 2.5rem;
 }
 
 .footer-inner {
@@ -17,8 +15,8 @@
 
 .footer-brand {
   display: block;
-  font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-weight: 700;
+  font-size: 1.05rem;
   color: #fff;
   margin-bottom: 0.25rem;
 }
@@ -26,9 +24,9 @@
 .footer p,
 .footer small {
   margin: 0;
-  color: rgba(247, 251, 247, 0.7);
+  color: rgba(236, 240, 241, 0.75);
 }
 
 .footer .developer-name {
-  color: var(--amber-soft);
+  color: #a5d6a7;
 }

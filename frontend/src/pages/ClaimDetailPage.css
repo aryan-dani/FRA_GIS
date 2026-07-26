@@ -3,8 +3,8 @@
 }
 
 .detail-panel {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid var(--border);
+  background: #fff;
+  border: 1px solid var(--border-color);
   border-radius: var(--radius);
   box-shadow: var(--shadow-soft);
   padding: 1.25rem 1.35rem;
@@ -13,9 +13,9 @@
 
 .detail-panel h2,
 .detail-panel-header h2 {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  color: var(--forest-deep);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary-color);
   margin: 0 0 1rem;
 }
 
@@ -33,7 +33,7 @@
   grid-template-columns: 110px 1fr;
   gap: 0.5rem;
   padding: 0.65rem 0;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .detail-item:last-child {
@@ -43,30 +43,30 @@
 .detail-item-label {
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--moss);
+  color: var(--secondary-color);
   padding-top: 0.15rem;
 }
 
 .detail-item-value {
-  color: var(--forest-deep);
+  color: var(--primary-color);
   font-weight: 600;
   line-height: 1.4;
 }
 
 .raw-text-container {
-  background-color: var(--mist);
-  border: 1px solid var(--border);
-  border-radius: 10px;
+  background-color: var(--background-color-light);
+  border: 1px solid var(--border-color);
+  border-radius: 0.65rem;
   padding: 1rem;
   max-height: 360px;
   overflow-y: auto;
   white-space: pre-wrap;
   word-break: break-word;
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 0.85rem;
-  color: var(--ink);
+  color: var(--text-color);
   margin: 0;
 }
 
@@ -80,5 +80,5 @@
 }
 
 .back-button {
-  border-radius: 999px !important;
+  border-radius: 0.65rem !important;
 }

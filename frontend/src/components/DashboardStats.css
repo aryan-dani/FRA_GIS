@@ -4,11 +4,11 @@
   gap: 1rem;
   padding: 1.15rem 1.25rem;
   border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--border-color);
+  background: #fff;
   box-shadow: var(--shadow-soft);
   height: 100%;
-  transition: transform 0.25s ease;
+  transition: transform 0.2s ease;
 }
 
 .stat-card:hover {
@@ -29,31 +29,30 @@
   margin: 0;
   font-size: 0.78rem;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-weight: 700;
-  color: var(--ink-muted);
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  color: var(--secondary-text);
 }
 
 .stat-value {
   margin: 0.15rem 0 0;
-  font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: 1.85rem;
   line-height: 1;
-  font-weight: 600;
-  color: var(--forest-deep);
+  font-weight: 700;
+  color: var(--primary-color);
 }
 
 .tone-forest .stat-icon {
-  background: rgba(12, 47, 36, 0.1);
-  color: var(--forest-deep);
+  background: rgba(0, 77, 64, 0.1);
+  color: var(--primary-color);
 }
 
 .tone-amber .stat-icon {
-  background: rgba(201, 162, 39, 0.18);
-  color: #8a6b05;
+  background: rgba(242, 153, 74, 0.16);
+  color: #c77700;
 }
 
 .tone-leaf .stat-icon {
-  background: rgba(47, 107, 79, 0.14);
-  color: var(--forest-leaf);
+  background: rgba(46, 125, 50, 0.12);
+  color: var(--accent-color);
 }
