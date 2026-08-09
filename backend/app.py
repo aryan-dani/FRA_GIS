@@ -17,7 +17,6 @@ app = Flask(__name__)
 
 origins = [
     "http://localhost:3000",
-    "https://aryan-dani.github.io",
     "https://fra-atlas-one.vercel.app",
     "https://fra-atlas.vercel.app",
 ]
