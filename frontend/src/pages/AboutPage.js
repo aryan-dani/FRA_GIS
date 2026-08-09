@@ -96,8 +96,15 @@ function AboutPage() {
         </Row>
 
         <p className="about-credit">
-          Prototype by <span className="team-name">Team Evonex</span> ·{" "}
-          <span className="developer-name">Aryan Dani</span>
+          Prototype by{" "}
+          <a
+            className="developer-name"
+            href="https://www.aryandani.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Aryan Dani
+          </a>
         </p>
       </Container>
     </div>

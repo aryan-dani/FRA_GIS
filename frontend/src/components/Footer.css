@@ -1,8 +1,9 @@
 .footer {
   background-color: var(--dark-bg);
   color: #ecf0f1;
-  padding: 1.75rem 0;
-  margin-top: 2.5rem;
+  padding: 1.25rem 0;
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .footer-inner {
@@ -16,17 +17,27 @@
 .footer-brand {
   display: block;
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   color: #fff;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.2rem;
 }
 
 .footer p,
 .footer small {
   margin: 0;
-  color: rgba(236, 240, 241, 0.75);
+  color: rgba(236, 240, 241, 0.72);
+  font-size: 0.82rem;
 }
 
-.footer .developer-name {
+.footer a.developer-name {
   color: #a5d6a7;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.footer a.developer-name:hover {
+  color: #c8e6c9;
+  border-bottom-color: rgba(200, 230, 201, 0.7);
 }

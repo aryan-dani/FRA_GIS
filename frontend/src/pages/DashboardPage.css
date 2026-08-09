@@ -1,5 +1,5 @@
 .dashboard-page {
-  padding: 1.5rem 1rem 2.5rem;
+  padding: 1.15rem 0.85rem 2rem;
 }
 
 .spinner-container {
@@ -14,7 +14,7 @@
 .loading-hint {
   margin: 0;
   color: var(--secondary-text);
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   text-align: center;
   max-width: 36ch;
 }
@@ -30,12 +30,12 @@
 
 .map-panel-header,
 .side-panel {
-  padding: 1.15rem 1.25rem;
+  padding: 0.95rem 1.1rem;
 }
 
 .map-panel-header h2,
 .side-panel h2 {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
   margin: 0;
   color: var(--primary-color);
@@ -43,22 +43,23 @@
 
 .map-panel-header span {
   display: block;
-  margin-top: 0.2rem;
+  margin-top: 0.15rem;
   color: var(--secondary-text);
-  font-size: 0.88rem;
+  font-size: 0.82rem;
 }
 
 .map-panel-body {
-  min-height: 420px;
+  min-height: 440px;
 }
 
 .map-panel-body .leaflet-container {
-  height: 420px;
+  height: 440px;
   border-radius: 0 0 var(--radius) var(--radius);
 }
 
 .side-panel p {
   color: var(--secondary-text);
   line-height: 1.55;
-  margin: 0.75rem 0 1.15rem;
+  margin: 0.65rem 0 1rem;
+  font-size: 0.9rem;
 }

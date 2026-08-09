@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import {
   Speedometer2,
@@ -9,89 +9,73 @@ import {
 } from "react-bootstrap-icons";
 import "./HomePage.css";
 
+const ACTIONS = [
+  {
+    to: "/dashboard",
+    icon: Speedometer2,
+    title: "Dashboard",
+    text: "Claim KPIs and live WebGIS map",
+  },
+  {
+    to: "/claims-data",
+    icon: Table,
+    title: "Claims",
+    text: "Search, filter, and update status",
+  },
+  {
+    to: "/analytics",
+    icon: BarChartLine,
+    title: "Analytics",
+    text: "Trends by status, type, and region",
+  },
+];
+
 function HomePage() {
   return (
     <div className="homepage">
-      <Container className="text-center welcome-section rise-in">
-        <p className="welcome-kicker">SIH12508 · Ministry of Tribal Affairs</p>
-        <h1 className="display-5">FRA-GIS Platform</h1>
-        <p className="lead text-muted">
-          Digitize, map, and monitor Forest Rights Act claims with WebGIS and
-          analytics — focused on Madhya Pradesh, Tripura, Odisha, and Telangana.
-        </p>
-        <div className="welcome-actions">
-          <Link to="/dashboard" className="btn btn-primary">
-            Open Dashboard <ArrowRight className="ms-1" />
-          </Link>
-          <Link to="/claims-data" className="btn btn-outline-secondary">
-            Browse Claims
-          </Link>
-        </div>
-      </Container>
+      <section className="home-hero rise-in">
+        <Container fluid="xl">
+          <p className="home-brand">FRA Atlas</p>
+          <h1 className="home-headline">
+            Digitize and monitor Forest Rights Act claims
+          </h1>
+          <p className="home-lead">
+            WebGIS decision support for Madhya Pradesh, Tripura, Odisha, and
+            Telangana — SIH12508, Ministry of Tribal Affairs.
+          </p>
+          <div className="welcome-actions">
+            <Link to="/dashboard" className="btn btn-primary">
+              Open Dashboard <ArrowRight className="ms-1" />
+            </Link>
+            <Link to="/claims-data" className="btn btn-outline-secondary">
+              Browse Claims
+            </Link>
+          </div>
+        </Container>
+      </section>
 
-      <Container>
-        <Row className="justify-content-center">
-          <Col md={10} lg={9}>
-            <Row>
-              <Col md={4} className="mb-4">
-                <Card as={Link} to="/dashboard" className="action-card rise-in">
-                  <Card.Body>
-                    <div className="action-icon">
-                      <Speedometer2 size={28} />
-                    </div>
-                    <Card.Title>Dashboard</Card.Title>
-                    <Card.Text>
-                      View claim stats and the live WebGIS map.
-                    </Card.Text>
-                    <div className="go-arrow">
-                      <ArrowRight />
-                    </div>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col md={4} className="mb-4">
-                <Card
-                  as={Link}
-                  to="/claims-data"
-                  className="action-card rise-in rise-in-delay-1"
+      <Container fluid="xl" className="home-actions-wrap">
+        <nav className="home-action-strip" aria-label="Quick links">
+          <Row className="g-0">
+            {ACTIONS.map(({ to, icon: Icon, title, text }, i) => (
+              <Col md={4} key={to}>
+                <Link
+                  to={to}
+                  className={`home-action-link rise-in rise-in-delay-${i + 1}`}
                 >
-                  <Card.Body>
-                    <div className="action-icon">
-                      <Table size={28} />
-                    </div>
-                    <Card.Title>Claims Data</Card.Title>
-                    <Card.Text>
-                      Search, filter, and update claim status.
-                    </Card.Text>
-                    <div className="go-arrow">
-                      <ArrowRight />
-                    </div>
-                  </Card.Body>
-                </Card>
+                  <span className="home-action-icon">
+                    <Icon size={20} />
+                  </span>
+                  <span className="home-action-copy">
+                    <strong>{title}</strong>
+                    <span>{text}</span>
+                  </span>
+                  <ArrowRight className="home-action-arrow" />
+                </Link>
               </Col>
-              <Col md={4} className="mb-4">
-                <Card
-                  as={Link}
-                  to="/analytics"
-                  className="action-card rise-in rise-in-delay-2"
-                >
-                  <Card.Body>
-                    <div className="action-icon">
-                      <BarChartLine size={28} />
-                    </div>
-                    <Card.Title>Analytics</Card.Title>
-                    <Card.Text>
-                      Explore trends by status, type, and region.
-                    </Card.Text>
-                    <div className="go-arrow">
-                      <ArrowRight />
-                    </div>
-                  </Card.Body>
-                </Card>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
+            ))}
+          </Row>
+        </nav>
       </Container>
     </div>
   );

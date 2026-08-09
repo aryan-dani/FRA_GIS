@@ -1,5 +1,5 @@
 .claim-detail-page {
-  padding: 1.5rem 1rem 2.5rem;
+  padding: 1.15rem 0.85rem 2rem;
 }
 
 .detail-panel {
@@ -7,16 +7,16 @@
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
   box-shadow: var(--shadow-soft);
-  padding: 1.25rem 1.35rem;
+  padding: 1.05rem 1.15rem;
   height: 100%;
 }
 
 .detail-panel h2,
 .detail-panel-header h2 {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--primary-color);
-  margin: 0 0 1rem;
+  margin: 0 0 0.85rem;
 }
 
 .map-panel-detail {
@@ -25,14 +25,14 @@
 }
 
 .detail-panel-header {
-  padding: 1.15rem 1.35rem 0.5rem;
+  padding: 0.95rem 1.15rem 0.4rem;
 }
 
 .detail-item {
   display: grid;
   grid-template-columns: 110px 1fr;
   gap: 0.5rem;
-  padding: 0.65rem 0;
+  padding: 0.55rem 0;
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -41,31 +41,32 @@
 }
 
 .detail-item-label {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--secondary-color);
-  padding-top: 0.15rem;
+  padding-top: 0.1rem;
 }
 
 .detail-item-value {
   color: var(--primary-color);
   font-weight: 600;
   line-height: 1.4;
+  font-size: 0.92rem;
 }
 
 .raw-text-container {
   background-color: var(--background-color-light);
   border: 1px solid var(--border-color);
-  border-radius: 0.65rem;
-  padding: 1rem;
+  border-radius: 0.45rem;
+  padding: 0.85rem;
   max-height: 360px;
   overflow-y: auto;
   white-space: pre-wrap;
   word-break: break-word;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--text-color);
   margin: 0;
 }
@@ -80,5 +81,5 @@
 }
 
 .back-button {
-  border-radius: 0.65rem !important;
+  border-radius: 0.5rem !important;
 }

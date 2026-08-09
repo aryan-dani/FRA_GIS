@@ -1,11 +1,13 @@
 .filter-bar {
-  padding: 1rem 0.75rem 0.5rem;
+  padding: 0.85rem 0.65rem 0.4rem;
+  background: var(--background-color-light);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .filter-bar .form-select,
 .filter-bar .form-control {
-  font-size: 0.9rem;
-  border-radius: 0.65rem;
+  font-size: 0.85rem;
+  border-radius: 0.45rem;
   border-color: var(--border-color);
 }
 
@@ -15,7 +17,7 @@
   align-items: center;
   gap: 0.75rem;
   flex-wrap: wrap;
-  padding: 0 0.75rem 0.75rem;
+  padding: 0.65rem 0.65rem 0.55rem;
 }
 
 .table-count {
@@ -40,20 +42,21 @@
   color: var(--secondary-color);
   font-weight: 600;
   text-align: left;
-  padding: 0.85rem 1rem;
+  padding: 0.7rem 0.85rem;
   border-bottom: 2px solid var(--primary-color);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   background: transparent;
 }
 
 .claims-table td {
-  padding: 0.95rem 1rem;
+  padding: 0.75rem 0.85rem;
   vertical-align: middle;
   color: var(--text-color);
   border-bottom: 1px solid var(--border-color);
   background: transparent;
+  font-size: 0.9rem;
 }
 
 .claims-table tbody tr {

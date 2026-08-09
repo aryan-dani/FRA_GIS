@@ -1,5 +1,5 @@
 .analytics-page {
-  padding: 1.5rem 1rem 2.5rem;
+  padding: 1.15rem 0.85rem 2rem;
 }
 
 .chart-container {
@@ -10,34 +10,42 @@
 .stat-card-analytics {
   background-color: #fff;
   border-radius: var(--radius);
-  padding: 1.35rem 1.5rem;
+  padding: 1rem 1.15rem;
   display: flex;
   align-items: center;
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow-soft);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.stat-card-analytics:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 77, 64, 0.09);
 }
 
 .stat-card-analytics .stat-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 12px;
+  width: 42px;
+  height: 42px;
+  border-radius: 0.45rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 1rem;
+  margin-right: 0.85rem;
   color: var(--primary-color);
   background: var(--light-accent-color);
+  flex-shrink: 0;
 }
 
 .stat-card-analytics .stat-value {
-  font-size: 1.85rem;
+  font-size: 1.55rem;
   font-weight: 700;
   color: var(--primary-color);
   margin: 0;
+  line-height: 1;
 }
 
 .stat-card-analytics .stat-title {
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   color: var(--secondary-text);
-  margin: 0;
+  margin: 0.2rem 0 0;
 }

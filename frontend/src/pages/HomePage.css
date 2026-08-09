@@ -1,97 +1,149 @@
 .homepage {
-  padding: 2.5rem 1rem 3.5rem;
+  padding: 0 0 2.5rem;
 }
 
-.welcome-section {
-  margin-bottom: 2.75rem;
-  max-width: 760px;
+.home-hero {
+  position: relative;
+  padding: 3.25rem 1rem 2.75rem;
+  background:
+    radial-gradient(
+      ellipse 80% 60% at 15% 20%,
+      rgba(46, 125, 50, 0.14),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 70% 50% at 90% 10%,
+      rgba(0, 77, 64, 0.1),
+      transparent 50%
+    ),
+    linear-gradient(180deg, #e2ece6 0%, var(--background-color) 100%);
+  border-bottom: 1px solid var(--border-color);
 }
 
-.welcome-kicker {
-  display: inline-block;
-  margin: 0 0 0.75rem;
-  padding: 0.35rem 0.8rem;
-  border-radius: 999px;
-  background: var(--light-accent-color);
-  color: var(--primary-color);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
-.welcome-section h1 {
-  color: var(--primary-color);
+.home-brand {
+  margin: 0 0 0.65rem;
+  font-size: clamp(1.65rem, 3.5vw, 2.35rem);
   font-weight: 700;
-  margin-bottom: 0.85rem;
+  color: var(--primary-color);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
 }
 
-.welcome-section .lead {
-  margin-bottom: 1.5rem;
-  line-height: 1.65;
+.home-headline {
+  margin: 0 0 0.75rem;
+  max-width: 22ch;
+  font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+  font-weight: 600;
+  color: var(--text-color);
+  line-height: 1.35;
+}
+
+.home-lead {
+  margin: 0 0 1.35rem;
+  max-width: 48ch;
+  color: var(--secondary-text);
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 .welcome-actions {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.65rem;
 }
 
-.action-card {
+.home-actions-wrap {
+  margin-top: -0.25rem;
+  padding-top: 1.5rem;
+}
+
+.home-action-strip {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+.home-action-link {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1.1rem 1.2rem;
   text-decoration: none;
   color: inherit;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-soft);
   height: 100%;
+  border-right: 1px solid var(--border-color);
+  transition: background-color 0.18s ease;
 }
 
-.action-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 30px rgba(0, 77, 64, 0.12);
-  border-color: #b7d5c4;
+.home-action-strip .col-md-4:last-child .home-action-link {
+  border-right: none;
+}
+
+.home-action-link:hover {
+  background: var(--light-accent-color);
   color: inherit;
 }
 
-.action-card .card-body {
-  position: relative;
-  padding: 1.75rem 1.5rem;
-}
-
-.action-icon {
+.home-action-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
-  background-color: var(--light-accent-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 0.45rem;
+  background: var(--light-accent-color);
   color: var(--primary-color);
-  margin-bottom: 1rem;
+  flex-shrink: 0;
 }
 
-.action-card .card-title {
+.home-action-link:hover .home-action-icon {
+  background: rgba(46, 125, 50, 0.18);
+}
+
+.home-action-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.home-action-copy strong {
   color: var(--primary-color);
+  font-size: 0.92rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
 }
 
-.action-card .card-text {
+.home-action-copy span {
   color: var(--secondary-text);
-  margin-bottom: 0;
-  line-height: 1.5;
+  font-size: 0.8rem;
+  line-height: 1.35;
 }
 
-.go-arrow {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: 1.25rem;
-  color: #b0c4ba;
-  transition: color 0.2s ease, transform 0.2s ease;
+.home-action-arrow {
+  color: #a8beb4;
+  flex-shrink: 0;
+  transition: color 0.18s ease, transform 0.18s ease;
 }
 
-.action-card:hover .go-arrow {
+.home-action-link:hover .home-action-arrow {
   color: var(--accent-color);
-  transform: translateX(4px);
+  transform: translateX(3px);
+}
+
+@media (max-width: 767px) {
+  .home-hero {
+    padding: 2.25rem 1rem 2rem;
+  }
+
+  .home-action-link {
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .home-action-strip .col-md-4:last-child .home-action-link {
+    border-bottom: none;
+  }
 }

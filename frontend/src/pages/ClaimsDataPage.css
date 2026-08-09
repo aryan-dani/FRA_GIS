@@ -1,5 +1,5 @@
 .claims-data-page {
-  padding: 1.5rem 1rem 2.5rem;
+  padding: 1.15rem 0.85rem 2rem;
 }
 
 .ledger-shell {
@@ -11,7 +11,7 @@
 }
 
 .ledger-body {
-  padding: 0.5rem 0.75rem 1.25rem;
+  padding: 0.35rem 0.65rem 1rem;
 }
 
 .spinner-container {

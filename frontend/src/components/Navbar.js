@@ -14,32 +14,38 @@ import "./Navbar.css";
 
 function AppNavbar() {
   return (
-    <Navbar variant="light" expand="lg" className="floating-navbar" fixed="top">
-      <Container>
+    <Navbar
+      variant="dark"
+      expand="lg"
+      className="app-navbar"
+      fixed="top"
+      collapseOnSelect
+    >
+      <Container fluid="xl">
         <Navbar.Brand as={NavLink} to="/" className="navbar-brand-custom">
-          <Globe className="brand-icon" />
-          <span>FRA-GIS Platform</span>
+          <Globe className="brand-icon" size={18} />
+          <span>FRA Atlas</span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             <Nav.Link as={NavLink} to="/" end>
-              <House className="me-1" /> Home
+              <House size={14} /> Home
             </Nav.Link>
             <Nav.Link as={NavLink} to="/dashboard">
-              <Speedometer2 className="me-1" /> Dashboard
+              <Speedometer2 size={14} /> Dashboard
             </Nav.Link>
             <Nav.Link as={NavLink} to="/claims-data">
-              <Table className="me-1" /> Claims
+              <Table size={14} /> Claims
             </Nav.Link>
             <Nav.Link as={NavLink} to="/analytics">
-              <BarChartLine className="me-1" /> Analytics
+              <BarChartLine size={14} /> Analytics
             </Nav.Link>
             <Nav.Link as={NavLink} to="/fra-statistics">
-              <ClipboardData className="me-1" /> FRA Stats
+              <ClipboardData size={14} /> FRA Stats
             </Nav.Link>
             <Nav.Link as={NavLink} to="/about">
-              <InfoCircle className="me-1" /> About
+              <InfoCircle size={14} /> About
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

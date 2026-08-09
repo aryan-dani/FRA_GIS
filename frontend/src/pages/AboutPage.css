@@ -1,77 +1,80 @@
 .about-page {
-  padding-bottom: 2rem;
+  padding-bottom: 1.5rem;
 }
 
 .about-panel {
   background: #fff;
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
-  padding: 1.5rem 1.6rem;
+  padding: 1.25rem 1.35rem;
   box-shadow: var(--shadow-soft);
   height: 100%;
 }
 
 .about-panel h2 {
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--primary-color);
-  margin: 0 0 0.85rem;
+  margin: 0 0 0.75rem;
 }
 
 .problem-title {
-  font-size: 1.02rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--secondary-color);
   line-height: 1.55;
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
 }
 
 .about-panel p {
   color: var(--secondary-text);
   line-height: 1.6;
+  font-size: 0.92rem;
 }
 
 .about-meta-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.85rem 1rem;
-  margin: 1.25rem 0 0;
+  gap: 0.65rem 0.85rem;
+  margin: 1.1rem 0 0;
 }
 
 .about-meta-list div {
-  padding: 0.75rem 0.85rem;
-  border-radius: 0.7rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.45rem;
   background: var(--light-accent-color);
 }
 
 .about-meta-list dt {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--secondary-color);
   font-weight: 700;
-  margin: 0 0 0.2rem;
+  margin: 0 0 0.15rem;
 }
 
 .about-meta-list dd {
   margin: 0;
   font-weight: 600;
   color: var(--primary-color);
+  font-size: 0.9rem;
 }
 
 .state-list,
 .stack-list {
   list-style: none;
   padding: 0;
-  margin: 0.75rem 0 0;
+  margin: 0.65rem 0 0;
 }
 
 .state-list li,
 .stack-list li {
-  padding: 0.65rem 0;
+  padding: 0.55rem 0;
   border-bottom: 1px solid var(--border-color);
   color: var(--primary-color);
   font-weight: 600;
+  font-size: 0.92rem;
 }
 
 .state-list li:last-child,
@@ -83,20 +86,15 @@
   display: inline-block;
   min-width: 5.5rem;
   color: var(--secondary-color);
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
 
 .about-credit {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   color: var(--secondary-text);
-  font-size: 0.95rem;
-}
-
-.about-credit .team-name,
-.about-credit .developer-name {
-  color: var(--accent-color);
+  font-size: 0.9rem;
 }
 
 @media (max-width: 576px) {

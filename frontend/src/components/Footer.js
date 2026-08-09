@@ -5,7 +5,7 @@ import "./Footer.css";
 function Footer() {
   return (
     <footer className="footer">
-      <Container>
+      <Container fluid="xl">
         <div className="footer-inner">
           <div>
             <strong className="footer-brand">FRA Atlas</strong>
@@ -14,8 +14,16 @@ function Footer() {
             </p>
           </div>
           <small>
-            Built by <span className="developer-name">Aryan Dani</span> · Team
-            Evonex · {new Date().getFullYear()}
+            Built by{" "}
+            <a
+              className="developer-name"
+              href="https://www.aryandani.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Aryan Dani
+            </a>{" "}
+            · {new Date().getFullYear()}
           </small>
         </div>
       </Container>
