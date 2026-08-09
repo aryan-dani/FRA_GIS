@@ -1,91 +1,212 @@
-# FRA Atlas · WebGIS DSS
+# FRA Atlas — WebGIS Decision Support System
 
-AI-powered FRA Atlas and WebGIS-based Decision Support System for integrated monitoring of Forest Rights Act (FRA) implementation.
+Prototype platform for digitizing, mapping, and monitoring **Forest Rights Act (FRA)** claims — built for Smart India Hackathon 2025 (**SIH12508**, Ministry of Tribal Affairs).
 
-**Live frontend:** [https://fra-atlas-one.vercel.app](https://fra-atlas-one.vercel.app) (Vercel)  
-**Backend:** Render (OCR API — set `REACT_APP_API_URL` on Vercel when live)
+**Live app:** [https://fra-atlas-one.vercel.app](https://fra-atlas-one.vercel.app)  
+**API:** [https://fra-gis.onrender.com](https://fra-gis.onrender.com)  
+**Problem statement:** [PROBLEM_STATEMENT.md](PROBLEM_STATEMENT.md)
 
-The **FRA-GIS Platform** is a full-stack web application designed to digitize and streamline the management of claims under the Forest Rights Act (FRA) in India. It serves as a Smart India Hackathon prototype for MoTA’s FRA Atlas / DSS problem statement.
+---
 
+## Overview
 
-![FRA-GIS Platform Screenshot](URL_TO_SCREENSHOT_HERE) <!-- Add a screenshot of your application here -->
+FRA Atlas helps agencies move from paper-heavy FRA workflows to a structured digital pipeline:
 
-## ✨ Key Features
+1. Capture claim data (manual entry or OCR-assisted digitization)
+2. Store and manage records in Firestore
+3. Visualize claims on a WebGIS map
+4. Analyze trends and official state-level MoTA statistics
 
-- **🤖 AI-Powered OCR**: Utilizes **Google Vision API** to automatically extract and populate claim details from uploaded documents (PDFs/images), minimizing manual data entry and errors.
-- **🗺️ Interactive GIS Dashboard**: Features a dynamic dashboard with key statistics and an integrated **WebGIS map** to visualize the geographical distribution of claims, providing an at-a-glance overview of the landscape.
-- **📊 Advanced Data Management**: A comprehensive data table allows users to search, filter, sort, and manage thousands of claims. Includes an **"Export to CSV"** functionality for offline analysis.
-- **📈 In-Depth Analytics**: A dedicated analytics page with interactive charts provides deep insights into claim trends by status, type, location, and over time.
-- **✅ Responsive & Modern UI**: Built with React and React Bootstrap, the user interface is designed to be clean, responsive, and highly functional, ensuring a seamless experience on any device.
-- **⚙️ Full-Stack Architecture**: A robust backend built with Python and Flask supports the frontend, handling data processing, API requests, and database interactions.
+Focus states for the SIH brief: **Madhya Pradesh**, **Tripura**, **Odisha**, and **Telangana**.
 
-## 🛠️ Tech Stack
+---
 
-- **Frontend**: React, React Bootstrap, Chart.js, React Router, Axios
-- **Backend**: Python, Flask
-- **Database**: Firebase Firestore (Spark / free tier)
-- **APIs & Services**: Google Vision API
-- **Deployment**: GitHub Actions for CI/CD
+## Features
 
-## 🚀 Getting Started
+| Area | What it does |
+| --- | --- |
+| **Dashboard** | Claim KPIs and Leaflet map of claim locations |
+| **Claims ledger** | Search, filter, status updates, CSV export |
+| **Claim detail** | Full record view with map and extracted text |
+| **Analytics** | Charts for status, type, and regional patterns |
+| **FRA Stats** | Official MoTA state-wise statistics (multi-period Excel → JSON) |
+| **OCR pipeline** | Document upload via Flask → Vision / Tesseract fallback |
 
-To get a local copy up and running, follow these simple steps.
+---
+
+## Architecture
+
+```text
+┌─────────────────────┐         ┌──────────────────────┐
+│  React SPA (Vercel) │────────▶│  Flask API (Render)  │
+│  Dashboard / GIS    │         │  OCR + claims API    │
+└─────────┬───────────┘         └──────────┬───────────┘
+          │                                │
+          │         Firestore              │
+          └─────────────(claims)───────────┘
+```
+
+- **Frontend** talks to the Render API for live claims CRUD and OCR.
+- **Firestore** stores claim documents (`FRA_Claims`).
+- **Static MoTA stats** ship as JSON in the frontend (converted from Excel).
+
+---
+
+## Tech stack
+
+| Layer | Stack |
+| --- | --- |
+| Frontend | React 19, React Bootstrap, React Router, Chart.js, Leaflet |
+| Backend | Python, Flask, Gunicorn, Firebase Admin |
+| Database | Firebase Firestore (Spark) |
+| OCR | Google Cloud Vision (primary), Tesseract (fallback) |
+| Deploy | Frontend → Vercel · Backend → Render |
+
+---
+
+## Repository layout
+
+```text
+FRA_GIS/
+├── frontend/                 # CRA React app
+│   ├── src/data/             # FRA statistics JSON
+│   └── ...
+├── backend/                  # Flask API
+├── data/                     # Source Excel (MoTA FRA statistics)
+├── scripts/                  # Data conversion utilities
+├── PROBLEM_STATEMENT.md      # SIH12508 brief
+└── README.md
+```
+
+---
+
+## Quick start
 
 ### Prerequisites
 
-- Node.js and npm
-- Python and pip
-- A Firebase project with Firestore enabled (Spark plan works)
+- Node.js 18+ and npm  
+- Python 3.11+  
+- Firebase project with Firestore enabled  
 
-### Installation
+### 1. Clone
 
-1.  **Clone the repo**
-    ```sh
-    git clone https://github.com/aryan-dani/FRA-GIS.git
-    ```
-2.  **Configure Frontend env**
-    ```sh
-    cd frontend
-    cp .env.example .env
-    ```
-    Fill in the Firebase web app config values from the Firebase console.
-3.  **Install Frontend Dependencies**
-    ```sh
-    npm install
-    ```
-4.  **Configure Backend env**
-    ```sh
-    cd ../backend
-    cp .env.example .env
-    ```
-    Place a Firebase service account JSON at `backend/firebase-service-account.json`
-    (or set `FIREBASE_CREDENTIALS_PATH` to its path).
-5.  **Install Backend Dependencies**
-    ```sh
-    pip install -r requirements.txt
-    ```
+```bash
+git clone https://github.com/aryan-dani/FRA-GIS.git
+cd FRA-GIS
+```
 
-### Running the Application
+### 2. Frontend
 
-1.  **Start the Backend Server**
-    ```sh
-    # From the 'backend' directory
-    python app.py
-    ```
-    The API runs on `http://localhost:5001`.
-2.  **Start the Frontend Development Server**
-    ```sh
-    # From the 'frontend' directory
-    npm start
-    ```
-    The application will be available at `http://localhost:3000`.
+```bash
+cd frontend
+cp .env.example .env
+npm install
+npm start
+```
 
-## 📜 License
+Set in `frontend/.env`:
 
-Distributed under the MIT License. See `LICENSE` for more information.
+```env
+REACT_APP_API_URL=http://localhost:5001
+# Optional Firebase web config if used by other modules
+REACT_APP_FIREBASE_API_KEY=
+REACT_APP_FIREBASE_AUTH_DOMAIN=
+REACT_APP_FIREBASE_PROJECT_ID=
+REACT_APP_FIREBASE_STORAGE_BUCKET=
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=
+REACT_APP_FIREBASE_APP_ID=
+```
 
-## 👤 Contact
+App: [http://localhost:3000](http://localhost:3000)
 
-Aryan Dani - [LinkedIn](https://www.linkedin.com/in/aryan-dani/)
+### 3. Backend
 
-Project Link: [https://github.com/aryan-dani/FRA-GIS](https://github.com/aryan-dani/FRA-GIS)
+```bash
+cd backend
+cp .env.example .env
+pip install -r requirements.txt
+```
+
+Place a service-account file at `backend/firebase-service-account.json`, or set:
+
+```env
+FIREBASE_CREDENTIALS_PATH=firebase-service-account.json
+# Render: FIREBASE_CREDENTIALS_JSON=<one-line JSON>
+```
+
+```bash
+python app.py
+```
+
+API: [http://localhost:5001](http://localhost:5001)  
+Health check: `GET /api/health`
+
+---
+
+## Key API routes
+
+| Method | Path | Purpose |
+| --- | --- | --- |
+| `GET` | `/api/health` | Liveness |
+| `GET` | `/api/claims` | List claims |
+| `POST` | `/api/claims` | Create claim |
+| `GET` | `/api/claims/<id>` | Claim by ID |
+| `PUT` | `/api/claims/<id>/status` | Update status |
+| `POST` | `/api/process-document` | OCR upload |
+
+---
+
+## FRA statistics data
+
+Official MoTA workbook lives at [`data/Statistics_FRA_Claims.xlsx`](data/Statistics_FRA_Claims.xlsx).
+
+Regenerate frontend JSON after updating the Excel:
+
+```bash
+python scripts/convert_fra_stats.py
+```
+
+Output: [`frontend/src/data/fraClaimsStatistics.json`](frontend/src/data/fraClaimsStatistics.json)  
+UI route: `/#/fra-statistics`
+
+Periods included: June 2024, October 2023, November 2022, May 2019.
+
+---
+
+## Deployment
+
+| Service | URL / notes |
+| --- | --- |
+| Frontend (Vercel) | Project root directory: `frontend` · Production branch: `main` |
+| Backend (Render) | Root: `backend` · Start: `gunicorn app:app --bind 0.0.0.0:$PORT` |
+| Env on Vercel | `REACT_APP_API_URL=https://fra-gis.onrender.com` (+ Firebase keys if needed) |
+| Env on Render | `FIREBASE_CREDENTIALS_JSON` (service account as one line) |
+
+Free-tier Render instances sleep when idle; first API request after idle can take ~30–60s.
+
+---
+
+## Roadmap
+
+Tracked in [`PROGRESS.md`](PROGRESS.md). High-level status:
+
+- OCR / NER pipeline — in progress  
+- WebGIS atlas & web UI — done  
+- MoTA FRA statistics tab — done  
+- Satellite asset mapping (GEE) — not started  
+- Scheme eligibility DSS — not started  
+
+---
+
+## Team
+
+Built by **Team Evonex** for SIH 2025.
+
+- Aryan Dani — [LinkedIn](https://www.linkedin.com/in/aryan-dani/)  
+- Repository — [github.com/aryan-dani/FRA-GIS](https://github.com/aryan-dani/FRA-GIS)
+
+---
+
+## License
+
+MIT — see [LICENSE](LICENSE).

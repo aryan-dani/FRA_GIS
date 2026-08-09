@@ -7,7 +7,10 @@ import FraStatisticsPanel, {
 import "./FraStatisticsPage.css";
 
 function FraStatisticsPage() {
-  const periods = statisticsData.periods || [];
+  const periods = useMemo(
+    () => statisticsData.periods || [],
+    []
+  );
   const [activeId, setActiveId] = useState(periods[0]?.id || "");
 
   const activePeriod = useMemo(

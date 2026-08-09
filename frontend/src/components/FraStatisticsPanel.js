@@ -36,7 +36,7 @@ function FraStatisticsPanel({ period }) {
   const [sortKey, setSortKey] = useState("claimsReceivedTotal");
   const [sortDir, setSortDir] = useState("desc");
 
-  const rows = period?.rows || [];
+  const rows = useMemo(() => period?.rows || [], [period]);
 
   const kpis = useMemo(() => {
     const claims = sumField(rows, "claimsReceivedTotal");
