@@ -8,6 +8,7 @@ import {
   Speedometer2,
   Table,
   BarChartLine,
+  ClipboardData,
 } from "react-bootstrap-icons";
 import "./Navbar.css";
 
@@ -33,6 +34,9 @@ function AppNavbar() {
             </Nav.Link>
             <Nav.Link as={NavLink} to="/analytics">
               <BarChartLine className="me-1" /> Analytics
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/fra-statistics">
+              <ClipboardData className="me-1" /> FRA Stats
             </Nav.Link>
             <Nav.Link as={NavLink} to="/about">
               <InfoCircle className="me-1" /> About

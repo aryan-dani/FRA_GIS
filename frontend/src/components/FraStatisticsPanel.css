@@ -1,0 +1,121 @@
+.fra-period-tabs .btn {
+  border-radius: 0.65rem !important;
+  margin: 0.15rem;
+  font-weight: 600;
+}
+
+.fra-kpi {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  padding: 1.1rem 1.2rem;
+  height: 100%;
+}
+
+.fra-kpi-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--secondary-text);
+  margin-bottom: 0.35rem;
+}
+
+.fra-kpi-value {
+  display: block;
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  line-height: 1.15;
+}
+
+.fra-chart-card,
+.fra-table-card {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+.fra-chart-header,
+.fra-table-header {
+  padding: 1.1rem 1.25rem 0.35rem;
+}
+
+.fra-chart-header h2,
+.fra-table-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.fra-chart-header p,
+.fra-table-header p {
+  margin: 0.25rem 0 0;
+  color: var(--secondary-text);
+  font-size: 0.9rem;
+}
+
+.fra-chart-body {
+  height: 340px;
+  padding: 0.5rem 1rem 1.25rem;
+}
+
+.fra-table-wrap {
+  padding: 0 0.5rem 0.75rem;
+  overflow-x: auto;
+}
+
+.fra-stats-table th {
+  white-space: nowrap;
+  vertical-align: middle;
+  border-bottom: 2px solid var(--primary-color) !important;
+  color: var(--secondary-color);
+  font-size: 0.82rem;
+}
+
+.fra-stats-table td {
+  vertical-align: middle;
+  color: var(--text-color);
+}
+
+.sort-btn {
+  padding: 0 !important;
+  text-decoration: none !important;
+  color: var(--secondary-color) !important;
+  font-weight: 700 !important;
+  font-size: 0.82rem !important;
+}
+
+.state-name {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.sub-metric {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.75rem;
+  color: var(--secondary-text);
+}
+
+.focus-state {
+  background: rgba(232, 245, 233, 0.65);
+}
+
+.focus-badge {
+  display: inline-block;
+  margin-left: 0.45rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background: var(--light-accent-color);
+  color: var(--accent-color);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
