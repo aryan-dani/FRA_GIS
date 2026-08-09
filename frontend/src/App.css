@@ -55,6 +55,10 @@ code {
   padding-top: var(--nav-height);
 }
 
+.main-content.poster-main {
+  padding-top: 0;
+}
+
 .card {
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow-soft);

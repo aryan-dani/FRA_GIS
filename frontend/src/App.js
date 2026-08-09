@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
@@ -14,24 +14,30 @@ import ClaimDetailPage from "./pages/ClaimDetailPage";
 import AddClaimPage from "./pages/AddClaimPage";
 import AnalyticsPage from "./pages/AnalyticsPage";
 import FraStatisticsPage from "./pages/FraStatisticsPage";
+import EPosterPage from "./pages/EPosterPage";
 import { ToastContainer } from "react-toastify";
 
 function App() {
+  const { pathname } = useLocation();
+  const isPoster = pathname === "/e-poster";
+
   return (
     <div className="App">
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
-      <AppNavbar />
-      <main className="main-content">
+      {!isPoster && (
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      )}
+      {!isPoster && <AppNavbar />}
+      <main className={isPoster ? "main-content poster-main" : "main-content"}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
@@ -41,9 +47,10 @@ function App() {
           <Route path="/claim/:id" element={<ClaimDetailPage />} />
           <Route path="/add-claim" element={<AddClaimPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/e-poster" element={<EPosterPage />} />
         </Routes>
       </main>
-      <Footer />
+      {!isPoster && <Footer />}
     </div>
   );
 }
