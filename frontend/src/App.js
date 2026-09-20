@@ -14,6 +14,7 @@ import ClaimDetailPage from "./pages/ClaimDetailPage";
 import AddClaimPage from "./pages/AddClaimPage";
 import AnalyticsPage from "./pages/AnalyticsPage";
 import FraStatisticsPage from "./pages/FraStatisticsPage";
+import DssPage from "./pages/DssPage";
 import EPosterPage from "./pages/EPosterPage";
 import { ToastContainer } from "react-toastify";
 
@@ -44,6 +45,7 @@ function App() {
           <Route path="/claims-data" element={<ClaimsDataPage />} />
           <Route path="/analytics" element={<AnalyticsPage />} />
           <Route path="/fra-statistics" element={<FraStatisticsPage />} />
+          <Route path="/dss" element={<DssPage />} />
           <Route path="/claim/:id" element={<ClaimDetailPage />} />
           <Route path="/add-claim" element={<AddClaimPage />} />
           <Route path="/about" element={<AboutPage />} />

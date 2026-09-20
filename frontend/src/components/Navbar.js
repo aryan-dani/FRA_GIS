@@ -9,6 +9,7 @@ import {
   Table,
   BarChartLine,
   ClipboardData,
+  Cpu,
   FileEarmarkRichtext,
 } from "react-bootstrap-icons";
 import "./Navbar.css";
@@ -44,6 +45,9 @@ function AppNavbar() {
             </Nav.Link>
             <Nav.Link as={NavLink} to="/fra-statistics">
               <ClipboardData size={14} /> FRA Stats
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/dss">
+              <Cpu size={14} /> DSS
             </Nav.Link>
             <Nav.Link as={NavLink} to="/about">
               <InfoCircle size={14} /> About

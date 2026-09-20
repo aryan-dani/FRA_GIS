@@ -101,7 +101,8 @@ cd FRA-GIS
 cd frontend
 cp .env.example .env
 npm install
-npm start
+npm run dev
+# equivalent: npm start
 ```
 
 Set in `frontend/.env`:
@@ -121,11 +122,28 @@ App: [http://localhost:3000](http://localhost:3000)
 
 ### 3. Backend
 
+Use the project virtualenv at the repo root:
+
 ```bash
+# from repo root (first time)
+python -m venv .venv
+# Windows PowerShell
+.\.venv\Scripts\Activate.ps1
+# macOS / Linux
+# source .venv/bin/activate
+
 cd backend
 cp .env.example .env
 pip install -r requirements.txt
 ```
+
+**One-command local demo (Windows):** from the repo root run:
+
+```powershell
+.\start-dev.ps1
+```
+
+This opens Flask (`:5001`) and the React app (`npm run dev` on `:3000`) in two terminals.
 
 Place a service-account file at `backend/firebase-service-account.json`, or set:
 
@@ -153,6 +171,32 @@ Health check: `GET /api/health`
 | `GET` | `/api/claims/<id>` | Claim by ID |
 | `PUT` | `/api/claims/<id>/status` | Update status |
 | `POST` | `/api/process-document` | OCR upload |
+| `POST` | `/api/dss/predict` | Claim-outcome ML + SHAP + CSS schemes |
+| `GET`/`POST` | `/api/dss/schemes` | Scheme catalog / rule-based recommendations |
+| `GET` | `/api/dss/priority` | District priority scores (`?state=`) |
+| `GET` | `/api/dss/synthetic-claims` | Sampled synthetic claims for map demo |
+| `GET` | `/api/dss/metrics` | Training metrics for the outcome model |
+
+---
+
+## ML + Decision Support System
+
+Train the claim-outcome model (LightGBM) from the synthetic FRA claims dataset. Activate `.venv` first:
+
+```bash
+.\.venv\Scripts\Activate.ps1   # Windows
+python ml/train_claim_outcome.py
+```
+
+Artifacts written to [`backend/models/`](backend/models/):
+
+- `claim_outcome.joblib` — preprocessor + model
+- `metrics.json` — holdout accuracy / macro-F1 / per-class recall
+- `priority_by_district.json` — district priority table for the DSS UI
+
+UI route: `/dss` — focus-state priority table, synthetic claim map, SHAP drivers, and CSS scheme layering (PM-KISAN, Jal Jeevan Mission, MGNREGA, DAJGUA). Claim detail pages also show a DSS panel.
+
+Synthetic claims CSV lives at [`backend/data/fra_synthetic_claims.csv`](backend/data/fra_synthetic_claims.csv) (and `data/`). `GET /api/claims?source=all` merges Firestore + synthetic rows (default `limit=5000`; use `limit=all` for the full 125k).
 
 ---
 
@@ -193,8 +237,8 @@ Tracked in [`PROGRESS.md`](PROGRESS.md). High-level status:
 - OCR / NER pipeline — in progress  
 - WebGIS atlas & web UI — done  
 - MoTA FRA statistics tab — done  
+- Claim-outcome ML + CSS scheme DSS — done (demo rules + LightGBM)  
 - Satellite asset mapping (GEE) — not started  
-- Scheme eligibility DSS — not started  
 
 ---
 

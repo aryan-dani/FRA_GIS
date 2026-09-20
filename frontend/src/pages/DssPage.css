@@ -1,0 +1,144 @@
+.dss-page {
+  padding: 1.15rem 0.85rem 2rem;
+}
+
+.dss-panel {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  padding: 1.05rem 1.15rem;
+  height: 100%;
+}
+
+.dss-panel-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.dss-panel-header h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin: 0;
+}
+
+.dss-table-wrap {
+  max-height: 360px;
+  overflow: auto;
+}
+
+.dss-metrics {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dss-metrics li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.9rem;
+}
+
+.dss-metrics li:last-child {
+  border-bottom: none;
+}
+
+.map-panel {
+  padding: 0;
+  overflow: hidden;
+}
+
+.map-panel .dss-panel-header {
+  padding: 0.95rem 1.15rem 0.35rem;
+}
+
+.dss-map {
+  height: 480px;
+}
+
+.dss-rec-claim {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.dss-rec-claim span {
+  color: var(--secondary-color);
+  font-size: 0.85rem;
+}
+
+.dss-pred {
+  background: var(--background-color-light, #f7f8f6);
+  border-radius: 0.45rem;
+  padding: 0.75rem 0.85rem;
+  margin-bottom: 0.85rem;
+}
+
+.dss-pred .label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--secondary-color);
+}
+
+.dss-pred strong {
+  font-size: 1.15rem;
+  color: var(--primary-color);
+}
+
+.dss-probs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.85rem;
+  margin-top: 0.35rem;
+  font-size: 0.8rem;
+  color: var(--secondary-color);
+}
+
+.dss-shap h3,
+.dss-schemes h3 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin: 0.75rem 0 0.45rem;
+  color: var(--primary-color);
+}
+
+.dss-shap ul,
+.dss-schemes ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.85rem;
+}
+
+.dss-shap li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.dss-scheme-card {
+  border: 1px solid var(--border-color);
+  border-radius: 0.45rem;
+  padding: 0.65rem 0.75rem;
+  margin-bottom: 0.55rem;
+}
+
+.dss-scheme-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}

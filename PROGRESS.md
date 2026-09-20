@@ -44,12 +44,15 @@ This document tracks the progress of the Forest Rights Act (FRA) Digitization & 
   - [x] Built a professional UI with navigation, a dashboard, and data tables.
   - [x] Added an analytics dashboard with charts.
 
-## Phase 5: Decision Support System (Rule-Based Recommendations)
+## Phase 5: Decision Support System (Rule-Based + AI-Enhanced)
 
-- **Status:** Not Started
-- **To Do:**
-  - [ ] Define a set of rules for scheme eligibility.
-  - [ ] Create a database/dictionary of available schemes and their criteria.
-  - [ ] Implement a rule engine in the backend to match claimants to schemes.
-  - [ ] Create an API endpoint to serve recommendations.
-  - [ ] Display recommendations on the claim detail page in the UI.
+- **Status:** Completed (demo)
+- **Completed:**
+  - [x] LightGBM claim-outcome model trained on synthetic FRA claims (`ml/train_claim_outcome.py`).
+  - [x] Rule-based CSS scheme eligibility (PM-KISAN, JJM, MGNREGA, DAJGUA) in `backend/dss/scheme_rules.py`.
+  - [x] Flask DSS endpoints: `/api/dss/predict`, `/schemes`, `/priority`, `/synthetic-claims`, `/metrics`.
+  - [x] DSS page (`/dss`) with district priority table + synthetic claim map + SHAP / schemes panel.
+  - [x] Claim detail page DSS panel for outcome prediction and scheme layering.
+- **Notes:**
+  - Use repo-root `.venv` for training and local API (`pip install -r backend/requirements.txt`).
+  - Satellite asset mapping remains Phase 3 / future scope.

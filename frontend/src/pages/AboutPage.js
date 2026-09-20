@@ -28,7 +28,7 @@ function AboutPage() {
 
         <Row className="g-4">
           <Col lg={7}>
-            <article className="about-panel rise-in">
+            <article className="about-panel about-panel-stretch rise-in">
               <h2>Problem Statement</h2>
               <p className="problem-title">
                 Development of AI-powered FRA Atlas and WebGIS-based Decision
@@ -89,6 +89,9 @@ function AboutPage() {
                 </li>
                 <li>
                   <strong>AI / OCR</strong> Google Vision · Tesseract · spaCy
+                </li>
+                <li>
+                  <strong>DSS / ML</strong> LightGBM · SHAP · CSS scheme rules
                 </li>
               </ul>
             </article>

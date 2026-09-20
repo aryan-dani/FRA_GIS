@@ -1,0 +1,625 @@
+Village_Name,Adjacent_Forest_Name,Latitude,Longitude
+Vattavarlapally,Nagarjuna Sagar-Srisailam WLS,16.247564800000003,78.7973671
+Mannanur,Nagarjuna Sagar-Srisailam WLS,16.3725178,78.7583353
+Vankeshwaram,Nagarjuna Sagar-Srisailam WLS,16.4310964,78.9101503
+Gollagudem,Kinnersani WLS,17.702624,80.6201428
+Ashoknagar,Pakhal WLS,17.9524589,79.9494249
+Katapuram,Eturnagaram WLS,18.1631252,80.39758530000002
+Manthani,Lanja Madugu Siwaram WLS,18.651246899999997,79.66577100000002
+Kaddam,Kawal WLS/Tiger Reserve,19.0991812,78.7800368
+Pembi,Kawal WLS/Tiger Reserve,19.195437000000005,78.6369723
+Vijayapuri North,Nagarjuna Sagar-Srisailam WLS,16.585701599999997,79.3207113
+Hill Colony,Nagarjuna Sagar-Srisailam WLS,16.607698099999997,79.3035951
+Ippalapalle,Nagarjuna Sagar-Srisailam WLS,16.3541681,79.0722447
+Amrabad,Nagarjuna Sagar-Srisailam WLS,16.376706399999996,78.83325700000002
+Gorelli,Mahavir Harina Vanasthali National Park,17.3749112,78.6713836
+Kuntloor,Mahavir Harina Vanasthali National Park,17.341073499999997,78.6276055
+Devadula,Eturnagaram WLS,18.568283399999995,80.37039780000002
+Muppanapally,Eturnagaram WLS,18.5007592,80.3473316
+Tupakulagudem,Eturnagaram WLS,18.564254999999996,80.3772151
+Chinnaboinapally,Eturnagaram WLS,18.289998600000004,80.3975508
+Shivapur,Eturnagaram WLS,18.2851554,80.4079374
+Gogupally,Eturnagaram WLS,18.278645500000003,80.4172071
+Tadvai,Eturnagaram WLS,18.2354095,80.31587890000002
+Jinnelagudem,Kinnersani WLS,17.7776278,80.4925457
+Kollapur,Nagarjuna Sagar-Srisailam WLS,16.1061268,78.3194833
+Munnial,Kawal WLS/Tiger Reserve,19.066377299999996,78.88746
+Revojipet,Kawal WLS/Tiger Reserve,19.078043399999995,78.9185741
+Murimadugu,Kawal WLS/Tiger Reserve,19.1220926,78.9426766
+,Eturnagaram WLS,18.3785568,80.405281
+,Eturnagaram WLS,18.3899621,80.39531840000001
+Ekkala,Eturnagaram WLS,18.337010199999998,80.4118518
+Kothasingaram,Kinnersani WLS,17.865496700000005,80.5891306
+,Nagarjuna Sagar-Srisailam WLS,16.049139499999995,78.3243741
+Gausabad,Chincholi WLS,17.6013823,77.4588696
+Anmagal Hayathnagar,Mahavir Harina Vanasthali National Park,17.320149999999998,78.6050947
+,Nagarjuna Sagar-Srisailam WLS,16.295511200000004,78.6183733
+,Nagarjuna Sagar-Srisailam WLS,16.322989,78.637417
+Choutapalle,Nagarjuna Sagar-Srisailam WLS,16.3560325,78.6396057
+Gumpampalle,Nagarjuna Sagar-Srisailam WLS,16.3750921,78.6579412
+Chonchu Palgu Thanda,Nagarjuna Sagar-Srisailam WLS,16.373172299999997,78.6806864
+Rangapur,Nagarjuna Sagar-Srisailam WLS,16.389837200000002,78.691029
+Darga Thanda,Nagarjuna Sagar-Srisailam WLS,16.4016427,78.7145788
+Rayavaram,Nagarjuna Sagar-Srisailam WLS,16.2415895,78.4524411
+Rayavaram Camp,Nagarjuna Sagar-Srisailam WLS,16.240835,78.4740329
+Dharmaram,Nagarjuna Sagar-Srisailam WLS,16.2403869,78.5101462
+Malla Cheruvu Thanda,Nagarjuna Sagar-Srisailam WLS,16.245089099999998,78.5607326
+Vellubelle,Pakhal WLS,17.904195800000004,80.0995211
+Kottaguddem,Pakhal WLS,17.9110828,80.056366
+Mubarakpur,Manjeera Crocodile WLS,17.6552682,78.0167485
+Veltur,Manjeera Crocodile WLS,17.6467415,78.0010309
+Kolkur,Manjeera Crocodile WLS,17.691946399999996,77.9853344
+Thimmannagudem,Manjeera Crocodile WLS,17.669744099999996,77.9835319
+Nizampur,Manjeera Crocodile WLS,17.679782499999995,78.0016207
+Pottipalle,Manjeera Crocodile WLS,17.699591899999998,77.9643917
+Pocharam,Manjeera Crocodile WLS,17.729966,77.9508733
+Bhusareddipalle,Manjeera Crocodile WLS,17.7257436,77.9138819
+Babilgaon,Manjeera Crocodile WLS,17.7079812,77.9103629
+Keerya Thanda,Pakhal WLS,17.9905705,79.9835157
+Regulagadda,Pakhal WLS,18.064597099999997,79.9708986
+Kondapur,Pakhal WLS,18.0698195,79.9721432
+Chilkamma Nagar,Pakhal WLS,17.9244956,80.0031817
+Parshunaik Thanda,Pakhal WLS,17.968262499999994,79.9622726
+Gollagudem Thanda,Pakhal WLS,17.883985299999992,79.9776685
+Nazi Thanda,Pakhal WLS,17.881351,79.9882579
+Manumothulagadda Thanda,Pakhal WLS,17.909907700000005,79.95420450000002
+Peddammagadda,Pakhal WLS,17.907549399999994,79.9403643
+Ainepalle,Pakhal WLS,17.8910201,79.9425423
+Bodya Thanda,Pakhal WLS,17.8893865,79.9631846
+Mangalavaripet,Pakhal WLS,17.879472299999996,79.9704694
+Budharaopet,Pakhal WLS,17.8827397,79.9601697
+Vepachettu Thanda,Pakhal WLS,17.8697361,79.9792081
+Reva Thanda,Pakhal WLS,17.8651256,79.9774218
+Kothapalli(Narsingh),Pakhal WLS,17.8578447,79.9875068
+Komatipalle Thanda,Pakhal WLS,17.8597135,79.9814451
+Badru Thanda,Pakhal WLS,17.863399899999997,79.971478
+Malapahad,Manjeera Crocodile WLS,17.732193799999994,77.9290724
+Singoor,Manjeera Crocodile WLS,17.7560742,77.940681
+Banda Thanda,Chincholi WLS,17.415736899999995,77.5497865
+Adikcherla,Chincholi WLS,17.418459899999995,77.547791
+Urenta Thanda,Chincholi WLS,17.418214199999998,77.544229
+Baimidi Thanda,Chincholi WLS,17.4313169,77.5455808
+Ramsingh Thanda,Chincholi WLS,17.433609800000003,77.5646996
+Boppanaram,Chincholi WLS,17.462698199999988,77.6356602
+Patel Guda,Kawal WLS/Tiger Reserve,19.286749899999997,78.920095
+Shettihadapnur,Kawal WLS/Tiger Reserve,19.2885525,78.9165544
+Shiva Guda,Kawal WLS/Tiger Reserve,19.2911955,78.9172089
+Chintha Guda,Kawal WLS/Tiger Reserve,19.293413200000003,78.9198375
+Shamuguda,Kawal WLS/Tiger Reserve,19.300390099999994,78.9108896
+Rajal Guda,Kawal WLS/Tiger Reserve,19.296289,78.9208031
+Sidam Guda,Kawal WLS/Tiger Reserve,19.3175424,78.9143979
+Somu Guda,Kawal WLS/Tiger Reserve,19.314950399999994,78.9122844
+Kohenur Khurd,Kawal WLS/Tiger Reserve,19.3121761,78.9144301
+Ghumnur Khurd,Kawal WLS/Tiger Reserve,19.279975,78.9484513
+Mulaguda,Kawal WLS/Tiger Reserve,19.277807800000005,78.9400506
+Kanchanapalle,Kawal WLS/Tiger Reserve,19.2738987,78.9365744
+Hanman Guda,Kawal WLS/Tiger Reserve,19.269948899999992,78.93704650000001
+Kothapalle,Kawal WLS/Tiger Reserve,19.252113000000005,78.9640617
+,Kawal WLS/Tiger Reserve,19.245448000000003,78.9722478
+Pickla Thanda,Kawal WLS/Tiger Reserve,19.239157699999996,78.996098
+Heerapur,Kawal WLS/Tiger Reserve,19.2294633,79.0117514
+Vanjariguda,Kawal WLS/Tiger Reserve,19.230587700000005,79.0102708
+Mamidipalle,Kawal WLS/Tiger Reserve,19.233525499999995,79.0065908
+,Kawal WLS/Tiger Reserve,19.223020299999998,79.0576601
+Chinna Dhanpoor,Kawal WLS/Tiger Reserve,19.2326948,79.0665758
+Poosingh Thanda,Kawal WLS/Tiger Reserve,19.221227199999998,79.0892458
+Loddiguda,Kawal WLS/Tiger Reserve,19.2186438,79.0865958
+Dhampur,Kawal WLS/Tiger Reserve,19.2151182,79.0875292
+Keemnayak Thanda,Kawal WLS/Tiger Reserve,19.188927200000002,79.118793
+Keriguda,Kawal WLS/Tiger Reserve,19.188319199999995,79.1159391
+Malachintapalle,Nagarjuna Sagar-Srisailam WLS,16.1374146,78.417213
+Gemyanaik Thanda,Nagarjuna Sagar-Srisailam WLS,16.1737815,78.4140372
+Boda Banda Thanda,Nagarjuna Sagar-Srisailam WLS,16.133487899999995,78.363558
+Yellur,Nagarjuna Sagar-Srisailam WLS,16.118409199999995,78.3456731
+Vaddegudiselu,Nagarjuna Sagar-Srisailam WLS,16.1118744,78.34219690000002
+Mallampet,Pranahita WLS,18.9898611,79.7955465
+Brahmanpalle,Pranahita WLS,19.03443699999999,79.7592831
+,Kawal WLS/Tiger Reserve,19.3209848,78.8173449
+Cheruvu Guda,Kawal WLS/Tiger Reserve,19.323363999999998,78.8315123
+Rajreddy Guda,Kawal WLS/Tiger Reserve,19.3256724,78.823927
+Kummari Kunta,Kawal WLS/Tiger Reserve,19.322680599999995,78.8206333
+Chimangudi,Kawal WLS/Tiger Reserve,19.3453579,78.6264253
+Fakirpet,Kawal WLS/Tiger Reserve,19.300997599999995,78.5751521
+Narayanapur,Kawal WLS/Tiger Reserve,19.314676999999996,78.5700452
+,Kawal WLS/Tiger Reserve,19.327494699999992,78.60331270000002
+Fakir Naik Thanda,Kawal WLS/Tiger Reserve,19.328750099999993,78.626157
+Waipet,Kawal WLS/Tiger Reserve,19.334925699999992,78.6252987
+,Kawal WLS/Tiger Reserve,19.254847699999996,78.7601817
+Chinta Guda,Kawal WLS/Tiger Reserve,19.2571469,78.7558687
+Baba Naik Thanda,Kawal WLS/Tiger Reserve,19.2321275,78.7595701
+Gangannapet,Kawal WLS/Tiger Reserve,19.2369747,78.7679332
+Mangal Singh Thanda,Kawal WLS/Tiger Reserve,19.2381346,78.76142620000002
+Meesala Bheemanna Gudem,Kawal WLS/Tiger Reserve,19.2406062,78.7618393
+Gandi Gopalpur,Kawal WLS/Tiger Reserve,19.248091800000005,78.8584793
+Yellu Guda,Kawal WLS/Tiger Reserve,19.2805624,78.8140351
+Bhupet,Kawal WLS/Tiger Reserve,19.2893221,78.821969
+Birsaipet,Kawal WLS/Tiger Reserve,19.288086699999997,78.8132787
+Singampalle,Eturnagaram WLS,18.579992599999997,80.18525
+Muknur,Eturnagaram WLS,18.6126391,80.3218389
+Venchampally,Eturnagaram WLS,18.642636299999996,80.3095329
+,Eturnagaram WLS,18.606645199999996,80.3169411
+Timmati Gudem,Eturnagaram WLS,18.6050081,80.314275
+,Eturnagaram WLS,18.476963399999992,80.1342398
+Pochampally,Eturnagaram WLS,18.4744296,80.1344275
+,Eturnagaram WLS,18.608434799999998,80.3065154
+Yatnaram,Eturnagaram WLS,18.574307699999995,80.1470554
+,Eturnagaram WLS,18.5749535,80.1491046
+,Eturnagaram WLS,18.574541599999996,80.151599
+Kamaram,Eturnagaram WLS,18.2470155,80.312199
+,Eturnagaram WLS,18.246276699999996,80.3158951
+Prem Nagar,Eturnagaram WLS,18.5071573,80.1097888
+Anjaneyapalli,Eturnagaram WLS,18.4857957,80.1320886
+Borla Gudem,Eturnagaram WLS,18.48140499999999,80.1296103
+Stambampally,Eturnagaram WLS,18.432642199999997,80.148654
+New Regula Gudem,Eturnagaram WLS,18.4553487,80.13641240000001
+Pegadapally,Eturnagaram WLS,18.509258299999996,80.1213276
+Mamidipally,Eturnagaram WLS,18.5044561,80.1214939
+Gajarampalli,Eturnagaram WLS,18.489774199999996,80.1163816
+Regula Gudem,Eturnagaram WLS,18.467927099999997,80.1305491
+Kondaparthi,Eturnagaram WLS,18.231114299999998,80.2667463
+Muthapur,Eturnagaram WLS,18.228423999999993,80.1947075
+Tappa Mancha,Eturnagaram WLS,18.233936999999997,80.1794028
+Project Nagar,Eturnagaram WLS,18.247682899999997,80.1921648
+Gonepalle,Eturnagaram WLS,18.269812599999998,80.2205372
+Vengalapuram,Eturnagaram WLS,18.2753548,80.2070403
+Elbaka,Eturnagaram WLS,18.3015403,80.2159238
+Padigapur,Eturnagaram WLS,18.303073300000005,80.2145344
+Narlapur,Eturnagaram WLS,18.308940300000003,80.2057636
+Medaram,Eturnagaram WLS,18.3210227,80.2428143
+Reddigudem,Eturnagaram WLS,18.320663699999997,80.2339643
+Kothur,Eturnagaram WLS,18.3230368,80.2180856
+Kanneboinapalle,Eturnagaram WLS,18.333934199999998,80.2166211
+Kalwapalle,Eturnagaram WLS,18.349434,80.1869344
+Singaram,Eturnagaram WLS,18.410650300000004,80.1579988
+Ankampalle,Eturnagaram WLS,18.1211775,80.4051161
+Kousettivai,Eturnagaram WLS,18.117159999999995,80.3916836
+Chowled,Eturnagaram WLS,18.127071099999995,80.3238988
+Lavval,Eturnagaram WLS,18.179737500000005,80.26361080000001
+Motla Gudem,Eturnagaram WLS,18.2508568,80.2018368
+Ippala Gadda,Eturnagaram WLS,18.2195479,80.1558262
+Rangapur,Eturnagaram WLS,18.222065099999995,80.141227
+Somla Gadda,Eturnagaram WLS,18.2193135,80.1232374
+,Pakhal WLS,18.191929599999998,80.1221283
+Pochampalli,Pakhal WLS,18.201200699999998,80.0962249
+Dubba Gudem,Pakhal WLS,18.196248600000004,80.1025736
+Kota Gadda,Pakhal WLS,18.1728671,80.1220679
+Ram Nagar,Pakhal WLS,18.167179,80.1276576
+Dumpala Gudem,Pakhal WLS,18.172642899999996,80.1243532
+L B Nagar,Pakhal WLS,18.1634581,80.1201475
+Manya Thanda,Pakhal WLS,18.169268700000003,80.1310104
+Balaji Nagar,Pakhal WLS,18.167087200000005,80.1380646
+Sandru Gudem,Pakhal WLS,18.169482799999997,80.141809
+Tatayapalli,Pakhal WLS,18.182489700000005,80.13352630000001
+Bayyakkapet,Eturnagaram WLS,18.34615489999999,80.1372385
+Nethaji Nagar,Eturnagaram WLS,18.214044699999995,80.1752186
+Pathanagaram,Eturnagaram WLS,18.192499,80.1667535
+A.B Colony,Eturnagaram WLS,18.1914747,80.1772785
+Rajeev Colony,Eturnagaram WLS,18.1923665,80.1793975
+Rampur,Eturnagaram WLS,18.1893801,80.174489
+Raghavapatnam,Eturnagaram WLS,18.210559299999996,80.1578915
+Dubbapally,Lanja Madugu Siwaram WLS,18.696852600000003,79.8363161
+Butaram,Eturnagaram WLS,18.349393199999994,80.4055023
+Shapalle,Eturnagaram WLS,18.3138498,80.3630376
+Teegalavai,Eturnagaram WLS,18.308614399999996,80.3682303
+Indira Nagar,Eturnagaram WLS,18.2293412,80.316689
+,Eturnagaram WLS,18.1978985,80.338785
+Thondyala Laxmipur,Eturnagaram WLS,18.2228396,80.46993970000001
+Regula Gudem,Eturnagaram WLS,18.2233032,80.4671556
+Komatipalle,Eturnagaram WLS,18.219497,80.4819453
+Kothur,Eturnagaram WLS,18.182647699999997,80.437029
+Singaram,Eturnagaram WLS,18.174018999999998,80.40255060000001
+Bhupathipuram,Eturnagaram WLS,18.175700899999995,80.3995693
+Dameravai,Eturnagaram WLS,18.168743700000004,80.4104912
+Annaram,Eturnagaram WLS,18.165038199999998,80.3828216
+Gangaram,Eturnagaram WLS,18.1754971,80.3772533
+Motla Gudem,Pakhal WLS,18.081130500000004,80.2430248
+Vaddu Gudem,Pakhal WLS,18.103077500000005,80.2309334
+Bondala,Eturnagaram WLS,18.106391700000003,80.2702331
+Bhopathipuram,Eturnagaram WLS,18.548779099999997,80.28258200000002
+Kamanpally,Eturnagaram WLS,18.623096299999993,80.2442694
+Burgu Gudem,Eturnagaram WLS,18.685632600000005,80.2929461
+Dammur,Eturnagaram WLS,18.6979603,80.2859938
+Neelampally,Eturnagaram WLS,18.6491423,80.3066575
+Rajannapeta,Eturnagaram WLS,18.552664599999996,80.36920670000002
+Gangu Gudem,Eturnagaram WLS,18.5346421,80.353549
+Kannai Gudem,Eturnagaram WLS,18.5221175,80.3428244
+Chityal,Eturnagaram WLS,18.513469699999998,80.299372
+Reddipally,Eturnagaram WLS,18.501678599999995,80.2093685
+Kothapally,Eturnagaram WLS,18.543418699999997,80.1985162
+Kankunoor,Eturnagaram WLS,18.5493589,80.2004957
+Keshavapur,Eturnagaram WLS,18.547416099999992,80.09483810000002
+Nimma Gudem,Eturnagaram WLS,18.555421,80.0952458
+Sarvaipeta,Eturnagaram WLS,18.6803375,80.23607250000002
+Pankena,Eturnagaram WLS,18.6702955,80.1861191
+Kondai,Eturnagaram WLS,18.3745951,80.3122687
+Mallyal,Eturnagaram WLS,18.365899600000002,80.3071886
+Dodla,Eturnagaram WLS,18.355711900000003,80.3190494
+Bommai Gudem,Eturnagaram WLS,18.180389900000005,80.4544795
+Papkapur,Eturnagaram WLS,18.2987951,80.44515610000002
+,Eturnagaram WLS,18.3237293,80.4176956
+Kanthanpalle,Eturnagaram WLS,18.452753499999996,80.4143214
+,Eturnagaram WLS,18.4789782,80.3552914
+Singaram,Eturnagaram WLS,18.4703388,80.3728437
+Etur,Eturnagaram WLS,18.4647317,80.3783905
+Shankarajpalle,Eturnagaram WLS,18.389934199999995,80.4346847
+Veerapur,Eturnagaram WLS,18.4030866,80.3855306
+Elishettipalle,Eturnagaram WLS,18.3988364,80.353843
+Gundengavai,Eturnagaram WLS,18.394423099999994,80.358451
+Chalpaka,Eturnagaram WLS,18.4053364,80.3714758
+Vinobha Nagar,Pakhal WLS,17.647641299999997,80.08108380000002
+Ailapur,Eturnagaram WLS,18.448973100000003,80.2506021
+Bussapur,Pakhal WLS,18.1786233,80.078292
+Moddulagudem,Pakhal WLS,18.167901800000003,80.1602411
+Gandhi Nagar,Eturnagaram WLS,18.174282599999998,80.1572936
+Amru Thanda(Lakshmi),Pakhal WLS,18.1549522,80.1597359
+Karlapalle,Pakhal WLS,18.1447827,80.148242
+Nethakanigudem,Pakhal WLS,18.1588612,80.1512811
+Laxmipur,Pakhal WLS,18.157890599999998,80.1491431
+Chandru Thanda,Pakhal WLS,18.134832399999993,80.1487915
+Pegadapalle,Pakhal WLS,18.127716899999996,80.0642595
+Jaggannagudem,Pakhal WLS,18.1103898,80.081485
+Sarvapur,Pakhal WLS,18.1254037,80.0690278
+Bc. Colony,Pakhal WLS,18.112608,80.0773271
+Ankannagudem,Pakhal WLS,18.134631800000005,80.0823754
+Lalayagudem,Pakhal WLS,18.116880999999996,80.0698457
+Potlapur,Pakhal WLS,18.1099968,79.9914093
+Panchothkulapalle,Pakhal WLS,18.144597100000002,80.02380660000001
+Rainigudem,Pakhal WLS,18.1380403,80.0386742
+Yapalagadda,Pakhal WLS,18.1247655,80.0143176
+Kothur,Pakhal WLS,18.129433599999995,80.027442
+Dubbagudem,Pakhal WLS,18.130956499999996,80.0299504
+Siddapur Pattikohir,Chincholi WLS,17.5440807,77.6028873
+Gopinaikthanda,Chincholi WLS,17.550072900000004,77.6254324
+Vittunaik Thanda,Chincholi WLS,17.570445999999997,77.516301
+Kuntlam,Pranahita WLS,18.859095499999995,79.8416028
+Tadlapalle,Manjeera Crocodile WLS,17.641135599999995,78.0869175
+Irigipalle,Manjeera Crocodile WLS,17.6332771,78.0474722
+Kalabgoor,Manjeera Crocodile WLS,17.643664299999998,78.0653526
+Angadipet,Manjeera Crocodile WLS,17.638098500000005,78.0703602
+Gangigudem,Manjeera Crocodile WLS,17.6330934,78.0666801
+Chintalpalle,Manjeera Crocodile WLS,17.6286891,78.0664151
+Chakriyal,Manjeera Crocodile WLS,17.677592500000003,78.0909514
+Taddanpalle,Manjeera Crocodile WLS,17.700873600000005,78.0810991
+New Hannapur,Manjeera Crocodile WLS,17.684452000000004,78.0994346
+Sivampet,Manjeera Crocodile WLS,17.673790799999995,78.1043248
+Gangojipet,Manjeera Crocodile WLS,17.687898700000005,78.0679227
+Gongulur Thanda,Manjeera Crocodile WLS,17.693830899999995,78.0514277
+Gongulur,Manjeera Crocodile WLS,17.69014,78.0542239
+Kodur Thanda,Manjeera Crocodile WLS,17.7087352,78.0181591
+Esojipet,Manjeera Crocodile WLS,17.7028115,78.0321235
+Kodur,Manjeera Crocodile WLS,17.708760000000005,78.02054
+Minpoor Thanda,Manjeera Crocodile WLS,17.7261617,78.0101678
+Minpoor,Manjeera Crocodile WLS,17.723404099999993,78.0053964
+Pulkal,Manjeera Crocodile WLS,17.738103099999996,77.9875989
+Muddaipet,Manjeera Crocodile WLS,17.7452652,77.9705424
+Vilochavaram,Lanja Madugu Siwaram WLS,18.681162399999998,79.6480648
+Potharam,Lanja Madugu Siwaram WLS,18.695777000000003,79.6381836
+Shasthulapally,Lanja Madugu Siwaram WLS,18.638392700000004,79.7028391
+Khansabpet,Lanja Madugu Siwaram WLS,18.671561000000004,79.7512364
+Bhatipally,Lanja Madugu Siwaram WLS,18.6510033,79.7605941
+Koyapad,Lanja Madugu Siwaram WLS,18.6655969,79.7440123
+Arenda,Lanja Madugu Siwaram WLS,18.684073199999997,79.8057063
+Mallaram,Lanja Madugu Siwaram WLS,18.676691,79.81008640000002
+Eklaspur,Lanja Madugu Siwaram WLS,18.646360199999997,79.6884131
+Thangallapally,Lanja Madugu Siwaram WLS,18.641888399999996,79.689574
+Puttiguda,Kawal WLS/Tiger Reserve,19.1001488,79.0191801
+Paidpalle,Kawal WLS/Tiger Reserve,19.109390200000004,79.0254814
+Allinagar,Kawal WLS/Tiger Reserve,19.140184099999995,79.054581
+Dongapalle,Kawal WLS/Tiger Reserve,19.1492164,79.0603455
+Porampalli,Kawal WLS/Tiger Reserve,19.180866599999995,78.9644664
+Borthampet,Kawal WLS/Tiger Reserve,19.165798899999995,78.9625591
+Kothapet,Kawal WLS/Tiger Reserve,19.173386200000003,78.9511213
+Kawal,Kawal WLS/Tiger Reserve,19.1707419,78.9624352
+Indhanpalle,Kawal WLS/Tiger Reserve,19.148685,78.9434877
+Chorlapalli,Kawal WLS/Tiger Reserve,19.142713899999997,78.9816436
+Nanneguda,Kawal WLS/Tiger Reserve,19.135675,78.9934615
+Paransunguda,Kawal WLS/Tiger Reserve,19.14010980000001,78.9913421
+Akkapalliguda,Kawal WLS/Tiger Reserve,19.1266094,78.9894295
+Ponakal,Kawal WLS/Tiger Reserve,19.1104715,79.0032127
+Jannaram,Kawal WLS/Tiger Reserve,19.121917100000005,78.9959894
+Malyal,Kawal WLS/Tiger Reserve,19.1056165,79.0795274
+Mahamudbad,Kawal WLS/Tiger Reserve,19.0853938,79.0702822
+Bommena,Kawal WLS/Tiger Reserve,19.092522500000005,79.0503359
+Papammaguda,Kawal WLS/Tiger Reserve,19.083093500000004,79.0490752
+Chintaguda,Kawal WLS/Tiger Reserve,19.0750929,79.0464501
+Pownoor,Lanja Madugu Siwaram WLS,18.6950922,79.6715936
+Godaripally,Lanja Madugu Siwaram WLS,18.7032579,79.6789263
+Sivvaram,Lanja Madugu Siwaram WLS,18.687253799999993,79.6896595
+Gopalpur,Lanja Madugu Siwaram WLS,18.704957299999997,79.6665481
+Borampalle,Pranahita WLS,18.861533100000003,79.8659615
+Rawalpalle,Pranahita WLS,18.846685500000003,79.8780706
+Kollur,Pranahita WLS,18.850217399999995,79.8768928
+Rampur,Pranahita WLS,18.8597754,79.89443
+Arjungutta,Pranahita WLS,18.866633599999993,79.9547054
+Rapanpalle,Pranahita WLS,18.865723600000003,79.9422644
+Dewalwada,Pranahita WLS,18.8546962,79.9156022
+Patha Dewalwada,Pranahita WLS,18.847325,79.9169383
+Velmapalli,Pranahita WLS,18.865588899999995,79.9228122
+Babber Cheluka,Pranahita WLS,18.862843,79.9131131
+Laxmipur,Pranahita WLS,18.86202219999999,79.9239283
+Yerripet,Pranahita WLS,18.8755365,79.8505034
+Parpalle,Pranahita WLS,18.8908073,79.8532573
+Chintapalle,Pranahita WLS,18.880830699999997,79.8293822
+Akkapalle,Pranahita WLS,18.8785949,79.8139723
+Beervelli,Lanja Madugu Siwaram WLS,18.7155561,79.7905463
+Mailaram,Lanja Madugu Siwaram WLS,18.7169385,79.7904433
+Dubbapally,Lanja Madugu Siwaram WLS,18.716550999999995,79.7524587
+Nagapur,Lanja Madugu Siwaram WLS,18.7134142,79.7674565
+Laxmipur,Lanja Madugu Siwaram WLS,18.695088399999992,79.7353301
+Oddusomanpalle,Lanja Madugu Siwaram WLS,18.7000875,79.7452785
+Somanpalle,Lanja Madugu Siwaram WLS,18.7104879,79.7413503
+Pokkur,Lanja Madugu Siwaram WLS,18.735421400000003,79.8055758
+,Eturnagaram WLS,18.4239089,80.1459932
+Royyur,Eturnagaram WLS,18.384465900000002,80.4288156
+Mogalithogu,Kinnersani WLS,18.0360844,80.4995143
+Kothuru,Kinnersani WLS,18.044876399999996,80.4821489
+Thummalagudem,Kinnersani WLS,18.0432909,80.4678883
+Anantharam,Kinnersani WLS,18.0433533,80.4917585
+Regulla,Kinnersani WLS,18.048246899999995,80.472302
+Bandarigudem,Kinnersani WLS,18.053819899999997,80.4782485
+Godugubanda,Kinnersani WLS,18.052082299999995,80.4629633
+Padmapuram,Kinnersani WLS,18.041374700000002,80.5132525
+Papaigudem,Kinnersani WLS,18.018166499999996,80.5576194
+Venkatapuram,Kinnersani WLS,18.026426600000004,80.5593758
+Buddaram,Kinnersani WLS,18.015922999999994,80.5727378
+Regalla,Kinnersani WLS,17.965016,80.5893728
+Padigapuram,Kinnersani WLS,17.971605,80.6025911
+Maddulagudem,Kinnersani WLS,17.991141600000002,80.5953638
+Adavi Ramavaram,Kinnersani WLS,17.9811862,80.4360359
+Edulla,Kinnersani WLS,17.939608700000004,80.4790852
+Bodai Kunta,Kinnersani WLS,17.938846700000003,80.4857189
+Jakaram,Kinnersani WLS,17.936802699999998,80.4965209
+Loddigudem,Kinnersani WLS,17.9354038,80.5004382
+Suddarevu,Kinnersani WLS,17.9234984,80.5114196
+Jinnelagudem,Kinnersani WLS,17.9181426,80.5157652
+Pathuru,Kinnersani WLS,17.906166399999996,80.5199647
+Kitchanapalli,Kinnersani WLS,17.904463899999996,80.5160511
+Laxmipuram,Kinnersani WLS,17.830720600000003,80.4982178
+Ananthogu,Kinnersani WLS,17.795410100000005,80.48865730000001
+Muthapuram,Kinnersani WLS,17.773699,80.5013451
+Rayapadu,Kinnersani WLS,17.7693672,80.50366420000002
+Motlagudem,Kinnersani WLS,17.7558637,80.5155974
+Laxmidevipalli,Kinnersani WLS,17.769636799999997,80.5049781
+Batanna Nagar,Kinnersani WLS,17.7664664,80.5059738
+Ambarasipalli,Kinnersani WLS,17.763833699999996,80.5070287
+Siddaram,Kinnersani WLS,17.706578399999998,80.5374284
+,Pakhal WLS,18.0804574,80.1570117
+Eturnagaram,Eturnagaram WLS,18.340482600000005,80.4294839
+,Kinnersani WLS,17.8431696,80.6401688
+,Kinnersani WLS,17.870527500000005,80.6401151
+Gundla Madugu Thanda,Chincholi WLS,17.3830618,77.54837
+Maisamma Thanda,Chincholi WLS,17.395599,77.536297
+Uddnadapur,Chincholi WLS,17.387652599999992,77.5328922
+Bojju Guda,Kawal WLS/Tiger Reserve,19.281017499999997,78.5437788
+Dayyalamarri,Kawal WLS/Tiger Reserve,19.269892,78.5592875
+Donga Chintha,Kawal WLS/Tiger Reserve,19.3308995,78.8254365
+Doli (G),Pamed Wild Buffalo WLS,18.344753799999996,80.7045108
+Tadapala (G),Pamed Wild Buffalo WLS,18.2958808,80.7435677
+Pusuguppa Patch 1,Pamed Wild Buffalo WLS,18.2142591,80.85231690000002
+Pusuguppa Patch 3,Pamed Wild Buffalo WLS,18.2236664,80.8346219
+Pusuguppa Patch 2,Pamed Wild Buffalo WLS,18.216209199999994,80.8377142
+Argonda,Pocharam WLS,18.229596499999992,78.2809174
+Basanna Palle,Pocharam WLS,18.2406783,78.299321
+Chityal,Pocharam WLS,18.258537699999998,78.2520866
+Endriyal,Pocharam WLS,18.2786816,78.2358962
+Nandiwada,Pocharam WLS,18.2770378,78.21428280000002
+Yerrapahad,Pocharam WLS,18.2923321,78.2209002
+Keshaipally,Pocharam WLS,18.2228587,78.1768217
+Komatipally,Pocharam WLS,18.2240246,78.1815663
+Kannareddypally,Pocharam WLS,18.2275605,78.1731985
+Pothaipalle,Pocharam WLS,18.229118800000002,78.1815787
+Suraipally,Pocharam WLS,18.237965799999998,78.1600017
+Onterpally Thanda,Pocharam WLS,18.2478864,78.1513055
+Musthapur,Pocharam WLS,18.2724994,78.15495410000001
+Lingampalle (Khurd),Pocharam WLS,18.265448300000003,78.1397181
+Yellaram,Pocharam WLS,18.2853307,78.1590576
+Burugidda Thanda,Pocharam WLS,18.283011599999995,78.1767383
+Kapuraipalle,Pocharam WLS,18.174836399999993,78.2068811
+Kannapur,Pocharam WLS,18.196532600000005,78.1623791
+Polkampet,Pocharam WLS,18.1757166,78.1616613
+Kothapalle,Pocharam WLS,18.1672526,78.172056
+Pocharam,Pocharam WLS,18.114721699999997,78.1696155
+Siddapur,Pocharam WLS,18.164962699999993,78.2415486
+Bilya Thanda,Pocharam WLS,18.168652799999997,78.326825
+Dantepalle,Pocharam WLS,18.1857069,78.3311344
+Subash Thanda,Pocharam WLS,18.16961690000001,78.3232446
+Jemla Thanda,Pocharam WLS,18.1708613,78.3331288
+Kondapur,Pocharam WLS,18.188395799999995,78.2772634
+Gundaram,Pocharam WLS,18.1714999,78.2514361
+Yellareddi Palle,Pocharam WLS,18.168725,78.2629125
+Santaipet,Pocharam WLS,18.238350799999996,78.2463957
+Annaram (H),Pocharam WLS,18.236777699999998,78.2476032
+Asannaram Thanda,Pocharam WLS,18.235136599999993,78.2601452
+Vankayalapalle,Pocharam WLS,18.245437300000003,78.2742391
+Peddapalle,Pocharam WLS,18.234957,78.3261203
+Arepalle,Pocharam WLS,18.216963199999995,78.3472196
+Motapalle,Pocharam WLS,18.20658,78.3470295
+Kosagutta,Kawal WLS/Tiger Reserve,19.216911699999997,78.6465564
+Chinna Nallamadigi,Kawal WLS/Tiger Reserve,19.214851899999996,78.6566576
+Meruniparupu,Kawal WLS/Tiger Reserve,19.2218328,78.6391386
+Gummerkalaguda,Kawal WLS/Tiger Reserve,19.232852,78.6186705
+Krishnanaik Thanda,Kawal WLS/Tiger Reserve,19.2288942,78.6270311
+Itikyal,Kawal WLS/Tiger Reserve,19.2319485,78.6199877
+Lambadi Thanda,Kawal WLS/Tiger Reserve,19.2105058,78.6333568
+Akkonimada,Kawal WLS/Tiger Reserve,19.213296499999995,78.6309325
+Pathatulsipad,Kawal WLS/Tiger Reserve,19.261549200000005,78.5644271
+Gottugudem,Kawal WLS/Tiger Reserve,19.242070700000003,78.5860134
+Singyanaik Thanda,Kawal WLS/Tiger Reserve,19.2448615,78.5802292
+Paspula,Kawal WLS/Tiger Reserve,19.250511599999996,78.5803802
+Pulgampandiri,Kawal WLS/Tiger Reserve,19.260794299999997,78.5832081
+Loturra Thanda,Kawal WLS/Tiger Reserve,19.246598000000002,78.6125164
+Lothuriya Thanda,Kawal WLS/Tiger Reserve,19.2449983,78.6063331
+Tatiguda(Kolom),Kawal WLS/Tiger Reserve,19.244822199999998,78.6039497
+Tatiguda,Kawal WLS/Tiger Reserve,19.245137799999995,78.6019378
+Tatiguda Ramul Thanda,Kawal WLS/Tiger Reserve,19.246215399999997,78.5997841
+Dhomdari,Kawal WLS/Tiger Reserve,19.284310499999997,78.7103438
+Dhamadari Naikguda,Kawal WLS/Tiger Reserve,19.2819351,78.7116817
+Gummanu,Kawal WLS/Tiger Reserve,19.2612432,78.6542137
+Gummanuyenglapur,Kawal WLS/Tiger Reserve,19.255282199999996,78.6655037
+Vaspalle,Kawal WLS/Tiger Reserve,19.252490299999998,78.7001621
+Cheeturgudem,Kawal WLS/Tiger Reserve,19.2417565,78.70237400000002
+Addalathimmapur,Kawal WLS/Tiger Reserve,19.2738179,78.7201508
+Sakirevu,Kawal WLS/Tiger Reserve,19.256433000000005,78.7035862
+Polluguda,Kawal WLS/Tiger Reserve,19.249402399999997,78.7032996
+Venkatapuram,Kawal WLS/Tiger Reserve,19.119012699999995,78.9210875
+Narsingapur,Kawal WLS/Tiger Reserve,19.113622399999997,78.9031262
+Rajivnager Colony,Kawal WLS/Tiger Reserve,19.0718816,78.910464
+Yerragunta,Kawal WLS/Tiger Reserve,19.092492199999995,78.895339
+Ganduguda,Kawal WLS/Tiger Reserve,19.073789999999995,78.8651672
+Rampur,Kawal WLS/Tiger Reserve,19.082940499999992,78.8599917
+Bhuthkur,Kawal WLS/Tiger Reserve,19.077979199999998,78.8669142
+Perkapalli,Kawal WLS/Tiger Reserve,19.085935199999998,78.87627960000002
+Dasturabad,Kawal WLS/Tiger Reserve,19.095408499999998,78.8639818
+Devunigudem,Kawal WLS/Tiger Reserve,19.0900799,78.8387967
+Nawabpet,Kawal WLS/Tiger Reserve,19.1145315,78.8283154
+Peddur,Kawal WLS/Tiger Reserve,19.098295799999995,78.7724471
+Kannapur,Kawal WLS/Tiger Reserve,19.095113900000005,78.7886391
+Kondkuru,Kawal WLS/Tiger Reserve,19.0935875,78.795047
+Damguda,Kawal WLS/Tiger Reserve,19.108321399999994,78.802734
+Ambaripet,Kawal WLS/Tiger Reserve,19.101606099999998,78.8230354
+Pandwapur,Kawal WLS/Tiger Reserve,19.102210099999997,78.8095343
+Dosthunagar,Kawal WLS/Tiger Reserve,19.151080199999996,78.8487653
+Laxmipur,Kawal WLS/Tiger Reserve,19.1330983,78.8333278
+Akondapet,Kawal WLS/Tiger Reserve,19.116731599999994,78.858152
+Kalleda,Kawal WLS/Tiger Reserve,19.131066,78.8766011
+Islampur,Kawal WLS/Tiger Reserve,19.245277700000003,78.9222109
+Udumpur,Kawal WLS/Tiger Reserve,19.2107486,78.8757623
+Dharmaipet,Kawal WLS/Tiger Reserve,19.1951128,78.8239705
+Datojipet,Kawal WLS/Tiger Reserve,19.201568,78.72841860000001
+Paleregadi,Kawal WLS/Tiger Reserve,19.2254284,78.7196222
+Allampally,Kawal WLS/Tiger Reserve,19.243880899999994,78.74487460000002
+Gurram Madira,Kawal WLS/Tiger Reserve,19.2350789,78.7428744
+Naikapuguda,Kawal WLS/Tiger Reserve,19.198639299999996,78.6780663
+Yapalguda,Kawal WLS/Tiger Reserve,19.199413199999995,78.6753458
+Shetpalle,Kawal WLS/Tiger Reserve,19.198249999999998,78.6688752
+Janguguda,Kawal WLS/Tiger Reserve,19.190052499999997,78.6669673
+Sattuguda,Kawal WLS/Tiger Reserve,19.1936478,78.696349
+Ramnagar,Kawal WLS/Tiger Reserve,19.189061099999996,78.6959137
+Rajampet,Kawal WLS/Tiger Reserve,19.189860200000002,78.7090424
+Morripet,Kawal WLS/Tiger Reserve,19.197814800000003,78.7162926
+Ramiguda,Kawal WLS/Tiger Reserve,19.188418799999997,78.7139987
+Naikapugudem,Kawal WLS/Tiger Reserve,19.1839971,78.7169453
+Gangapur,Kawal WLS/Tiger Reserve,19.179634999999998,78.7220941
+Laxmipur,Kawal WLS/Tiger Reserve,19.1828386,78.7120422
+Kosampur,Kawal WLS/Tiger Reserve,19.139125700000005,78.7203193
+Kolamguda,Kawal WLS/Tiger Reserve,19.160331399999993,78.6985346
+Chamanpalle,Kawal WLS/Tiger Reserve,19.145776499999993,78.7017819
+Ervachintal,Kawal WLS/Tiger Reserve,19.147206099999995,78.6996364
+Bellal,Kawal WLS/Tiger Reserve,19.079717999999996,78.8121624
+Rajampet,Kawal WLS/Tiger Reserve,19.0823792,78.8021421
+Gangya Thanda,Pocharam WLS,18.1595365,78.3241597
+Kishan Thanda,Pocharam WLS,18.158372900000003,78.32987840000001
+Bikshapathi Thanda,Pocharam WLS,18.161642799999992,78.3377628
+Ramchendar Thanda,Pocharam WLS,18.164980599999996,78.3249132
+Katrial,Pocharam WLS,18.151447599999997,78.3499307
+Lakya Thanda,Pocharam WLS,18.1556086,78.3192194
+Parvathapur,Pocharam WLS,18.1512416,78.32644860000002
+Panya Thanda,Pocharam WLS,18.1375637,78.3541977
+Bapanaiah Mothkunta Lt,Pocharam WLS,18.1359184,78.3485786
+Golya Thanda,Pocharam WLS,18.134511999999997,78.3514235
+Lakshmapur,Pocharam WLS,18.1312585,78.3638209
+Narayana Thanda,Pocharam WLS,18.1145955,78.3676425
+Thonigandla,Pocharam WLS,18.1197076,78.3702596
+Gangapur,Pocharam WLS,18.1252435,78.321639
+Shamnapur,Pocharam WLS,18.109646699999995,78.3161756
+Pathur,Pocharam WLS,18.090760399999994,78.3175024
+Havelighanpur,Pocharam WLS,18.085352700000005,78.26218190000002
+Lingasanpalle,Pocharam WLS,18.1104353,78.2836915
+Suklapet,Pocharam WLS,18.0966114,78.2639812
+Gajireddipalle,Pocharam WLS,18.1284212,78.2255595
+Thimmaipalle,Pocharam WLS,18.121404300000002,78.2831157
+Byathole,Pocharam WLS,18.120049500000007,78.2938599
+Nagapur,Pocharam WLS,18.124177700000004,78.2601119
+Sulthanpur,Pocharam WLS,18.114153499999997,78.2530916
+Chowtlapally,Pocharam WLS,18.1113972,78.2648303
+Wadi,Pocharam WLS,18.1532935,78.2151031
+Rajpet,Pocharam WLS,18.151088699999992,78.1902008
+Burugupalle,Pocharam WLS,18.141036,78.213738
+Pochammarai,Pocharam WLS,18.110355200000004,78.1830566
+Jakkannapet,Pocharam WLS,18.099685199999993,78.1932876
+Bogada Bhoopathipur,Pocharam WLS,18.0990017,78.226119
+Shalipet,Pocharam WLS,18.0978065,78.2334266
+Serikuchanpalle,Pocharam WLS,18.073113599999996,78.2323797
+Rayani Cheru,Pocharam WLS,18.0875256,78.2539466
+Thogita,Pocharam WLS,18.076381899999998,78.2493768
+Kunchanpalle,Pocharam WLS,18.0663154,78.2289417
+Muthaipalle,Pocharam WLS,18.084379800000004,78.2178513
+Sardhana,Pocharam WLS,18.083543099999996,78.1772159
+Fareedpur,Pocharam WLS,18.0769541,78.1991064
+,Nagarjuna Sagar-Srisailam WLS,16.4982139,79.04905560000002
+,Nagarjuna Sagar-Srisailam WLS,16.4854574,79.0489966
+,Nagarjuna Sagar-Srisailam WLS,16.5423663,78.9925039
+,Nagarjuna Sagar-Srisailam WLS,16.5488584,78.9938691
+,Nagarjuna Sagar-Srisailam WLS,16.516491899999995,79.0187386
+,Nagarjuna Sagar-Srisailam WLS,16.5229682,78.9466381
+,Nagarjuna Sagar-Srisailam WLS,16.5292039,78.9292949
+,Nagarjuna Sagar-Srisailam WLS,16.4476101,79.05139440000002
+,Nagarjuna Sagar-Srisailam WLS,16.4711106,79.0102815
+,Nagarjuna Sagar-Srisailam WLS,16.501551999999997,78.9741039
+,Nagarjuna Sagar-Srisailam WLS,16.496748000000004,78.982451
+,Nagarjuna Sagar-Srisailam WLS,16.490987099999998,78.9779448
+,Nagarjuna Sagar-Srisailam WLS,16.4887238,78.9855838
+,Nagarjuna Sagar-Srisailam WLS,16.4831067,79.0068591
+,Nagarjuna Sagar-Srisailam WLS,16.4707505,79.0272546
+,Nagarjuna Sagar-Srisailam WLS,16.459689999999995,79.0563244
+,Nagarjuna Sagar-Srisailam WLS,16.4640165,79.059948
+,Nagarjuna Sagar-Srisailam WLS,16.4701435,79.0721816
+,Nagarjuna Sagar-Srisailam WLS,16.483574800000003,79.0720394
+,Nagarjuna Sagar-Srisailam WLS,16.490194899999995,79.0688825
+,Nagarjuna Sagar-Srisailam WLS,16.389268500000004,79.0211177
+,Nagarjuna Sagar-Srisailam WLS,16.4946648,78.9902803
+,Nagarjuna Sagar-Srisailam WLS,16.5182367,78.9399433
+,Nagarjuna Sagar-Srisailam WLS,16.500145300000003,78.9451361
+,Nagarjuna Sagar-Srisailam WLS,16.500994,78.9509028
+,Nagarjuna Sagar-Srisailam WLS,16.51182839999999,78.9502001
+,Nagarjuna Sagar-Srisailam WLS,16.659731099999995,79.1960621
+,Nagarjuna Sagar-Srisailam WLS,16.649781199999996,79.1980576
+,Nagarjuna Sagar-Srisailam WLS,16.6316687,79.1813528
+,Nagarjuna Sagar-Srisailam WLS,16.614397600000007,79.1530394
+,Nagarjuna Sagar-Srisailam WLS,16.621717499999995,79.162631
+,Nagarjuna Sagar-Srisailam WLS,16.6344546,79.1742718
+,Nagarjuna Sagar-Srisailam WLS,16.65287,79.1858107
+,Nagarjuna Sagar-Srisailam WLS,16.655583599999996,79.1860789
+,Nagarjuna Sagar-Srisailam WLS,16.614212499999997,79.1451162
+,Pranahita WLS,19.073687799999995,79.8278189
+,Pranahita WLS,19.050410199999995,79.8182058
+,Pranahita WLS,19.0286102,79.8531389
+Gath Thanda,Nagarjuna Sagar-Srisailam WLS,16.6780085,79.3229413
+Thootpet Thanda,Nagarjuna Sagar-Srisailam WLS,16.681352900000004,79.3188679
+Yerracheruvu Thanda,Nagarjuna Sagar-Srisailam WLS,16.649405200000004,79.3130254
+Nellikal,Nagarjuna Sagar-Srisailam WLS,16.641784,79.3337032
+Nellamla Thanda,Nagarjuna Sagar-Srisailam WLS,16.634095699999996,79.3345251
+Chenchani Thanda,Nagarjuna Sagar-Srisailam WLS,16.626289300000003,79.3289137
+---,Kawal WLS/Tiger Reserve,19.1959528,78.83087800000001
+---,Kawal WLS/Tiger Reserve,19.2635126,78.9772689
+---,Kawal WLS/Tiger Reserve,19.2418205,78.9815484
+---,Kawal WLS/Tiger Reserve,19.2135137,79.01827990000001
+Kotta Malaram,Kinnersani WLS,17.7098534,80.608964
+Padra,Nagarjuna Sagar-Srisailam WLS,16.436270399999998,78.8769865
+Thirumalapur,Nagarjuna Sagar-Srisailam WLS,16.340484399999998,78.92676830000002
+Palmela,Eturnagaram WLS,18.675235199999996,80.2363729
+Koilkonda,کوئیلکونڈا قلعہ,16.7575161,77.7890181
+Chandrabanda,Nagarjuna Sagar-Srisailam WLS,16.2124236,78.423363
+,Nagarjuna Sagar-Srisailam WLS,16.594245899999997,79.0020633
+,Nagarjuna Sagar-Srisailam WLS,16.5874186,78.9792752
+,Nagarjuna Sagar-Srisailam WLS,16.5983381,78.9804876
+,Nagarjuna Sagar-Srisailam WLS,16.5902539,78.9791143
+Chanampalli,Nagarjuna Sagar-Srisailam WLS,16.213994699999997,78.5431588
+Appaipally,Nagarjuna Sagar-Srisailam WLS,16.2532006,78.5761821
+Sri Rangapuram,Nagarjuna Sagar-Srisailam WLS,16.2232148,78.5703188
+Patha Dharavaram,Nagarjuna Sagar-Srisailam WLS,16.2232921,78.5028183
+Maddimadugu,Nagarjuna Sagar-Srisailam WLS,16.3127696,79.134313
+,Mahavir Harina Vanasthali National Park,17.314889900000004,78.5907877
+,Mahavir Harina Vanasthali National Park,17.407205800000003,78.5969098
+Amaragiri,Nagarjuna Sagar-Srisailam WLS,16.0803647,78.381899
+Sarlapally,Nagarjuna Sagar-Srisailam WLS,16.2501105,78.8221063
+Kuduchinthala Thanda,Nagarjuna Sagar-Srisailam WLS,16.2535965,78.8484794
+Mallatirtamma Gutta,Nagarjuna Sagar-Srisailam WLS,16.266685,78.858577
+Appapur,Nagarjuna Sagar-Srisailam WLS,16.181168499999995,78.6698741
+Rampur,Nagarjuna Sagar-Srisailam WLS,16.181792799999993,78.65173460000001
+Borapuram,Nagarjuna Sagar-Srisailam WLS,16.1432735,78.6823815
+Medimankal,Nagarjuna Sagar-Srisailam WLS,16.110235499999998,78.75369610000001
+Sangrigundal,Nagarjuna Sagar-Srisailam WLS,16.09728889999999,78.7924003
+Padmannapalli,Nagarjuna Sagar-Srisailam WLS,16.213458900000003,78.5241365
+Mallapur,Nagarjuna Sagar-Srisailam WLS,16.228075699999998,78.7124147
+Gausabad Tanda,Chincholi WLS,17.5879186,77.44762120000001

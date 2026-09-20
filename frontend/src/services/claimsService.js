@@ -1,4 +1,7 @@
-const API_URL = (process.env.REACT_APP_API_URL || "").replace(/\/$/, "");
+const API_URL = (
+  process.env.REACT_APP_API_URL ||
+  (process.env.NODE_ENV === "development" ? "http://localhost:5001" : "")
+).replace(/\/$/, "");
 
 async function apiFetch(path, options) {
   const controller = new AbortController();
@@ -31,18 +34,34 @@ async function apiFetch(path, options) {
   }
 }
 
-export async function fetchClaims() {
+/**
+ * Fetch claims (Firestore + synthetic by default).
+ * @param {{ source?: string, limit?: number|string, state?: string, status?: string, q?: string }} [opts]
+ */
+export async function fetchClaims(opts = {}) {
   if (!API_URL) {
     throw new Error("REACT_APP_API_URL is not configured.");
   }
-  return apiFetch("/api/claims");
+  const params = new URLSearchParams();
+  params.set("source", opts.source || "all");
+  // Default 5000 keeps the UI responsive; pass limit: "all" for the full 125k set
+  if (opts.limit !== undefined && opts.limit !== null) {
+    params.set("limit", String(opts.limit));
+  } else {
+    params.set("limit", "5000");
+  }
+  if (opts.state) params.set("state", opts.state);
+  if (opts.status) params.set("status", opts.status);
+  if (opts.q) params.set("q", opts.q);
+  if (opts.offset != null) params.set("offset", String(opts.offset));
+  return apiFetch(`/api/claims?${params.toString()}`);
 }
 
 export async function fetchClaimById(claimId) {
   if (!API_URL) {
     throw new Error("REACT_APP_API_URL is not configured.");
   }
-  return apiFetch(`/api/claims/${claimId}`);
+  return apiFetch(`/api/claims/${encodeURIComponent(claimId)}`);
 }
 
 export async function createClaim(claimData) {
@@ -70,7 +89,7 @@ export async function updateClaimStatus(claimId, status) {
   if (!API_URL) {
     throw new Error("REACT_APP_API_URL is not configured.");
   }
-  return apiFetch(`/api/claims/${claimId}/status`, {
+  return apiFetch(`/api/claims/${encodeURIComponent(claimId)}/status`, {
     method: "PUT",
     body: JSON.stringify({ status }),
   });

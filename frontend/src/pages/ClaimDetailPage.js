@@ -6,10 +6,12 @@ import {
   Spinner,
   Alert,
   Button,
+  Badge,
 } from "react-bootstrap";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft } from "react-bootstrap-icons";
 import { fetchClaimById } from "../services/claimsService";
+import { predictDss } from "../services/dssService";
 import WebGISMap from "../components/WebGISMap";
 import "./ClaimDetailPage.css";
 
@@ -25,6 +27,9 @@ function ClaimDetailPage() {
   const [claim, setClaim] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [dss, setDss] = useState(null);
+  const [dssLoading, setDssLoading] = useState(false);
+  const [dssError, setDssError] = useState("");
 
   useEffect(() => {
     const loadClaim = async () => {
@@ -42,6 +47,29 @@ function ClaimDetailPage() {
 
     loadClaim();
   }, [id]);
+
+  useEffect(() => {
+    if (!claim) return;
+    let cancelled = false;
+    const runDss = async () => {
+      setDssLoading(true);
+      setDssError("");
+      try {
+        const result = await predictDss({ claim_id: claim.id, ...claim });
+        if (!cancelled) setDss(result);
+      } catch (err) {
+        if (!cancelled) {
+          setDssError(err.message || "DSS prediction unavailable.");
+        }
+      } finally {
+        if (!cancelled) setDssLoading(false);
+      }
+    };
+    runDss();
+    return () => {
+      cancelled = true;
+    };
+  }, [claim]);
 
   if (loading) {
     return (
@@ -68,6 +96,8 @@ function ClaimDetailPage() {
       </Container>
     );
   }
+
+  const eligibleSchemes = (dss?.schemes || []).filter((s) => s.eligible);
 
   return (
     <div className="claim-detail-page">
@@ -125,6 +155,78 @@ function ClaimDetailPage() {
             </div>
           </Col>
         </Row>
+
+        <div className="detail-panel mb-3">
+          <h2>DSS — AI outcome &amp; scheme layering</h2>
+          {dssLoading && (
+            <div className="py-3">
+              <Spinner animation="border" size="sm" /> Running DSS…
+            </div>
+          )}
+          {dssError && <Alert variant="warning">{dssError}</Alert>}
+          {dss && !dssLoading && (
+            <Row className="g-3">
+              <Col md={5}>
+                <DetailItem label="Predicted" value={dss.predicted_status} />
+                {dss.probabilities &&
+                  Object.entries(dss.probabilities).map(([label, p]) => (
+                    <DetailItem
+                      key={label}
+                      label={label}
+                      value={`${(Number(p) * 100).toFixed(1)}%`}
+                    />
+                  ))}
+                {dss.shap_top?.length > 0 &&
+                  dss.shap_top[0].feature !== "_shap_unavailable" && (
+                    <div className="mt-3">
+                      <h3 className="h6">Top SHAP drivers</h3>
+                      <ul className="mb-0 small">
+                        {dss.shap_top.map((s) => (
+                          <li key={s.feature}>
+                            {s.feature}: {s.impact > 0 ? "+" : ""}
+                            {s.impact}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+              </Col>
+              <Col md={7}>
+                <h3 className="h6">Recommended CSS schemes</h3>
+                {eligibleSchemes.length === 0 ? (
+                  <p className="text-muted small mb-0">
+                    No schemes flagged under demo eligibility rules.
+                  </p>
+                ) : (
+                  eligibleSchemes.map((s) => (
+                    <div key={s.scheme_id} className="mb-2">
+                      <strong>{s.name}</strong>{" "}
+                      <Badge
+                        bg={
+                          s.priority === "High"
+                            ? "danger"
+                            : s.priority === "Medium"
+                              ? "warning"
+                              : "secondary"
+                        }
+                      >
+                        {s.priority}
+                      </Badge>
+                      <ul className="small mb-0">
+                        {s.reasons.map((r) => (
+                          <li key={r}>{r}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))
+                )}
+                <Link to="/dss" className="small">
+                  Open full DSS atlas →
+                </Link>
+              </Col>
+            </Row>
+          )}
+        </div>
 
         <div className="detail-panel">
           <h2>Extracted text</h2>

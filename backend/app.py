@@ -71,10 +71,30 @@ def _init_firebase():
 _init_firebase()
 db = firestore.client()
 
+# DSS (scheme rules + claim-outcome model) — imported lazily-safe
+from dss import (  # noqa: E402
+    ModelNotReady,
+    dss_bundle_for_payload,
+    get_metrics,
+    get_synthetic_claim,
+    list_synthetic_claims,
+    load_priority,
+    model_ready,
+    predict_from_claim,
+    sample_synthetic_claims,
+    scheme_catalog,
+)
+
 
 @app.route("/api/health", methods=["GET"])
 def health():
-    return jsonify({"status": "ok", "service": "fra-gis-api"}), 200
+    return jsonify(
+        {
+            "status": "ok",
+            "service": "fra-gis-api",
+            "dss_model_ready": model_ready(),
+        }
+    ), 200
 
 # Optional OCR deps — loaded lazily so the API can start without them
 nlp = None
@@ -286,14 +306,60 @@ def process_document():
 
 @app.route("/api/claims", methods=["GET"])
 def get_claims():
-    """Fetches all FRA claims from Firestore."""
+    """List claims from Firestore and/or synthetic FRA dataset.
+
+    Query params:
+      source=all|synthetic|firestore (default: all)
+      limit=N (default 5000 for synthetic; use 0 or 'all' for full synthetic set)
+      offset=N
+      state, status, q — optional filters for synthetic rows
+    """
     try:
-        docs = (
-            db.collection(CLAIMS_COLLECTION)
-            .order_by("created_at", direction=firestore.Query.DESCENDING)
-            .stream()
-        )
-        return jsonify([_serialize_claim(doc) for doc in docs]), 200
+        source = (request.args.get("source") or "all").strip().lower()
+        state = request.args.get("state")
+        status = request.args.get("status")
+        q = request.args.get("q")
+        offset = int(request.args.get("offset") or 0)
+        limit_raw = request.args.get("limit")
+
+        claims: list = []
+
+        if source in ("all", "firestore"):
+            try:
+                docs = (
+                    db.collection(CLAIMS_COLLECTION)
+                    .order_by("created_at", direction=firestore.Query.DESCENDING)
+                    .stream()
+                )
+                for doc in docs:
+                    item = _serialize_claim(doc)
+                    item["source"] = "firestore"
+                    claims.append(item)
+            except Exception as firestore_err:
+                # Allow synthetic-only demo if Firestore is unavailable
+                if source == "firestore":
+                    return jsonify({"error": str(firestore_err)}), 500
+
+        if source in ("all", "synthetic"):
+            if limit_raw is None:
+                syn_limit = 5000
+            elif str(limit_raw).lower() in ("0", "all", "none"):
+                syn_limit = None
+            else:
+                syn_limit = max(1, int(limit_raw))
+
+            synthetic, _total = list_synthetic_claims(
+                state=state,
+                status=status,
+                q=q,
+                limit=syn_limit,
+                offset=offset if source == "synthetic" else 0,
+            )
+            claims.extend(synthetic)
+
+        return jsonify(claims), 200
+    except FileNotFoundError as e:
+        return jsonify({"error": str(e)}), 503
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
@@ -344,11 +410,18 @@ def create_claim():
 
 @app.route("/api/claims/<claim_id>", methods=["GET"])
 def get_claim_by_id(claim_id):
-    """Fetches a single FRA claim by its Firestore document ID."""
+    """Fetches a claim by Firestore ID or synthetic claim_id."""
     try:
         doc = db.collection(CLAIMS_COLLECTION).document(claim_id).get()
         if doc.exists:
-            return jsonify(_serialize_claim(doc)), 200
+            item = _serialize_claim(doc)
+            item["source"] = "firestore"
+            return jsonify(item), 200
+
+        synthetic = get_synthetic_claim(claim_id)
+        if synthetic:
+            return jsonify(synthetic), 200
+
         return jsonify({"error": "Claim not found"}), 404
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -363,6 +436,14 @@ def update_claim_status(claim_id):
     if not new_status:
         return jsonify({"error": "Status is required"}), 400
 
+    # Synthetic claims are read-only in the demo dataset
+    if get_synthetic_claim(claim_id):
+        return jsonify(
+            {
+                "error": "Synthetic demo claims are read-only. Status updates apply to digitized Firestore claims only."
+            }
+        ), 400
+
     try:
         doc_ref = db.collection(CLAIMS_COLLECTION).document(claim_id)
         doc = doc_ref.get()
@@ -374,6 +455,93 @@ def update_claim_status(claim_id):
         return jsonify(_serialize_claim(updated)), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
+# --- Decision Support System (DSS) ---
+
+
+@app.route("/api/dss/schemes", methods=["GET", "POST"])
+def dss_schemes():
+    """Rule-based CSS scheme recommendations (optional feature payload)."""
+    try:
+        if request.method == "GET":
+            return jsonify({"schemes": scheme_catalog()}), 200
+
+        payload = request.get_json() or {}
+        from dss.scheme_rules import recommend_schemes
+        from ml.features import claim_to_feature_dict
+
+        features = claim_to_feature_dict(payload)
+        for key, value in payload.items():
+            if value is not None and value != "":
+                features[key] = value
+        return jsonify({"schemes": recommend_schemes(features), "features": features}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/api/dss/predict", methods=["POST"])
+def dss_predict():
+    """AI claim-outcome prediction + SHAP + scheme layering."""
+    try:
+        payload = request.get_json() or {}
+        claim_id = payload.get("claim_id") or payload.get("id")
+        if claim_id:
+            doc = db.collection(CLAIMS_COLLECTION).document(claim_id).get()
+            if doc.exists:
+                claim = _serialize_claim(doc)
+            else:
+                claim = get_synthetic_claim(claim_id)
+                if not claim:
+                    return jsonify({"error": "Claim not found"}), 404
+            # Overlay any extra feature fields from the POST body
+            merged = {**claim, **payload}
+            result = predict_from_claim(merged)
+            result["claim_id"] = claim_id
+            return jsonify(result), 200
+
+        return jsonify(dss_bundle_for_payload(payload)), 200
+    except ModelNotReady as e:
+        return jsonify({"error": str(e)}), 503
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/api/dss/priority", methods=["GET"])
+def dss_priority():
+    """District priority scores for focus-state intervention planning."""
+    try:
+        state = request.args.get("state")
+        rows = load_priority(state=state)
+        return jsonify({"state": state, "districts": rows, "count": len(rows)}), 200
+    except FileNotFoundError as e:
+        return jsonify({"error": str(e)}), 503
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/api/dss/synthetic-claims", methods=["GET"])
+def dss_synthetic_claims():
+    """Sampled synthetic claims for WebGIS demo (not the full 125k rows)."""
+    try:
+        state = request.args.get("state")
+        status = request.args.get("status")
+        limit = request.args.get("limit", 200)
+        claims = sample_synthetic_claims(state=state, limit=limit, status=status)
+        return jsonify({"claims": claims, "count": len(claims), "state": state}), 200
+    except FileNotFoundError as e:
+        return jsonify({"error": str(e)}), 503
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/api/dss/metrics", methods=["GET"])
+def dss_metrics():
+    """Training metrics for the claim-outcome model."""
+    metrics = get_metrics()
+    if metrics is None:
+        return jsonify({"error": "Metrics not found. Train the model first."}), 503
+    return jsonify(metrics), 200
 
 
 if __name__ == "__main__":

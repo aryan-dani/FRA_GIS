@@ -8,6 +8,9 @@ import DashboardStats from "../components/DashboardStats";
 import "./DashboardPage.css";
 import "../components/DashboardStats.css";
 
+const SYNTHETIC_DATASET_SIZE = 125000;
+const DASHBOARD_MAP_SAMPLE = 2500;
+
 function DashboardPage() {
   const [claims, setClaims] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -17,7 +20,12 @@ function DashboardPage() {
     setLoading(true);
     setError("");
     try {
-      const data = await fetchClaims();
+      // Display sample only — Leaflet cannot comfortably render 125k markers.
+      // The full 125,000-row CSV is used for LightGBM training (not this map sample).
+      const data = await fetchClaims({
+        source: "all",
+        limit: DASHBOARD_MAP_SAMPLE,
+      });
       setClaims(data);
     } catch (err) {
       setError(err.message || "Failed to fetch claims from the API.");
@@ -46,12 +54,31 @@ function DashboardPage() {
             Atlas overview of digitized FRA claims across focus states.
           </p>
           <div className="page-meta">
-            <span className="meta-chip">{claims.length} records</span>
+            <span className="meta-chip">
+              {claims.length.toLocaleString("en-IN")} map sample
+            </span>
+            <span className="meta-chip">
+              {SYNTHETIC_DATASET_SIZE.toLocaleString("en-IN")} in full synthetic
+              set
+            </span>
             <span className="meta-chip">WebGIS live map</span>
           </div>
         </div>
 
         {error && <Alert variant="danger">{error}</Alert>}
+
+        {!loading && !error && (
+          <Alert variant="info" className="mb-3">
+            Showing a <strong>{DASHBOARD_MAP_SAMPLE.toLocaleString("en-IN")}</strong>
+            -row <em>display sample</em> so the map stays responsive. The ML model
+            was trained on the <strong>full{" "}
+            {SYNTHETIC_DATASET_SIZE.toLocaleString("en-IN")}</strong> synthetic
+            claims (not this sample). Open{" "}
+            <Link to="/claims-data">Claims</Link> and use{" "}
+            <strong>Load all synthetic</strong> for the complete ledger, or{" "}
+            <Link to="/dss">DSS</Link> for priority / scheme views.
+          </Alert>
+        )}
 
         {loading ? (
           <div className="spinner-container">

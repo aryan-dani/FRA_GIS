@@ -1,0 +1,46 @@
+{
+  "n_train": 92744,
+  "n_test": 32256,
+  "accuracy": 0.832,
+  "macro_f1": 0.817,
+  "per_class_recall": {
+    "Approved": 0.8452,
+    "Pending": 0.8593,
+    "Rejected": 0.7649
+  },
+  "classification_report": {
+    "Approved": {
+      "precision": 0.8936929789765966,
+      "recall": 0.8452447945976365,
+      "f1-score": 0.8687939843825315,
+      "support": 15993.0
+    },
+    "Pending": {
+      "precision": 0.8130651224220258,
+      "recall": 0.8593364114678407,
+      "f1-score": 0.8355606598454792,
+      "support": 9313.0
+    },
+    "Rejected": {
+      "precision": 0.7295183202964183,
+      "recall": 0.7648920863309353,
+      "f1-score": 0.7467865421085903,
+      "support": 6950.0
+    },
+    "accuracy": 0.832000248015873,
+    "macro avg": {
+      "precision": 0.8120921405650136,
+      "recall": 0.8231577641321376,
+      "f1-score": 0.8170470621122004,
+      "support": 32256.0
+    },
+    "weighted avg": {
+      "precision": 0.8350402909210424,
+      "recall": 0.832000248015873,
+      "f1-score": 0.8329106239157205,
+      "support": 32256.0
+    }
+  },
+  "holdout": "GroupShuffleSplit by district (20% test)",
+  "model": "LGBMClassifier"
+}
