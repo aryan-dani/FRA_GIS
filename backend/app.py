@@ -15,12 +15,22 @@ load_dotenv()
 
 app = Flask(__name__)
 
+# Local CRA may land on 3000/3001 if a port is busy; allow common local origins.
 origins = [
     "http://localhost:3000",
+    "http://localhost:3001",
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:3001",
     "https://fra-atlas-one.vercel.app",
     "https://fra-atlas.vercel.app",
 ]
-CORS(app, resources={r"/api/*": {"origins": origins}})
+CORS(
+    app,
+    resources={r"/api/*": {"origins": origins}},
+    supports_credentials=False,
+    allow_headers=["Content-Type", "Authorization"],
+    methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+)
 
 # --- Firebase Admin Setup ---
 CLAIMS_COLLECTION = "FRA_Claims"

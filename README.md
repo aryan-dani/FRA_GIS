@@ -25,7 +25,7 @@ Focus states for the SIH brief: **Madhya Pradesh**, **Tripura**, **Odisha**, and
 
 | Area | What it does |
 | --- | --- |
-| **Dashboard** | Claim KPIs and Leaflet map of claim locations |
+| **Dashboard** | Claim KPIs and Google Maps view of claim locations |
 | **Claims ledger** | Search, filter, status updates, CSV export |
 | **Claim detail** | Full record view with map and extracted text |
 | **Analytics** | Charts for status, type, and regional patterns |
@@ -56,7 +56,7 @@ Focus states for the SIH brief: **Madhya Pradesh**, **Tripura**, **Odisha**, and
 
 | Layer | Stack |
 | --- | --- |
-| Frontend | React 19, React Bootstrap, React Router, Chart.js, Leaflet |
+| Frontend | React 19, React Bootstrap, React Router, Chart.js, Google Maps |
 | Backend | Python, Flask, Gunicorn, Firebase Admin |
 | Database | Firebase Firestore (Spark) |
 | OCR | Google Cloud Vision (primary), Tesseract (fallback) |
@@ -109,6 +109,7 @@ Set in `frontend/.env`:
 
 ```env
 REACT_APP_API_URL=http://localhost:5001
+REACT_APP_GOOGLE_MAPS_API_KEY=your_maps_javascript_api_key
 # Optional Firebase web config if used by other modules
 REACT_APP_FIREBASE_API_KEY=
 REACT_APP_FIREBASE_AUTH_DOMAIN=
@@ -117,6 +118,8 @@ REACT_APP_FIREBASE_STORAGE_BUCKET=
 REACT_APP_FIREBASE_MESSAGING_SENDER_ID=
 REACT_APP_FIREBASE_APP_ID=
 ```
+
+Enable **Maps JavaScript API** for that key in Google Cloud Console. Restart `npm run dev` after changing env.
 
 App: [http://localhost:3000](http://localhost:3000)
 

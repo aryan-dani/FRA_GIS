@@ -150,7 +150,7 @@ function ClaimDetailPage() {
                 <h2>Geospatial view</h2>
               </div>
               <div className="map-container-detail">
-                <WebGISMap claims={[claim]} />
+                <WebGISMap claims={[claim]} height="460px" zoom={13} showAreas />
               </div>
             </div>
           </Col>

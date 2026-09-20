@@ -117,7 +117,7 @@ code {
   color: var(--primary-color) !important;
 }
 
-.leaflet-container {
+.google-map-container {
   border: none;
   border-radius: 0 0 var(--radius) var(--radius);
 }

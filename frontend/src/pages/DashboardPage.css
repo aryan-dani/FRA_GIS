@@ -25,11 +25,18 @@
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
   box-shadow: var(--shadow-soft);
+}
+
+.map-panel {
   height: 100%;
 }
 
-.map-panel-header,
 .side-panel {
+  height: auto;
+  padding: 0.95rem 1.1rem;
+}
+
+.map-panel-header {
   padding: 0.95rem 1.1rem;
 }
 
@@ -52,8 +59,10 @@
   min-height: 440px;
 }
 
-.map-panel-body .leaflet-container {
+.map-panel-body .google-map-wrap,
+.map-panel-body .google-map-container {
   height: 440px;
+  min-height: 440px;
   border-radius: 0 0 var(--radius) var(--radius);
 }
 

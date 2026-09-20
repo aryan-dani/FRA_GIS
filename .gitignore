@@ -26,6 +26,9 @@ firebase-web-config.json
 
 # Frontend env (contains project keys; use .env.example as template)
 frontend/.env
+frontend/.env.development
+frontend/.env.local
+frontend/.env.*.local
 
 # Vercel
 .vercel

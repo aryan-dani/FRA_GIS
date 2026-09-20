@@ -20,7 +20,7 @@ function DashboardPage() {
     setLoading(true);
     setError("");
     try {
-      // Display sample only — Leaflet cannot comfortably render 125k markers.
+      // Display sample only — Google Maps cannot comfortably render 125k markers.
       // The full 125,000-row CSV is used for LightGBM training (not this map sample).
       const data = await fetchClaims({
         source: "all",
@@ -101,7 +101,7 @@ function DashboardPage() {
                     <span>Claim locations on the map</span>
                   </div>
                   <div className="map-panel-body">
-                    <WebGISMap claims={claims} />
+                    <WebGISMap claims={claims} showAreas />
                   </div>
                 </div>
               </Col>

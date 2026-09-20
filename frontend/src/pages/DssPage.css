@@ -64,6 +64,11 @@
   height: 480px;
 }
 
+.dss-map .google-map-wrap,
+.dss-map .google-map-container {
+  height: 480px;
+}
+
 .dss-rec-claim {
   display: flex;
   flex-wrap: wrap;

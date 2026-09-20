@@ -79,7 +79,7 @@ function AboutPage() {
               <h2>Stack</h2>
               <ul className="stack-list">
                 <li>
-                  <strong>Frontend</strong> React · Leaflet WebGIS
+                  <strong>Frontend</strong> React · Google Maps WebGIS
                 </li>
                 <li>
                   <strong>Backend</strong> Flask · OCR / NER pipeline

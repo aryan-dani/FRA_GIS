@@ -10,14 +10,13 @@ import {
   Spinner,
   Table,
 } from "react-bootstrap";
-import { MapContainer, TileLayer, CircleMarker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
 import {
   fetchDssMetrics,
   fetchDssPriority,
   fetchSyntheticClaims,
   predictDss,
 } from "../services/dssService";
+import WebGISMap from "../components/WebGISMap";
 import "./DssPage.css";
 
 const FOCUS_STATES = [
@@ -71,13 +70,13 @@ function DssPage() {
 
   const mapCenter = useMemo(() => {
     const withCoords = claims.filter((c) => c.latitude && c.longitude);
-    if (withCoords.length === 0) return [22.5, 80.0];
+    if (withCoords.length === 0) return { lat: 22.5, lng: 80.0 };
     const lat =
       withCoords.reduce((s, c) => s + Number(c.latitude), 0) / withCoords.length;
-    const lon =
+    const lng =
       withCoords.reduce((s, c) => s + Number(c.longitude), 0) /
       withCoords.length;
-    return [lat, lon];
+    return { lat, lng };
   }, [claims]);
 
   const schemeSummary = useMemo(() => {
@@ -241,45 +240,15 @@ function DssPage() {
                     </span>
                   </div>
                   <div className="dss-map">
-                    <MapContainer
+                    <WebGISMap
+                      claims={claims}
+                      height="100%"
                       center={mapCenter}
                       zoom={7}
-                      style={{ height: "100%", width: "100%" }}
-                    >
-                      <TileLayer
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                      />
-                      {claims
-                        .filter((c) => c.latitude && c.longitude)
-                        .map((c) => (
-                          <CircleMarker
-                            key={c.claim_id}
-                            center={[Number(c.latitude), Number(c.longitude)]}
-                            radius={6}
-                            pathOptions={{
-                              color:
-                                c.status === "Rejected"
-                                  ? "#b91c1c"
-                                  : c.status === "Pending"
-                                    ? "#b45309"
-                                    : "#166534",
-                              fillOpacity: 0.75,
-                            }}
-                            eventHandlers={{
-                              click: () => onSelectClaim(c),
-                            }}
-                          >
-                            <Popup>
-                              <strong>{c.claim_id}</strong>
-                              <br />
-                              {c.district} · {c.claim_type}
-                              <br />
-                              {c.status}
-                            </Popup>
-                          </CircleMarker>
-                        ))}
-                    </MapContainer>
+                      colorBy="status"
+                      showAreas
+                      onClaimClick={onSelectClaim}
+                    />
                   </div>
                 </div>
               </Col>

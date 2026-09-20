@@ -75,7 +75,8 @@
   height: 460px;
 }
 
-.map-container-detail .leaflet-container {
+.map-container-detail .google-map-wrap,
+.map-container-detail .google-map-container {
   height: 460px;
   border-radius: 0 0 var(--radius) var(--radius);
 }
