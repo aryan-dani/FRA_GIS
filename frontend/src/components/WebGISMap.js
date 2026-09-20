@@ -123,9 +123,16 @@ function AdvancedClaimMarker({ position, color, zIndex = 2, onClick, title }) {
   const markerRef = useRef(null);
   const onClickRef = useRef(onClick);
   onClickRef.current = onClick;
+  const lat = position?.lat;
+  const lng = position?.lng;
 
   useEffect(() => {
-    if (!map || !window.google?.maps?.marker?.AdvancedMarkerElement) {
+    if (
+      !map ||
+      lat == null ||
+      lng == null ||
+      !window.google?.maps?.marker?.AdvancedMarkerElement
+    ) {
       return undefined;
     }
 
@@ -139,7 +146,7 @@ function AdvancedClaimMarker({ position, color, zIndex = 2, onClick, title }) {
 
     const marker = new AdvancedMarkerElement({
       map,
-      position,
+      position: { lat, lng },
       content: pin.element,
       title: title || "",
       zIndex,
@@ -158,7 +165,7 @@ function AdvancedClaimMarker({ position, color, zIndex = 2, onClick, title }) {
       marker.map = null;
       markerRef.current = null;
     };
-  }, [map, position.lat, position.lng, color, zIndex, title]);
+  }, [map, lat, lng, color, zIndex, title]);
 
   return null;
 }
