@@ -1,0 +1,9 @@
+model,feature_set,s4_macro_f1_mean
+lightgbm,A,0.4034329958951536
+xgboost,A,0.4084871902669463
+random_forest,A,0.417706063321395
+hist_gradient_boosting,A,0.4109783923050959
+catboost,A,0.4329339565875996
+soft_voting,A,0.4175288176945261
+logistic_l2,A,0.47508199796003525
+bagging,A,0.41832607824835405

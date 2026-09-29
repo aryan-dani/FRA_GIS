@@ -1,0 +1,83 @@
+period,state,claims_received,titles_distributed,is_focus,t
+2019-05,Andhra Pradesh,177446.0,96675.0,False,0
+2019-05,Assam,148965.0,57325.0,False,0
+2019-05,Bihar,8022.0,121.0,False,0
+2019-05,Chhattisgarh,858682.0,401251.0,False,0
+2019-05,Goa,9758.0,17.0,False,0
+2019-05,Gujarat,182869.0,83699.0,False,0
+2019-05,Himachal Pradesh,2071.0,129.0,False,0
+2019-05,Jharkhand,107032.0,59866.0,False,0
+2019-05,Karnataka,275446.0,14667.0,False,0
+2019-05,Kerala,36140.0,24599.0,False,0
+2019-05,Madhya Pradesh,582927.0,226313.0,True,0
+2019-05,Maharashtra,362679.0,165032.0,False,0
+2019-05,Odisha,617935.0,430212.0,True,0
+2019-05,Rajashtan,74414.0,38007.0,False,0
+2019-05,Tamil Nadu,32983.0,6111.0,False,0
+2019-05,Telangana,183252.0,93639.0,True,0
+2019-05,Tripura,200358.0,127931.0,True,0
+2019-05,Uttar Pradesh,92520.0,17712.0,False,0
+2019-05,Uttarakhand,3574.0,144.0,False,0
+2019-05,West Bengal,131962.0,44444.0,False,0
+2022-11,Andhra Pradesh,281431.0,217981.0,False,1
+2022-11,Assam,148965.0,57325.0,False,1
+2022-11,Bihar,8022.0,121.0,False,1
+2022-11,Chhattisgarh,871457.0,446041.0,False,1
+2022-11,Goa,9758.0,472.0,False,1
+2022-11,Gujarat,182869.0,91686.0,False,1
+2022-11,Himachal Pradesh,2746.0,129.0,False,1
+2022-11,Jharkhand,107032.0,59866.0,False,1
+2022-11,Karnataka,285874.0,14783.0,False,1
+2022-11,Kerala,43889.0,27637.0,False,1
+2022-11,Madhya Pradesh,585326.0,266609.0,True,1
+2022-11,Maharashtra,362679.0,165032.0,False,1
+2022-11,Odisha,629913.0,454454.0,True,1
+2022-11,Rajasthan,110670.0,48460.0,False,1
+2022-11,Tamil Nadu,33755.0,8144.0,False,1
+2022-11,Telangana,204176.0,97434.0,True,1
+2022-11,Tripura,200557.0,127931.0,True,1
+2022-11,Uttar Pradesh,92577.0,18049.0,False,1
+2022-11,Uttarakhand,3587.0,184.0,False,1
+2022-11,West Bengal,131962.0,44444.0,False,1
+2023-10,Andhra Pradesh,284294.0,225826.0,False,2
+2023-10,Assam,148965.0,57325.0,False,2
+2023-10,Bihar,8022.0,121.0,False,2
+2023-10,Chhattisgarh,883938.0,475100.0,False,2
+2023-10,Goa,9758.0,472.0,False,2
+2023-10,Gujarat,182869.0,96559.0,False,2
+2023-10,Himachal Pradesh,4880.0,256.0,False,2
+2023-10,Jharkhand,107032.0,59866.0,False,2
+2023-10,Karnataka,288549.0,14981.0,False,2
+2023-10,Kerala,44200.0,28641.0,False,2
+2023-10,Madhya Pradesh,585326.0,266901.0,True,2
+2023-10,Maharashtra,389723.0,198220.0,False,2
+2023-10,Odisha,632326.0,457238.0,True,2
+2023-10,Rajasthan,111560.0,48614.0,False,2
+2023-10,Tamil Nadu,34877.0,10536.0,False,2
+2023-10,Telangana,204176.0,97434.0,True,2
+2023-10,Tripura,200557.0,127931.0,True,2
+2023-10,Uttar Pradesh,92577.0,18049.0,False,2
+2023-10,Uttarakhand,3587.0,184.0,False,2
+2023-10,West Bengal,131962.0,44444.0,False,2
+2023-10,Jammu and Kashmir,32207.0,315.0,False,2
+2024-06,Andhra Pradesh,284685.0,226297.0,False,3
+2024-06,Assam,148965.0,57325.0,False,3
+2024-06,Bihar,8022.0,121.0,False,3
+2024-06,Chhattisgarh,888028.0,478563.0,False,3
+2024-06,Goa,9758.0,856.0,False,3
+2024-06,Gujarat,182869.0,97690.0,False,3
+2024-06,Himachal Pradesh,4880.0,256.0,False,3
+2024-06,Jharkhand,107032.0,59866.0,False,3
+2024-06,Karnataka,288549.0,14981.0,False,3
+2024-06,Kerala,44200.0,28641.0,False,3
+2024-06,Madhya Pradesh,585326.0,266901.0,True,3
+2024-06,Maharashtra,390477.0,198504.0,False,3
+2024-06,Odisha,657308.0,460533.0,True,3
+2024-06,Rajasthan,112988.0,49193.0,False,3
+2024-06,Tamil Nadu,34877.0,10536.0,False,3
+2024-06,Telangana,651822.0,230735.0,True,3
+2024-06,Tripura,200557.0,127931.0,True,3
+2024-06,Uttar Pradesh,92577.0,18049.0,False,3
+2024-06,Uttarakhand,3587.0,184.0,False,3
+2024-06,West Bengal,131962.0,44444.0,False,3
+2024-06,Jammu and Kashmir,32207.0,315.0,False,3

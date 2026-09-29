@@ -24,7 +24,10 @@ from fra_dss.data import (
 )
 from fra_dss.data.load import dataset_sha256, git_sha
 from fra_dss.evaluation.ablation import feature_set_ablation
+from fra_dss.evaluation.conformal import run_conformal
 from fra_dss.evaluation.cv import run_benchmark
+from fra_dss.evaluation.extended import run_extended_evaluation
+from fra_dss.evaluation.mota_forecast import run_mota_forecast
 from fra_dss.models.reasons import train_rejection_reasons, train_resolved_binary
 from fra_dss.models.regression import train_eta_models
 from fra_dss.models.registry import (
@@ -215,6 +218,23 @@ def run_all(mode: str = "fast", include_p1: bool = True) -> None:
         write_json(METRICS_DIR / "optuna_lightgbm.json", study)
     except Exception as exc:
         write_json(METRICS_DIR / "optuna_lightgbm.json", {"error": str(exc)})
+
+    if include_p1:
+        print("Extended splits and stats (S2, S4, tests)...")
+        try:
+            run_extended_evaluation(mode=mode, feature_set="A")
+        except Exception as exc:
+            write_json(METRICS_DIR / "extended_stats.json", {"error": str(exc)})
+        print("Conformal prediction...")
+        try:
+            run_conformal(mode=mode)
+        except Exception as exc:
+            write_json(METRICS_DIR / "conformal.json", {"error": str(exc)})
+        print("MoTA forecast (T5 stretch)...")
+        try:
+            run_mota_forecast()
+        except Exception as exc:
+            write_json(METRICS_DIR / "mota_forecast.json", {"error": str(exc)})
 
     print("PDFs...")
     build_all_p0_pdfs()

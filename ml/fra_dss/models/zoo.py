@@ -39,14 +39,14 @@ def build_estimator(name: str, mode: str = "fast") -> Any:
         return DummyClassifier(strategy="stratified", random_state=rs)
     if name == "logistic_l2":
         return LogisticRegression(
-            max_iter=400, class_weight="balanced", random_state=rs
+            max_iter=800, class_weight="balanced", random_state=rs
         )
     if name == "logistic_elasticnet":
         return LogisticRegression(
             solver="saga",
             l1_ratio=0.5,
             C=1.0,
-            max_iter=500,
+            max_iter=800,
             class_weight="balanced",
             random_state=rs,
         )

@@ -1,0 +1,16 @@
+{
+  "method": "split-conformal (1 - P(y) scores)",
+  "alpha": 0.1,
+  "target_coverage": 0.9,
+  "empirical_coverage": 0.8945,
+  "mean_set_size": 1.6981666666666666,
+  "median_set_size": 2.0,
+  "qhat": 0.7423818343386124,
+  "n_train": 18000,
+  "n_cal": 6000,
+  "n_test": 6000,
+  "model": "lightgbm",
+  "feature_set": "A",
+  "synthetic": true,
+  "caveat": "Conformal sets are calibrated on synthetic data. Coverage on real claims is unknown."
+}

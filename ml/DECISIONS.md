@@ -59,3 +59,14 @@ Every judgment call for the FRA DSS ML mini project. Dates use ISO format.
 - Pre-declared rule selected `xgboost` by S1 macro-F1 on Set A in fast mode.
 - Shipped backend artifact remains LightGBM for TreeExplainer and Render size (see earlier decision).
 
+
+## 2026-03-29: Extended stats and stretch tasks
+
+- Ran S2 (random stratified) and S4 (leave-one-state-out) on core Set A models in fast mode.
+- S2 is slightly optimistic versus S1 (small positive optimism_vs_s1).
+- S4 macro-F1 drops sharply (state shift), which is an expected hardness signal.
+- Bootstrap CIs and McNemar written to extended_stats.json.
+- Conformal split prediction sets at alpha=0.1 (coverage near 0.89 on synthetic holdout).
+- MoTA T5 forecast uses four period CSVs only; last-value baseline often competitive. Illustrative only.
+- Notebook HTML exports under reports/pdf/notebooks_html/.
+- P1 PDFs 03, 05, 06, 08, 09 deepened to pull live metrics.
