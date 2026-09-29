@@ -179,25 +179,43 @@ Health check: `GET /api/health`
 | `GET` | `/api/dss/priority` | District priority scores (`?state=`) |
 | `GET` | `/api/dss/synthetic-claims` | Sampled synthetic claims for map demo |
 | `GET` | `/api/dss/metrics` | Training metrics for the outcome model |
+| `GET` | `/api/dss/benchmark` | ML leaderboard JSON (additive) |
+| `POST` | `/api/dss/reasons` | Top rejection reasons (additive) |
+| `POST` | `/api/dss/what-if` | Actionable-field what-if (additive) |
+| `POST` | `/api/dss/eta` | ETA days point estimate (additive) |
+| `GET` | `/api/dss/triage` | Ranked pending backlog sample (additive) |
 
 ---
 
 ## ML + Decision Support System
 
-Train the claim-outcome model (LightGBM) from the synthetic FRA claims dataset. Activate `.venv` first:
+### Mini project package (`ml/`)
+
+Full leakage-safe zoo, notebooks, PDFs, and Streamlit demo live under [`ml/`](ml/). See [`ml/README.md`](ml/README.md).
+
+```powershell
+cd ml
+.\scripts\setup.ps1
+.\scripts\run_all.ps1 -Mode fast
+streamlit run app/streamlit_app.py
+```
+
+**Disclosure:** training uses synthetic claims. Real-world performance is unknown. Do not use for real claim decisions.
+
+### Backend artifact (Flask contract)
 
 ```bash
-.\.venv\Scripts\Activate.ps1   # Windows
-python ml/train_claim_outcome.py
+.\ml\.venv\Scripts\Activate.ps1
+python ml/train_claim_outcome.py --legacy-only
 ```
 
 Artifacts written to [`backend/models/`](backend/models/):
 
-- `claim_outcome.joblib` — preprocessor + model
+- `claim_outcome.joblib` — preprocessor + LightGBM (Set A / contract columns)
 - `metrics.json` — holdout accuracy / macro-F1 / per-class recall
 - `priority_by_district.json` — district priority table for the DSS UI
 
-UI route: `/dss` — focus-state priority table, synthetic claim map, SHAP drivers, and CSS scheme layering (PM-KISAN, Jal Jeevan Mission, MGNREGA, DAJGUA). Claim detail pages also show a DSS panel.
+UI route: `/dss` — focus-state priority table, synthetic claim map, SHAP drivers, CSS schemes, ML benchmark table, and what-if panel. Claim detail pages also show a DSS panel.
 
 Synthetic claims CSV lives at [`backend/data/fra_synthetic_claims.csv`](backend/data/fra_synthetic_claims.csv) (and `data/`). `GET /api/claims?source=all` merges Firestore + synthetic rows (default `limit=5000`; use `limit=all` for the full 125k).
 

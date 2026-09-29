@@ -554,5 +554,166 @@ def dss_metrics():
     return jsonify(metrics), 200
 
 
+@app.route("/api/dss/benchmark", methods=["GET"])
+def dss_benchmark():
+    """ML leaderboard JSON from ml/reports/metrics/benchmark_master.csv (additive)."""
+    try:
+        import csv
+        from pathlib import Path
+
+        path = Path(__file__).resolve().parents[1] / "ml" / "reports" / "metrics" / "benchmark_master.csv"
+        if not path.exists():
+            return jsonify({"error": "Benchmark not found. Run ml pipeline first.", "rows": []}), 503
+        with path.open(encoding="utf-8") as fh:
+            rows = list(csv.DictReader(fh))
+        champ_path = path.parent / "champion.json"
+        champion = None
+        if champ_path.exists():
+            import json
+
+            champion = json.loads(champ_path.read_text(encoding="utf-8"))
+        return jsonify(
+            {
+                "rows": rows,
+                "champion": champion,
+                "synthetic": True,
+                "disclosure": "Synthetic data. Not for real claim decisions.",
+            }
+        ), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/api/dss/reasons", methods=["POST"])
+def dss_reasons():
+    """Top rejection reasons for a claim payload (additive; requires auxiliary model)."""
+    try:
+        import joblib
+        from pathlib import Path
+
+        payload = request.get_json() or {}
+        model_path = (
+            Path(__file__).resolve().parents[1]
+            / "ml"
+            / "artifacts"
+            / "models"
+            / "rejection_reason_model.joblib"
+        )
+        if not model_path.exists():
+            return jsonify({"error": "Rejection-reason model not trained yet.", "reasons": []}), 503
+        bundle = joblib.load(model_path)
+        import pandas as pd
+        import sys
+
+        ml_root = Path(__file__).resolve().parents[1] / "ml"
+        if str(ml_root) not in sys.path:
+            sys.path.insert(0, str(ml_root))
+        from fra_dss.preprocessing.pipelines import select_frame
+
+        X = select_frame(pd.DataFrame([payload]), "A")
+        proba = bundle["model"].predict_proba(X)[0]
+        classes = bundle.get("classes") or []
+        order = list(reversed(sorted(range(len(proba)), key=lambda i: proba[i])))[:3]
+        reasons = [
+            {"reason": str(classes[i]), "probability": round(float(proba[i]), 4)}
+            for i in order
+        ]
+        return jsonify({"reasons": reasons, "synthetic": True}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/api/dss/what-if", methods=["POST"])
+def dss_what_if():
+    """Actionable-field what-if search (additive)."""
+    try:
+        import sys
+        from pathlib import Path
+
+        payload = request.get_json() or {}
+        ml_root = Path(__file__).resolve().parents[1] / "ml"
+        if str(ml_root) not in sys.path:
+            sys.path.insert(0, str(ml_root))
+        from fra_dss.dss.what_if import search_what_if
+        from ml.features import claim_to_feature_dict
+
+        features = claim_to_feature_dict(payload)
+        features.update({k: v for k, v in payload.items() if v is not None})
+
+        def _predict(c):
+            return predict_outcome(c)
+
+        changes = search_what_if(_predict, features, target_lift=0.03)
+        return jsonify({"changes": changes, "synthetic": True}), 200
+    except ModelNotReady as e:
+        return jsonify({"error": str(e)}), 503
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/api/dss/eta", methods=["POST"])
+def dss_eta():
+    """ETA point estimate for a claim (additive; resolved-claims regressor)."""
+    try:
+        import joblib
+        import sys
+        from pathlib import Path
+
+        import numpy as np
+        import pandas as pd
+
+        payload = request.get_json() or {}
+        model_path = (
+            Path(__file__).resolve().parents[1]
+            / "ml"
+            / "artifacts"
+            / "models"
+            / "eta_model.joblib"
+        )
+        if not model_path.exists():
+            return jsonify({"error": "ETA model not trained yet."}), 503
+        model = joblib.load(model_path)
+        ml_root = Path(__file__).resolve().parents[1] / "ml"
+        if str(ml_root) not in sys.path:
+            sys.path.insert(0, str(ml_root))
+        from fra_dss.preprocessing.pipelines import select_frame
+
+        X = select_frame(pd.DataFrame([payload]), "A")
+        days = float(np.expm1(model.predict(X)[0]))
+        return jsonify(
+            {
+                "eta_days_point": round(days, 1),
+                "caveat": "Trained on Approved/Rejected only. Pending days may be censored.",
+                "synthetic": True,
+            }
+        ), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/api/dss/triage", methods=["GET"])
+def dss_triage():
+    """Ranked pending claims for backlog triage (additive sample)."""
+    try:
+        state = request.args.get("state")
+        limit = int(request.args.get("limit", 50))
+        claims = sample_synthetic_claims(state=state, limit=max(limit * 3, 150), status="Pending")
+        # Score with reject probability when model ready
+        ranked = []
+        for claim in claims[:limit]:
+            try:
+                pred = predict_from_claim(claim)
+                reject_p = float(pred.get("probabilities", {}).get("Rejected", 0))
+            except Exception:
+                reject_p = 0.0
+            days = float(claim.get("processing_days") or 180)
+            score = 100 * (0.45 * reject_p + 0.35 * min(days / 730.0, 1.0) + 0.20 * min(days / 730.0, 1.0))
+            ranked.append({**claim, "reject_prob": round(reject_p, 4), "triage_score": round(score, 2)})
+        ranked.sort(key=lambda r: r["triage_score"], reverse=True)
+        return jsonify({"claims": ranked[:limit], "count": len(ranked[:limit]), "synthetic": True}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=5001)

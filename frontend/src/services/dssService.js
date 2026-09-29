@@ -81,3 +81,33 @@ export async function fetchDssMetrics() {
   requireApi();
   return apiFetch("/api/dss/metrics");
 }
+
+export async function fetchDssBenchmark() {
+  requireApi();
+  return apiFetch("/api/dss/benchmark");
+}
+
+export async function fetchDssWhatIf(payload) {
+  requireApi();
+  return apiFetch("/api/dss/what-if", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function fetchDssEta(payload) {
+  requireApi();
+  return apiFetch("/api/dss/eta", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function fetchDssTriage({ state, limit = 50 } = {}) {
+  requireApi();
+  const params = new URLSearchParams();
+  if (state) params.set("state", state);
+  if (limit) params.set("limit", String(limit));
+  const q = params.toString() ? `?${params}` : "";
+  return apiFetch(`/api/dss/triage${q}`);
+}

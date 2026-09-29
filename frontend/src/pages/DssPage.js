@@ -11,8 +11,10 @@ import {
   Table,
 } from "react-bootstrap";
 import {
+  fetchDssBenchmark,
   fetchDssMetrics,
   fetchDssPriority,
+  fetchDssWhatIf,
   fetchSyntheticClaims,
   predictDss,
 } from "../services/dssService";
@@ -37,6 +39,8 @@ function DssPage() {
   const [districts, setDistricts] = useState([]);
   const [claims, setClaims] = useState([]);
   const [metrics, setMetrics] = useState(null);
+  const [benchmark, setBenchmark] = useState(null);
+  const [whatIf, setWhatIf] = useState(null);
   const [selected, setSelected] = useState(null);
   const [prediction, setPrediction] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -48,15 +52,18 @@ function DssPage() {
     setError("");
     setSelected(null);
     setPrediction(null);
+    setWhatIf(null);
     try {
-      const [priorityRes, claimsRes, metricsRes] = await Promise.all([
+      const [priorityRes, claimsRes, metricsRes, benchRes] = await Promise.all([
         fetchDssPriority(state),
         fetchSyntheticClaims({ state, limit: 180 }),
         fetchDssMetrics().catch(() => null),
+        fetchDssBenchmark().catch(() => null),
       ]);
       setDistricts(priorityRes.districts || []);
       setClaims(claimsRes.claims || []);
       setMetrics(metricsRes);
+      setBenchmark(benchRes);
     } catch (err) {
       setError(err.message || "Failed to load DSS data.");
     } finally {
@@ -84,13 +91,24 @@ function DssPage() {
     return prediction.schemes.filter((s) => s.eligible);
   }, [prediction]);
 
+  const benchRows = useMemo(() => {
+    const rows = benchmark?.rows || [];
+    return rows
+      .filter((r) => r.feature_set === "A" && r.s1_macro_f1_mean)
+      .sort((a, b) => Number(b.s1_macro_f1_mean) - Number(a.s1_macro_f1_mean))
+      .slice(0, 8);
+  }, [benchmark]);
+
   const onSelectClaim = async (claim) => {
     setSelected(claim);
     setPredicting(true);
     setPrediction(null);
+    setWhatIf(null);
     try {
       const result = await predictDss(claim);
       setPrediction(result);
+      const wi = await fetchDssWhatIf(claim).catch(() => null);
+      setWhatIf(wi);
     } catch (err) {
       setError(err.message || "Prediction failed.");
     } finally {
@@ -344,11 +362,76 @@ function DssPage() {
                           ))
                         )}
                       </div>
+                      {whatIf?.changes?.length > 0 && (
+                        <div className="dss-shap mt-3">
+                          <h3>What-if (actionable fields)</h3>
+                          <ul>
+                            {whatIf.changes.map((c) => (
+                              <li key={`${c.field}-${c.to_value}`}>
+                                <span>
+                                  {c.field}: {String(c.from_value)} to{" "}
+                                  {String(c.to_value)}
+                                </span>
+                                <em>+{(Number(c.approval_lift) * 100).toFixed(1)}%</em>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
               </Col>
             </Row>
+
+            {benchRows.length > 0 && (
+              <Row className="g-3 mt-1">
+                <Col lg={12}>
+                  <div className="dss-panel">
+                    <div className="dss-panel-header">
+                      <h2>ML Benchmark (Set A)</h2>
+                      <span className="text-muted small">
+                        Synthetic data. S1 grouped district CV macro-F1.
+                      </span>
+                    </div>
+                    <div className="dss-table-wrap">
+                      <Table hover responsive size="sm" className="mb-0">
+                        <thead>
+                          <tr>
+                            <th>Model</th>
+                            <th>S1 macro-F1</th>
+                            <th>Final macro-F1</th>
+                            <th>S3 macro-F1</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {benchRows.map((r) => (
+                            <tr key={r.model}>
+                              <td>{r.model}</td>
+                              <td>
+                                {Number(r.s1_macro_f1_mean).toFixed(3)}
+                                {r.s1_macro_f1_std != null &&
+                                  ` ± ${Number(r.s1_macro_f1_std).toFixed(3)}`}
+                              </td>
+                              <td>
+                                {r.final_macro_f1 != null
+                                  ? Number(r.final_macro_f1).toFixed(3)
+                                  : "—"}
+                              </td>
+                              <td>
+                                {r.s3_macro_f1 != null
+                                  ? Number(r.s3_macro_f1).toFixed(3)
+                                  : "—"}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </Table>
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+            )}
           </>
         )}
       </Container>
