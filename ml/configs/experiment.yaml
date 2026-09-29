@@ -1,0 +1,126 @@
+seed: 42
+modes:
+  fast:
+    max_rows: 30000
+    n_trials: 8
+    n_estimators_cap: 80
+    bootstrap_resamples: 200
+  full:
+    max_rows: null
+    n_trials: 40
+    n_estimators_cap: 200
+    bootstrap_resamples: 1000
+
+feature_sets:
+  A:
+    description: Filing-time features only (deployable early-risk model)
+    columns:
+      - state
+      - district
+      - claim_type
+      - applicant_type
+      - land_area_ha
+      - forest_density_class
+      - year_filed
+      - documentation_completeness
+      - gram_sabha_resolution
+  B:
+    description: Process-aware (partly circular; in-flight triage)
+    columns:
+      - state
+      - district
+      - claim_type
+      - applicant_type
+      - land_area_ha
+      - forest_density_class
+      - year_filed
+      - documentation_completeness
+      - gram_sabha_resolution
+      - committee_level_reached
+      - processing_days
+  C:
+    description: Spatial extension of Set A
+    columns:
+      - state
+      - district
+      - claim_type
+      - applicant_type
+      - land_area_ha
+      - forest_density_class
+      - year_filed
+      - documentation_completeness
+      - gram_sabha_resolution
+      - latitude
+      - longitude
+
+forbidden_for_status:
+  - rejection_reason
+  - claim_id
+  - status
+  - village
+  - adjacent_forest_area
+
+champion_rule:
+  primary_metric: macro_f1
+  split: S1
+  feature_set: A
+  tie_breakers:
+    - log_loss_lower
+    - latency_ms_per_1k_lower
+  note: >
+    Champion for the leaderboard is the best S1 macro-F1 on Set A.
+    The shipped backend artifact is always a LightGBM tree model on Set A
+    so TreeExplainer and the Render size budget stay valid.
+
+splits:
+  locked_test_fraction: 0.2
+  s1_folds: 5
+  temporal_train_max_year: 2020
+
+models_p0:
+  - dummy_prior
+  - dummy_stratified
+  - logistic_l2
+  - logistic_elasticnet
+  - decision_tree
+  - random_forest
+  - bagging
+  - gradient_boosting
+  - hist_gradient_boosting
+  - xgboost
+  - lightgbm
+  - soft_voting
+  - stacking_logistic
+
+models_p1:
+  - naive_bayes
+  - knn
+  - sgd_svm
+  - mlp
+  - extra_trees
+  - adaboost
+  - catboost
+  - weighted_voting
+  - stacking_lgbm
+  - blending
+
+search_spaces:
+  lightgbm:
+    n_estimators: [80, 120, 200]
+    max_depth: [4, 6, 8]
+    learning_rate: [0.03, 0.08, 0.15]
+    num_leaves: [15, 31, 63]
+  xgboost:
+    n_estimators: [80, 120, 200]
+    max_depth: [3, 5, 7]
+    learning_rate: [0.03, 0.08, 0.15]
+  random_forest:
+    n_estimators: [100, 200]
+    max_depth: [8, 16, null]
+    min_samples_leaf: [1, 5]
+
+reference_year: 2024
+status_labels:
+  - Approved
+  - Pending
+  - Rejected

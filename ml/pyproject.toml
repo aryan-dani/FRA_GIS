@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fra-dss"
+version = "0.1.0"
+description = "FRA Atlas Decision Support System ML package (synthetic claims demo)"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+fra-dss = "fra_dss.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["fra_dss*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

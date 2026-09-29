@@ -1,0 +1,16 @@
+# Transparent backlog triage priority weights (must sum to 1.0).
+# score = w_reject * P(reject) + w_delay * delay_norm + w_pending_age * age_norm
+weights:
+  rejection_risk: 0.45
+  expected_delay: 0.35
+  pending_age: 0.20
+
+delay_cap_days: 730
+pending_age_cap_days: 730
+human_review_max_confidence: 0.55
+
+district_priority_v2:
+  rejection_risk: 0.40
+  backlog_rate: 0.30
+  mean_eta: 0.20
+  segment_urgency: 0.10
