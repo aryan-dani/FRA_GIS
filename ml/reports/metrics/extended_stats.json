@@ -3,253 +3,253 @@
     {
       "model": "lightgbm",
       "feature_set": "A",
-      "s2_macro_f1_mean": 0.6390151714524599,
-      "s2_macro_f1_std": 0.004974832753627493,
-      "optimism_vs_s1": 0.008245673642966467
+      "s2_macro_f1_mean": 0.6374227850126306,
+      "s2_macro_f1_std": 0.002772109359921267,
+      "optimism_vs_s1": 0.0892131351088109
     },
     {
       "model": "xgboost",
       "feature_set": "A",
-      "s2_macro_f1_mean": 0.650664094050743,
-      "s2_macro_f1_std": 0.005088369645297295,
-      "optimism_vs_s1": 0.0037998403554159177
+      "s2_macro_f1_mean": 0.6522905979314298,
+      "s2_macro_f1_std": 0.0029788026949771652,
+      "optimism_vs_s1": 0.007596344013939382
     },
     {
       "model": "random_forest",
       "feature_set": "A",
-      "s2_macro_f1_mean": 0.6335332563710703,
-      "s2_macro_f1_std": 0.0055962456343966365,
-      "optimism_vs_s1": 0.006469369910434453
+      "s2_macro_f1_mean": 0.6342670678208915,
+      "s2_macro_f1_std": 0.002346196123416482,
+      "optimism_vs_s1": 0.021509228980276296
     },
     {
       "model": "hist_gradient_boosting",
       "feature_set": "A",
-      "s2_macro_f1_mean": 0.6482956702794482,
-      "s2_macro_f1_std": 0.006425700324562985,
-      "optimism_vs_s1": 0.005251555230723626
+      "s2_macro_f1_mean": 0.6525637334873744,
+      "s2_macro_f1_std": 0.002392105816066796,
+      "optimism_vs_s1": 0.00945688534061162
     },
     {
       "model": "catboost",
       "feature_set": "A",
-      "s2_macro_f1_mean": 0.6517281553078771,
-      "s2_macro_f1_std": 0.008092633797088085,
-      "optimism_vs_s1": 0.039206199689481025
+      "s2_macro_f1_mean": 0.6525905078007608,
+      "s2_macro_f1_std": 0.002770261639295157,
+      "optimism_vs_s1": 0.06009311155436814
     },
     {
       "model": "soft_voting",
       "feature_set": "A",
-      "s2_macro_f1_mean": 0.6429817518442651,
-      "s2_macro_f1_std": 0.003287150614558457,
-      "optimism_vs_s1": 0.003059372442247632
+      "s2_macro_f1_mean": 0.6424787835461204,
+      "s2_macro_f1_std": 0.0017514363105842845,
+      "optimism_vs_s1": 0.008493185596522235
     },
     {
       "model": "logistic_l2",
       "feature_set": "A",
-      "s2_macro_f1_mean": 0.619132775185992,
-      "s2_macro_f1_std": 0.007503374029569237,
-      "optimism_vs_s1": 0.02505113036906703
+      "s2_macro_f1_mean": 0.6188759305831726,
+      "s2_macro_f1_std": 0.002134803015519906,
+      "optimism_vs_s1": 0.03092524611284808
     },
     {
       "model": "bagging",
       "feature_set": "A",
-      "s2_macro_f1_mean": 0.6529375203490961,
-      "s2_macro_f1_std": 0.006230964307628841,
-      "optimism_vs_s1": 0.0076460876645516596
+      "s2_macro_f1_mean": 0.6517410556797341,
+      "s2_macro_f1_std": 0.0026074950016513744,
+      "optimism_vs_s1": 0.0005182349021748411
     }
   ],
   "s4": [
     {
       "model": "lightgbm",
       "feature_set": "A",
-      "s4_macro_f1_mean": 0.4034329958951536,
+      "s4_macro_f1_mean": 0.39079460568756863,
       "s4_per_state": [
         {
           "state": "Madhya Pradesh",
-          "macro_f1": 0.4784180070925477
+          "macro_f1": 0.47875862539211544
         },
         {
           "state": "Odisha",
-          "macro_f1": 0.40751517916596347
+          "macro_f1": 0.44351684458162627
         },
         {
           "state": "Telangana",
-          "macro_f1": 0.36219296496718706
+          "macro_f1": 0.3504363370270179
         },
         {
           "state": "Tripura",
-          "macro_f1": 0.36560583235491606
+          "macro_f1": 0.290466615749515
         }
       ]
     },
     {
       "model": "xgboost",
       "feature_set": "A",
-      "s4_macro_f1_mean": 0.4084871902669463,
+      "s4_macro_f1_mean": 0.3773795509635005,
       "s4_per_state": [
         {
           "state": "Madhya Pradesh",
-          "macro_f1": 0.412034895244998
+          "macro_f1": 0.3986809078426039
         },
         {
           "state": "Odisha",
-          "macro_f1": 0.47544892125467014
+          "macro_f1": 0.4940806792951015
         },
         {
           "state": "Telangana",
-          "macro_f1": 0.3558919380593218
+          "macro_f1": 0.3606749797402606
         },
         {
           "state": "Tripura",
-          "macro_f1": 0.3905730065087954
+          "macro_f1": 0.256081636976036
         }
       ]
     },
     {
       "model": "random_forest",
       "feature_set": "A",
-      "s4_macro_f1_mean": 0.417706063321395,
+      "s4_macro_f1_mean": 0.3950581618758157,
       "s4_per_state": [
         {
           "state": "Madhya Pradesh",
-          "macro_f1": 0.4805985062262475
+          "macro_f1": 0.4775993215960927
         },
         {
           "state": "Odisha",
-          "macro_f1": 0.48670153267415356
+          "macro_f1": 0.4570309402543192
         },
         {
           "state": "Telangana",
-          "macro_f1": 0.3548413454232711
+          "macro_f1": 0.3497721692545362
         },
         {
           "state": "Tripura",
-          "macro_f1": 0.34868286896190764
+          "macro_f1": 0.2958302163983149
         }
       ]
     },
     {
       "model": "hist_gradient_boosting",
       "feature_set": "A",
-      "s4_macro_f1_mean": 0.4109783923050959,
+      "s4_macro_f1_mean": 0.371250032973891,
       "s4_per_state": [
         {
           "state": "Madhya Pradesh",
-          "macro_f1": 0.4155108009624648
+          "macro_f1": 0.3876177957772658
         },
         {
           "state": "Odisha",
-          "macro_f1": 0.41673669784578554
+          "macro_f1": 0.49419443551368863
         },
         {
           "state": "Telangana",
-          "macro_f1": 0.355803051204086
+          "macro_f1": 0.36145297687516814
         },
         {
           "state": "Tripura",
-          "macro_f1": 0.4558630192080472
+          "macro_f1": 0.24173492372944128
         }
       ]
     },
     {
       "model": "catboost",
       "feature_set": "A",
-      "s4_macro_f1_mean": 0.4329339565875996,
+      "s4_macro_f1_mean": 0.3813103846360044,
       "s4_per_state": [
         {
           "state": "Madhya Pradesh",
-          "macro_f1": 0.37876707104700696
+          "macro_f1": 0.469882312685554
         },
         {
           "state": "Odisha",
-          "macro_f1": 0.48812096595239707
+          "macro_f1": 0.4856759867477443
         },
         {
           "state": "Telangana",
-          "macro_f1": 0.378129698832063
+          "macro_f1": 0.3744172839078434
         },
         {
           "state": "Tripura",
-          "macro_f1": 0.4867180905189312
+          "macro_f1": 0.19526595520287593
         }
       ]
     },
     {
       "model": "soft_voting",
       "feature_set": "A",
-      "s4_macro_f1_mean": 0.4175288176945261,
+      "s4_macro_f1_mean": 0.39535177316652304,
       "s4_per_state": [
         {
           "state": "Madhya Pradesh",
-          "macro_f1": 0.4775970386796411
+          "macro_f1": 0.4786181671550051
         },
         {
           "state": "Odisha",
-          "macro_f1": 0.44634358585187045
+          "macro_f1": 0.4605001766831647
         },
         {
           "state": "Telangana",
-          "macro_f1": 0.35214391816884977
+          "macro_f1": 0.3500578832492914
         },
         {
           "state": "Tripura",
-          "macro_f1": 0.39403072807774303
+          "macro_f1": 0.29223086557863104
         }
       ]
     },
     {
       "model": "logistic_l2",
       "feature_set": "A",
-      "s4_macro_f1_mean": 0.47508199796003525,
+      "s4_macro_f1_mean": 0.4587551423747238,
       "s4_per_state": [
         {
           "state": "Madhya Pradesh",
-          "macro_f1": 0.47940329606545823
+          "macro_f1": 0.47270949284348224
         },
         {
           "state": "Odisha",
-          "macro_f1": 0.4803790638189949
+          "macro_f1": 0.47809924345201793
         },
         {
           "state": "Telangana",
-          "macro_f1": 0.37415928829139
+          "macro_f1": 0.30817063399763844
         },
         {
           "state": "Tripura",
-          "macro_f1": 0.5663863436642981
+          "macro_f1": 0.5760411992057567
         }
       ]
     },
     {
       "model": "bagging",
       "feature_set": "A",
-      "s4_macro_f1_mean": 0.41832607824835405,
+      "s4_macro_f1_mean": 0.4144176447257764,
       "s4_per_state": [
         {
           "state": "Madhya Pradesh",
-          "macro_f1": 0.42686156535870107
+          "macro_f1": 0.4665669240617607
         },
         {
           "state": "Odisha",
-          "macro_f1": 0.4548626929382465
+          "macro_f1": 0.48576990130231273
         },
         {
           "state": "Telangana",
-          "macro_f1": 0.37319313754549577
+          "macro_f1": 0.36505570599980536
         },
         {
           "state": "Tripura",
-          "macro_f1": 0.41838691715097287
+          "macro_f1": 0.3402780475392269
         }
       ]
     }
   ],
   "stats": {
     "synthetic": true,
-    "mode": "fast",
+    "mode": "full",
     "feature_set": "A",
     "friedman_nemenyi": {
-      "friedman_stat": 23.14285714285714,
-      "friedman_p": 0.0007500168565731797,
+      "friedman_stat": 27.400000000000006,
+      "friedman_p": 0.0002823036951306332,
       "models": [
         "lightgbm",
         "xgboost",
@@ -257,70 +257,88 @@
         "hist_gradient_boosting",
         "catboost",
         "soft_voting",
+        "logistic_l2",
         "bagging"
       ],
       "nemenyi_pvalues": {
         "lightgbm": {
           "lightgbm": 1.0,
-          "xgboost": 0.053,
-          "random_forest": 0.9972,
-          "hist_gradient_boosting": 0.6757,
-          "catboost": 0.9995,
-          "soft_voting": 0.844,
-          "bagging": 0.2239
+          "xgboost": 0.0597,
+          "random_forest": 0.9695,
+          "hist_gradient_boosting": 0.0274,
+          "catboost": 0.8483,
+          "soft_voting": 0.4375,
+          "logistic_l2": 0.9999,
+          "bagging": 0.0027
         },
         "xgboost": {
-          "lightgbm": 0.053,
+          "lightgbm": 0.0597,
           "xgboost": 1.0,
-          "random_forest": 0.0081,
-          "hist_gradient_boosting": 0.844,
-          "catboost": 0.0134,
-          "soft_voting": 0.6757,
-          "bagging": 0.9972
+          "random_forest": 0.5255,
+          "hist_gradient_boosting": 1.0,
+          "catboost": 0.7805,
+          "soft_voting": 0.9858,
+          "logistic_l2": 0.1624,
+          "bagging": 0.9858
         },
         "random_forest": {
-          "lightgbm": 0.9972,
-          "xgboost": 0.0081,
+          "lightgbm": 0.9695,
+          "xgboost": 0.5255,
           "random_forest": 1.0,
-          "hist_gradient_boosting": 0.2976,
-          "catboost": 1.0,
-          "soft_voting": 0.4782,
-          "bagging": 0.053
+          "hist_gradient_boosting": 0.3548,
+          "catboost": 0.9999,
+          "soft_voting": 0.9695,
+          "logistic_l2": 0.9982,
+          "bagging": 0.0853
         },
         "hist_gradient_boosting": {
-          "lightgbm": 0.6757,
-          "xgboost": 0.844,
-          "random_forest": 0.2976,
+          "lightgbm": 0.0274,
+          "xgboost": 1.0,
+          "random_forest": 0.3548,
           "hist_gradient_boosting": 1.0,
-          "catboost": 0.3834,
-          "soft_voting": 0.9999,
-          "bagging": 0.9906
+          "catboost": 0.615,
+          "soft_voting": 0.9426,
+          "logistic_l2": 0.0853,
+          "bagging": 0.9982
         },
         "catboost": {
-          "lightgbm": 0.9995,
-          "xgboost": 0.0134,
-          "random_forest": 1.0,
-          "hist_gradient_boosting": 0.3834,
+          "lightgbm": 0.8483,
+          "xgboost": 0.7805,
+          "random_forest": 0.9999,
+          "hist_gradient_boosting": 0.615,
           "catboost": 1.0,
-          "soft_voting": 0.5776,
-          "bagging": 0.0794
+          "soft_voting": 0.9982,
+          "logistic_l2": 0.9695,
+          "bagging": 0.216
         },
         "soft_voting": {
-          "lightgbm": 0.844,
-          "xgboost": 0.6757,
-          "random_forest": 0.4782,
-          "hist_gradient_boosting": 0.9999,
-          "catboost": 0.5776,
+          "lightgbm": 0.4375,
+          "xgboost": 0.9858,
+          "random_forest": 0.9695,
+          "hist_gradient_boosting": 0.9426,
+          "catboost": 0.9982,
           "soft_voting": 1.0,
-          "bagging": 0.9485
+          "logistic_l2": 0.7015,
+          "bagging": 0.615
+        },
+        "logistic_l2": {
+          "lightgbm": 0.9999,
+          "xgboost": 0.1624,
+          "random_forest": 0.9982,
+          "hist_gradient_boosting": 0.0853,
+          "catboost": 0.9695,
+          "soft_voting": 0.7015,
+          "logistic_l2": 1.0,
+          "bagging": 0.0115
         },
         "bagging": {
-          "lightgbm": 0.2239,
-          "xgboost": 0.9972,
-          "random_forest": 0.053,
-          "hist_gradient_boosting": 0.9906,
-          "catboost": 0.0794,
-          "soft_voting": 0.9485,
+          "lightgbm": 0.0027,
+          "xgboost": 0.9858,
+          "random_forest": 0.0853,
+          "hist_gradient_boosting": 0.9982,
+          "catboost": 0.216,
+          "soft_voting": 0.615,
+          "logistic_l2": 0.0115,
           "bagging": 1.0
         }
       }
@@ -332,25 +350,25 @@
       "pvalue": 0.0625
     },
     "mcnemar": {
-      "a": "xgboost",
+      "a": "bagging",
       "b": "lightgbm",
-      "statistic": 14.822015725518227,
-      "pvalue": 0.00011814815900463112,
-      "n01": 627,
-      "n10": 772
+      "statistic": 449.5316766211604,
+      "pvalue": 9.12086070785514e-100,
+      "n01": 3661,
+      "n10": 5715
     },
     "bootstrap_ci": {
-      "xgboost": {
-        "mean": 0.5693665955517334,
-        "ci_low": 0.556222927577374,
-        "ci_high": 0.5804961345473231
+      "bagging": {
+        "mean": 0.5776749385805315,
+        "ci_low": 0.5717586544924682,
+        "ci_high": 0.5838244265750968
       },
       "lightgbm": {
-        "mean": 0.6289945634991585,
-        "ci_low": 0.6167149618886016,
-        "ci_high": 0.6390508359036629
+        "mean": 0.5921925012176992,
+        "ci_low": 0.5864329420439558,
+        "ci_high": 0.5981456560467499
       },
-      "n_boot": 200
+      "n_boot": 1000
     }
   },
   "disclosure": "Synthetic data. S2 random splits are optimistic versus S1 grouped splits."

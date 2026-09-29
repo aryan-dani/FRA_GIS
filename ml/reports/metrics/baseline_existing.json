@@ -1,15 +1,11 @@
 {
   "source": "backend/models/metrics.json",
   "dataset_sha256": "0b328e290df7d38d02fb71aebad71458f90ca8e892ec79d8197cc78fb7e75f78",
-  "git_sha": "dce4b637f14f98c97b4a57936e1ae45182e1fe07",
+  "git_sha": "84db825980cb33542b08d17fa590f517c2c89a87",
   "synthetic": true,
-  "accuracy": 0.832,
-  "macro_f1": 0.817,
-  "per_class_recall": {
-    "Approved": 0.8452,
-    "Pending": 0.8593,
-    "Rejected": 0.7649
-  },
+  "accuracy": 0.6757690978223297,
+  "macro_f1": 0.5690448456514766,
+  "per_class_recall": null,
   "model": "LGBMClassifier",
-  "holdout": "GroupShuffleSplit by district (20% test)"
+  "holdout": "See ml/reports/metrics for grouped CV; artifact refit on run sample"
 }

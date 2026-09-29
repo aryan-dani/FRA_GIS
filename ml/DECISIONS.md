@@ -59,10 +59,16 @@ Every judgment call for the FRA DSS ML mini project. Dates use ISO format.
 - Pre-declared rule selected `xgboost` by S1 macro-F1 on Set A in fast mode.
 - Shipped backend artifact remains LightGBM for TreeExplainer and Render size (see earlier decision).
 
+## 2026-03-29: Full-mode (125k) champion is Bagging on Set A
+
+- Pre-declared S1 rule selected `bagging` (S1 macro-F1 about 0.651) over xgboost (about 0.645).
+- Final holdout macro-F1 for bagging about 0.578; Set B remains much higher (leakage-aware upper bound).
+- Shipped `backend/models/claim_outcome.joblib` is still Set A LightGBM (contract), synced from the full run.
+- Full run wall time about 21.8 minutes (`run_timing.json`).
 
 ## 2026-03-29: Extended stats and stretch tasks
 
-- Ran S2 (random stratified) and S4 (leave-one-state-out) on core Set A models in fast mode.
+- Ran S2 (random stratified) and S4 (leave-one-state-out) on core Set A models; refreshed on full mode after the 125k zoo completed.
 - S2 is slightly optimistic versus S1 (small positive optimism_vs_s1).
 - S4 macro-F1 drops sharply (state shift), which is an expected hardness signal.
 - Bootstrap CIs and McNemar written to extended_stats.json.

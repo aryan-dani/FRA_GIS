@@ -1,13 +1,13 @@
 {
-  "n_rows": 30000,
-  "mode": "fast",
-  "accuracy": 0.6757690978223297,
-  "macro_f1": 0.5690448456514766,
+  "n_rows": 125000,
+  "mode": "full",
+  "accuracy": 0.67804531986813,
+  "macro_f1": 0.5776477399091471,
   "model": "LGBMClassifier",
   "feature_set": "A_contract",
   "synthetic": true,
   "dataset_sha256": "0b328e290df7d38d02fb71aebad71458f90ca8e892ec79d8197cc78fb7e75f78",
-  "git_sha": "dce4b637f14f98c97b4a57936e1ae45182e1fe07",
+  "git_sha": "929528f1a1ccd633813a1e415e168e5d0865acf0",
   "holdout": "See ml/reports/metrics for grouped CV; artifact refit on run sample",
-  "s1_macro_f1": 0.6468642536953271
+  "s1_macro_f1": 0.6512228207775592
 }

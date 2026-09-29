@@ -1,8 +1,8 @@
 {
-  "mode": "fast",
-  "n_rows": 30000,
+  "mode": "full",
+  "n_rows": 125000,
   "dataset_sha256": "0b328e290df7d38d02fb71aebad71458f90ca8e892ec79d8197cc78fb7e75f78",
-  "git_sha": "dce4b637f14f98c97b4a57936e1ae45182e1fe07",
+  "git_sha": "84db825980cb33542b08d17fa590f517c2c89a87",
   "seed": 42,
   "synthetic": true,
   "disclosure": "This dataset is synthetic. Scores may reflect generator rules. Real-world performance is unknown."

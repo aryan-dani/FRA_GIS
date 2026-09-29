@@ -1,7 +1,7 @@
 {
-  "n_train": 24214,
-  "n_test": 5786,
-  "test_fraction": 0.19286666666666666,
+  "n_train": 101037,
+  "n_test": 23963,
+  "test_fraction": 0.191704,
   "train_districts": [
     "Adilabad",
     "Betul",
@@ -9,30 +9,30 @@
     "Chhindwara",
     "Dhalai",
     "Dindori",
-    "Gomati",
     "Hoshangabad",
     "Kalahandi",
     "Kandhamal",
     "Khammam",
     "Koraput",
     "Kumuram Bheem Asifabad",
+    "Mandla",
     "Mulugu",
     "Nagarkurnool",
     "North Tripura",
     "Rayagada",
-    "Shahdol",
     "Sidhi",
+    "Sipahijala",
+    "South Tripura",
     "Sundargarh",
-    "Umaria",
-    "West Tripura"
+    "Umaria"
   ],
   "test_districts": [
     "Balaghat",
-    "Mandla",
+    "Gomati",
     "Mayurbhanj",
     "Nabarangpur",
-    "Sipahijala",
-    "South Tripura"
+    "Shahdol",
+    "West Tripura"
   ],
   "overlap_districts": [],
   "seed": 42

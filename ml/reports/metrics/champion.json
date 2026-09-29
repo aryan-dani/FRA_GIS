@@ -1,16 +1,15 @@
 {
-  "model": "xgboost",
+  "rule": "S1 macro_f1 on Set A",
+  "model": "bagging",
   "feature_set": "A",
-  "s1_macro_f1_mean": 0.6468642536953271,
-  "s1_macro_f1_std": 0.0109464513248765,
-  "s1_log_loss_mean": 0.7040239810943604,
-  "s3_macro_f1": 0.5211228499255361,
-  "s3_accuracy": 0.5011820330969267,
-  "final_macro_f1": 0.5690448456514766,
-  "final_accuracy": 0.6757690978223297,
-  "final_log_loss": 0.6494698524475098,
-  "latency_ms_per_1k": 6.068873142453688,
-  "train_seconds": 0.3852621999976691,
-  "error": null,
-  "rule": "S1 macro_f1 on Set A"
+  "s1_macro_f1_mean": 0.6512228207775592,
+  "s1_macro_f1_std": 0.008133974052273845,
+  "s1_log_loss_mean": 0.7122904938286985,
+  "s3_macro_f1": 0.41142453278282903,
+  "s3_accuracy": 0.4625675522467027,
+  "final_macro_f1": 0.5776477399091471,
+  "final_accuracy": 0.67804531986813,
+  "final_log_loss": 0.6826631244589397,
+  "latency_ms_per_1k": 10.341655886016342,
+  "train_seconds": 1.643704299989622
 }
