@@ -1,0 +1,14 @@
+{
+  "kmeans": {
+    "silhouette": 0.7340275578697424,
+    "davies_bouldin": 0.3873858081546436
+  },
+  "gmm": {
+    "silhouette": 0.7340275578697424,
+    "davies_bouldin": 0.3873858081546436
+  },
+  "agglo": {
+    "silhouette": 0.7340275578697424,
+    "davies_bouldin": 0.3873858081546436
+  }
+}

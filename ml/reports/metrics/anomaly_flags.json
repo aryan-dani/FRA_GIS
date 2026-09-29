@@ -1,0 +1,5 @@
+{
+  "n_flagged": 582,
+  "rate": 0.0194,
+  "rule": "IsolationForest on land_area_ha (demo)"
+}

@@ -1,0 +1,31 @@
+{
+  "metrics": {
+    "logistic_l2": {
+      "error": "LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'"
+    },
+    "random_forest": {
+      "macro_f1": 0.12630808311481478,
+      "top3_accuracy": 0.43066764490095377
+    },
+    "lightgbm": {
+      "macro_f1": 0.12081117810380682,
+      "top3_accuracy": 0.38958180484225974
+    },
+    "xgboost": {
+      "macro_f1": 0.07687238317021614,
+      "top3_accuracy": 0.5194424064563463
+    }
+  },
+  "champion": "random_forest",
+  "classes": [
+    "Claim on non-forest land",
+    "Duplicate claim on same land",
+    "Incorrect land classification",
+    "Lack of documentary evidence of occupation",
+    "Land not occupied before 13 December 2005 cutoff",
+    "Non-ST status of claimant",
+    "OTFD unable to prove 3-generation/75-year residence",
+    "Procedural/illegal rejection (forest guard, not FRC/Gram Sabha)"
+  ],
+  "note": "Some reasons may be recoverable from fields (e.g. applicant_type). This is expected on synthetic data."
+}

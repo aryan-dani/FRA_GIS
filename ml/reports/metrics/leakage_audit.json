@@ -1,0 +1,107 @@
+{
+  "synthetic": true,
+  "single_feature_macro_f1": {
+    "state": 0.2810045198578038,
+    "district": 0.3179786603712598,
+    "village": 0.22567594530254478,
+    "adjacent_forest_area": 0.32956604505061443,
+    "latitude": 0.3311888188167906,
+    "longitude": 0.3525841161690793,
+    "claim_type": 0.21056632411699217,
+    "applicant_type": 0.21056632411699217,
+    "land_area_ha": 0.2127848002307442,
+    "forest_density_class": 0.21056632411699217,
+    "year_filed": 0.2886872582580245,
+    "documentation_completeness": 0.4702941859183385,
+    "gram_sabha_resolution": 0.31403329941348446,
+    "processing_days": 0.46310320179880954,
+    "committee_level_reached": 0.5045450102475196,
+    "rejection_reason": 0.5826335820250447
+  },
+  "mutual_information": {
+    "rejection_reason": 0.5255918341240056,
+    "committee_level_reached": 0.2545388523967571,
+    "processing_days": 0.21066359984252236,
+    "documentation_completeness": 0.20067252010051528,
+    "state": 0.08213408269665656,
+    "latitude": 0.07681804076455534,
+    "adjacent_forest_area": 0.07239365653746921,
+    "district": 0.07132125865181016,
+    "longitude": 0.06936834238452283,
+    "village": 0.06332759154953904,
+    "gram_sabha_resolution": 0.04196481089972948,
+    "year_filed": 0.029466628025574426,
+    "applicant_type": 0.006436531259931044,
+    "claim_type": 0.003996818139763159,
+    "land_area_ha": 0.0037570373481845554,
+    "forest_density_class": 0.0
+  },
+  "feature_set_checks": {
+    "A": {
+      "columns": [
+        "state",
+        "district",
+        "claim_type",
+        "applicant_type",
+        "land_area_ha",
+        "forest_density_class",
+        "year_filed",
+        "documentation_completeness",
+        "gram_sabha_resolution"
+      ],
+      "forbidden_present": [],
+      "process_features_present": [],
+      "pass": true,
+      "notes": "Filing-time features only (deployable early-risk model)"
+    },
+    "B": {
+      "columns": [
+        "state",
+        "district",
+        "claim_type",
+        "applicant_type",
+        "land_area_ha",
+        "forest_density_class",
+        "year_filed",
+        "documentation_completeness",
+        "gram_sabha_resolution",
+        "committee_level_reached",
+        "processing_days"
+      ],
+      "forbidden_present": [],
+      "process_features_present": [
+        "committee_level_reached",
+        "processing_days"
+      ],
+      "pass": true,
+      "notes": "Process-aware (partly circular; in-flight triage)"
+    },
+    "C": {
+      "columns": [
+        "state",
+        "district",
+        "claim_type",
+        "applicant_type",
+        "land_area_ha",
+        "forest_density_class",
+        "year_filed",
+        "documentation_completeness",
+        "gram_sabha_resolution",
+        "latitude",
+        "longitude"
+      ],
+      "forbidden_present": [],
+      "process_features_present": [],
+      "pass": true,
+      "notes": "Spatial extension of Set A"
+    }
+  },
+  "rejection_reason_probe": {
+    "column": "rejection_reason",
+    "single_feature_macro_f1": 0.5826335820250447,
+    "allowed_in_set_A": false,
+    "allowed_in_set_B": false,
+    "reason": "Non-null only when status is Rejected: perfect target leakage for status."
+  },
+  "process_leakage_note": "committee_level_reached and processing_days are partly consequences of outcome. Set B is process-aware and documented as partly circular."
+}

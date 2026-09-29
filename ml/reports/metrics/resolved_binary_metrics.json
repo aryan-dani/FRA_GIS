@@ -1,0 +1,20 @@
+{
+  "metrics": {
+    "logistic_l2": {
+      "error": "LogisticRegression.__init__() got an unexpected keyword argument 'multi_class'"
+    },
+    "random_forest": {
+      "macro_f1": 0.8523889148152757,
+      "accuracy": 0.8618436970723445
+    },
+    "lightgbm": {
+      "macro_f1": 0.858989742504833,
+      "accuracy": 0.8686184369707235
+    },
+    "xgboost": {
+      "error": "value 0 for Parameter num_class should be greater equal to 1\nnum_class: Number of output class in the multi-class classification."
+    }
+  },
+  "champion": "lightgbm",
+  "positive_class": "Rejected"
+}

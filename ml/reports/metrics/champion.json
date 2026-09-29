@@ -1,0 +1,16 @@
+{
+  "model": "xgboost",
+  "feature_set": "A",
+  "s1_macro_f1_mean": 0.6468642536953271,
+  "s1_macro_f1_std": 0.0109464513248765,
+  "s1_log_loss_mean": 0.7040239810943604,
+  "s3_macro_f1": 0.5211228499255361,
+  "s3_accuracy": 0.5011820330969267,
+  "final_macro_f1": 0.5690448456514766,
+  "final_accuracy": 0.6757690978223297,
+  "final_log_loss": 0.6494698524475098,
+  "latency_ms_per_1k": 6.068873142453688,
+  "train_seconds": 0.3852621999976691,
+  "error": null,
+  "rule": "S1 macro_f1 on Set A"
+}

@@ -1,0 +1,23 @@
+{
+  "n_rows": 125000,
+  "n_cols": 18,
+  "missing": {
+    "village": 12093,
+    "adjacent_forest_area": 125000,
+    "rejection_reason": 96613
+  },
+  "status_counts": {
+    "Approved": 57709,
+    "Pending": 38904,
+    "Rejected": 28387
+  },
+  "n_districts": 28,
+  "n_villages": 1729,
+  "land_area_ha": {
+    "median": 1.43,
+    "p99": 73.8401999999999,
+    "max": 500.0
+  },
+  "valid": true,
+  "synthetic": true
+}
