@@ -1,0 +1,10 @@
+{
+  "A": {
+    "macro_f1": 0.6441022369098802
+  },
+  "B": {
+    "macro_f1": 0.8246380485009869
+  },
+  "gap_B_minus_A": 0.18053581159110665,
+  "interpretation": "Positive gap means process-stage features lift macro-F1. That lift is partly circular because committee level and processing days are correlated with outcome."
+}

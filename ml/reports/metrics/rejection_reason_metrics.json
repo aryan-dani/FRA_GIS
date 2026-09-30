@@ -1,0 +1,32 @@
+{
+  "metrics": {
+    "logistic_l2": {
+      "macro_f1": 0.10668685245133111,
+      "top3_accuracy": 0.37900669249735824
+    },
+    "random_forest": {
+      "macro_f1": 0.12676502012826477,
+      "top3_accuracy": 0.4246213455442057
+    },
+    "lightgbm": {
+      "macro_f1": 0.11559875639479106,
+      "top3_accuracy": 0.3848185980979218
+    },
+    "xgboost": {
+      "macro_f1": 0.06393282603902474,
+      "top3_accuracy": 0.5389221556886228
+    }
+  },
+  "champion": "random_forest",
+  "classes": [
+    "Claim on non-forest land",
+    "Duplicate claim on same land",
+    "Incorrect land classification",
+    "Lack of documentary evidence of occupation",
+    "Land not occupied before 13 December 2005 cutoff",
+    "Non-ST status of claimant",
+    "OTFD unable to prove 3-generation/75-year residence",
+    "Procedural/illegal rejection (forest guard, not FRC/Gram Sabha)"
+  ],
+  "note": "Some reasons may be recoverable from fields (e.g. applicant_type). This is expected on synthetic data."
+}

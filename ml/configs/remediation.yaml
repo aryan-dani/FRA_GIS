@@ -1,0 +1,23 @@
+# Demo advisory text only. Synthetic data. Not statutory guidance.
+version: 1
+disclaimer: >
+  These remediations are generic demo suggestions for the synthetic FRA DSS.
+  They are not official MoTA instructions and must not be treated as legal advice.
+
+reasons:
+  Lack of documentary evidence of occupation:
+    advice: Gather occupation evidence such as receipts, photographs, or neighbour affidavits where permitted by local procedure.
+  Incomplete application / missing documents:
+    advice: Complete the application checklist and resubmit missing annexures through the Gram Sabha channel.
+  Non-ST status / eligibility dispute:
+    advice: Verify applicant category documentation with the competent authority before refiling.
+  Overlapping / conflicting claims:
+    advice: Resolve parcel boundaries with the FRC and neighbouring claimants before escalation.
+  Encroachment after cut-off date:
+    advice: Document occupancy timeline carefully; cut-off disputes need committee review.
+  Land not forest land / survey mismatch:
+    advice: Cross-check survey numbers against forest department maps and village records.
+  Procedural / jurisdiction issue:
+    advice: Confirm the correct committee level and jurisdiction before reopening the claim.
+  Other / not specified:
+    advice: Request a written clarification from the last committee that handled the claim.

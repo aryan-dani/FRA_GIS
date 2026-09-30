@@ -42,6 +42,8 @@ if (-not (Test-Path $VenvPython)) {
 
 Write-Host "Ensuring backend dependencies in .venv ..." -ForegroundColor Cyan
 & $VenvPython -m pip install -q -r (Join-Path $Root "backend\requirements.txt")
+# Lightweight install so auxiliary DSS models (ETA / reasons) can unpickle fra_dss pipelines
+& $VenvPython -m pip install -q -e (Join-Path $Root "ml") --no-deps
 
 $FrontendEnv = Join-Path $Root "frontend\.env"
 $FrontendEnvDev = Join-Path $Root "frontend\.env.development"
@@ -132,7 +134,8 @@ Write-Host ""
 Write-Host "FRA Atlas is starting:" -ForegroundColor Cyan
 Write-Host "  Frontend  http://localhost:3000"
 Write-Host "  Backend   http://localhost:5001/api/health"
-Write-Host "  Claims    http://localhost:3000/claims-data"
-Write-Host "  DSS       http://localhost:3000/dss"
+Write-Host "  Claims    http://localhost:3000/#/claims-data"
+Write-Host "  DSS       http://localhost:3000/#/dss"
 Write-Host ""
+Write-Host "Tip: .\start-app.ps1 is the preferred one-command launcher." -ForegroundColor DarkGray
 Write-Host "Close those windows (or Ctrl+C in each) to stop." -ForegroundColor Yellow

@@ -94,6 +94,7 @@ from dss import (  # noqa: E402
     sample_synthetic_claims,
     scheme_catalog,
 )
+from dss.model_service import predict_outcome  # noqa: E402
 
 
 @app.route("/api/health", methods=["GET"])
@@ -552,6 +553,116 @@ def dss_metrics():
     if metrics is None:
         return jsonify({"error": "Metrics not found. Train the model first."}), 503
     return jsonify(metrics), 200
+
+
+@app.route("/api/dss/benchmark", methods=["GET"])
+def dss_benchmark():
+    """ML leaderboard JSON from ml/reports/metrics/benchmark_master.csv (additive)."""
+    try:
+        import csv
+        from pathlib import Path
+
+        path = Path(__file__).resolve().parents[1] / "ml" / "reports" / "metrics" / "benchmark_master.csv"
+        if not path.exists():
+            return jsonify({"error": "Benchmark not found. Run ml pipeline first.", "rows": []}), 503
+        with path.open(encoding="utf-8") as fh:
+            rows = list(csv.DictReader(fh))
+        champ_path = path.parent / "champion.json"
+        champion = None
+        if champ_path.exists():
+            import json
+
+            champion = json.loads(champ_path.read_text(encoding="utf-8"))
+        return jsonify(
+            {
+                "rows": rows,
+                "champion": champion,
+                "synthetic": True,
+                "disclosure": "Synthetic data. Not for real claim decisions.",
+            }
+        ), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/api/dss/reasons", methods=["POST"])
+def dss_reasons():
+    """Top rejection reasons for a claim payload (additive; requires auxiliary model)."""
+    try:
+        from dss.aux_models import predict_rejection_reasons
+        from ml.features import claim_to_feature_dict
+
+        payload = request.get_json() or {}
+        features = claim_to_feature_dict(payload)
+        features.update({k: v for k, v in payload.items() if v is not None and v != ""})
+        return jsonify(predict_rejection_reasons(features)), 200
+    except FileNotFoundError as e:
+        return jsonify({"error": str(e), "reasons": []}), 503
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/api/dss/what-if", methods=["POST"])
+def dss_what_if():
+    """Actionable-field what-if search (additive)."""
+    try:
+        from dss.what_if import search_what_if
+        from ml.features import claim_to_feature_dict
+
+        payload = request.get_json() or {}
+        features = claim_to_feature_dict(payload)
+        features.update({k: v for k, v in payload.items() if v is not None and v != ""})
+
+        def _predict(c):
+            return predict_outcome(c)
+
+        changes = search_what_if(_predict, features, target_lift=0.03)
+        return jsonify({"changes": changes, "synthetic": True}), 200
+    except ModelNotReady as e:
+        return jsonify({"error": str(e)}), 503
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/api/dss/eta", methods=["POST"])
+def dss_eta():
+    """ETA point estimate for a claim (additive; resolved-claims regressor)."""
+    try:
+        from dss.aux_models import predict_eta_days
+        from ml.features import claim_to_feature_dict
+
+        payload = request.get_json() or {}
+        features = claim_to_feature_dict(payload)
+        features.update({k: v for k, v in payload.items() if v is not None and v != ""})
+        return jsonify(predict_eta_days(features)), 200
+    except FileNotFoundError as e:
+        return jsonify({"error": str(e)}), 503
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/api/dss/triage", methods=["GET"])
+def dss_triage():
+    """Ranked pending claims for backlog triage (additive sample)."""
+    try:
+        state = request.args.get("state")
+        limit = int(request.args.get("limit", 50))
+        claims = sample_synthetic_claims(state=state, limit=max(limit * 3, 150), status="Pending")
+        # Score with reject probability when model ready
+        ranked = []
+        for claim in claims[:limit]:
+            try:
+                pred = predict_from_claim(claim)
+                reject_p = float(pred.get("probabilities", {}).get("Rejected", 0))
+            except Exception:
+                reject_p = 0.0
+            days = float(claim.get("processing_days") or 180)
+            score = 100 * (0.45 * reject_p + 0.35 * min(days / 730.0, 1.0) + 0.20 * min(days / 730.0, 1.0))
+            ranked.append({**claim, "reject_prob": round(reject_p, 4), "triage_score": round(score, 2)})
+        ranked.sort(key=lambda r: r["triage_score"], reverse=True)
+        return jsonify({"claims": ranked[:limit], "count": len(ranked[:limit]), "synthetic": True}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 
 if __name__ == "__main__":

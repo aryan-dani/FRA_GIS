@@ -7,6 +7,7 @@ __pycache__/
 env/
 venv/
 .venv/
+ml/.venv/
 
 # IDEs
 .vscode/
@@ -45,3 +46,14 @@ yarn-debug.log*
 yarn-error.log*
 
 backend/.env.render
+
+# ML caches and large intermediates (keep small committed models under artifacts/models)
+ml/artifacts/tmp/
+ml/artifacts/cache/
+ml/catboost_info/
+ml/**/*.parquet
+ml/**/.ipynb_checkpoints/
+ml/.pytest_cache/
+ml/.ruff_cache/
+*.egg-info/
+ml/fra_dss.egg-info/
