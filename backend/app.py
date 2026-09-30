@@ -94,6 +94,7 @@ from dss import (  # noqa: E402
     sample_synthetic_claims,
     scheme_catalog,
 )
+from dss.model_service import predict_outcome  # noqa: E402
 
 
 @app.route("/api/health", methods=["GET"])
@@ -588,37 +589,15 @@ def dss_benchmark():
 def dss_reasons():
     """Top rejection reasons for a claim payload (additive; requires auxiliary model)."""
     try:
-        import joblib
-        from pathlib import Path
+        from dss.aux_models import predict_rejection_reasons
+        from ml.features import claim_to_feature_dict
 
         payload = request.get_json() or {}
-        model_path = (
-            Path(__file__).resolve().parents[1]
-            / "ml"
-            / "artifacts"
-            / "models"
-            / "rejection_reason_model.joblib"
-        )
-        if not model_path.exists():
-            return jsonify({"error": "Rejection-reason model not trained yet.", "reasons": []}), 503
-        bundle = joblib.load(model_path)
-        import pandas as pd
-        import sys
-
-        ml_root = Path(__file__).resolve().parents[1] / "ml"
-        if str(ml_root) not in sys.path:
-            sys.path.insert(0, str(ml_root))
-        from fra_dss.preprocessing.pipelines import select_frame
-
-        X = select_frame(pd.DataFrame([payload]), "A")
-        proba = bundle["model"].predict_proba(X)[0]
-        classes = bundle.get("classes") or []
-        order = list(reversed(sorted(range(len(proba)), key=lambda i: proba[i])))[:3]
-        reasons = [
-            {"reason": str(classes[i]), "probability": round(float(proba[i]), 4)}
-            for i in order
-        ]
-        return jsonify({"reasons": reasons, "synthetic": True}), 200
+        features = claim_to_feature_dict(payload)
+        features.update({k: v for k, v in payload.items() if v is not None and v != ""})
+        return jsonify(predict_rejection_reasons(features)), 200
+    except FileNotFoundError as e:
+        return jsonify({"error": str(e), "reasons": []}), 503
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
@@ -627,18 +606,12 @@ def dss_reasons():
 def dss_what_if():
     """Actionable-field what-if search (additive)."""
     try:
-        import sys
-        from pathlib import Path
-
-        payload = request.get_json() or {}
-        ml_root = Path(__file__).resolve().parents[1] / "ml"
-        if str(ml_root) not in sys.path:
-            sys.path.insert(0, str(ml_root))
-        from fra_dss.dss.what_if import search_what_if
+        from dss.what_if import search_what_if
         from ml.features import claim_to_feature_dict
 
+        payload = request.get_json() or {}
         features = claim_to_feature_dict(payload)
-        features.update({k: v for k, v in payload.items() if v is not None})
+        features.update({k: v for k, v in payload.items() if v is not None and v != ""})
 
         def _predict(c):
             return predict_outcome(c)
@@ -655,38 +628,15 @@ def dss_what_if():
 def dss_eta():
     """ETA point estimate for a claim (additive; resolved-claims regressor)."""
     try:
-        import joblib
-        import sys
-        from pathlib import Path
-
-        import numpy as np
-        import pandas as pd
+        from dss.aux_models import predict_eta_days
+        from ml.features import claim_to_feature_dict
 
         payload = request.get_json() or {}
-        model_path = (
-            Path(__file__).resolve().parents[1]
-            / "ml"
-            / "artifacts"
-            / "models"
-            / "eta_model.joblib"
-        )
-        if not model_path.exists():
-            return jsonify({"error": "ETA model not trained yet."}), 503
-        model = joblib.load(model_path)
-        ml_root = Path(__file__).resolve().parents[1] / "ml"
-        if str(ml_root) not in sys.path:
-            sys.path.insert(0, str(ml_root))
-        from fra_dss.preprocessing.pipelines import select_frame
-
-        X = select_frame(pd.DataFrame([payload]), "A")
-        days = float(np.expm1(model.predict(X)[0]))
-        return jsonify(
-            {
-                "eta_days_point": round(days, 1),
-                "caveat": "Trained on Approved/Rejected only. Pending days may be censored.",
-                "synthetic": True,
-            }
-        ), 200
+        features = claim_to_feature_dict(payload)
+        features.update({k: v for k, v in payload.items() if v is not None and v != ""})
+        return jsonify(predict_eta_days(features)), 200
+    except FileNotFoundError as e:
+        return jsonify({"error": str(e)}), 503
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 

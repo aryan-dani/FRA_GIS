@@ -103,13 +103,45 @@
   color: var(--primary-color);
 }
 
-.dss-probs {
+.dss-prob-bars {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 0.85rem;
-  margin-top: 0.35rem;
-  font-size: 0.8rem;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-top: 0.65rem;
+}
+
+.dss-prob-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
   color: var(--secondary-color);
+  margin-bottom: 0.15rem;
+}
+
+.dss-prob-track {
+  height: 0.4rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.dss-prob-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--primary-color);
+  transition: width 0.25s ease;
+}
+
+.dss-prob-approved {
+  background: #2e7d32;
+}
+
+.dss-prob-pending {
+  background: #c79100;
+}
+
+.dss-prob-rejected {
+  background: #c62828;
 }
 
 .dss-shap h3,
@@ -146,4 +178,75 @@
   justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
+}
+
+.dss-tabs {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.dss-tabs .nav-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--secondary-color);
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  padding: 0.65rem 1rem;
+  margin-bottom: -1px;
+}
+
+.dss-tabs .nav-link:hover {
+  color: var(--primary-color);
+  border-color: transparent;
+}
+
+.dss-tabs .nav-link.active {
+  color: var(--primary-color);
+  background: transparent;
+  border-color: transparent transparent var(--primary-color);
+}
+
+.meta-chip-warn {
+  background: #fff4e5;
+  color: #8a5a00;
+}
+
+.dss-sim-form .form-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.dss-table-tall {
+  max-height: 520px;
+}
+
+.dss-row-click {
+  cursor: pointer;
+}
+
+.dss-row-click:hover {
+  background: var(--background-color-light, #f7f8f6);
+}
+
+.dss-row-active {
+  cursor: pointer;
+  background: rgba(46, 125, 50, 0.08);
+}
+
+.dss-triage-badge {
+  min-width: 2.5rem;
+}
+
+@media (max-width: 991.98px) {
+  .dss-map,
+  .dss-map .google-map-wrap,
+  .dss-map .google-map-container {
+    height: 360px;
+  }
+
+  .dss-tabs .nav-link {
+    padding: 0.55rem 0.7rem;
+    font-size: 0.82rem;
+  }
 }

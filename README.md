@@ -143,10 +143,10 @@ pip install -r requirements.txt
 **One-command local demo (Windows):** from the repo root run:
 
 ```powershell
-.\start-dev.ps1
+.\start-app.ps1
 ```
 
-This opens Flask (`:5001`) and the React app (`npm run dev` on `:3000`) in two terminals.
+This opens the Flask API (`:5001`) and the React app (`npm run dev` on `:3000`) in two terminals, then opens the DSS page (`http://localhost:3000/#/dss`). Equivalent: `.\start-dev.ps1`.
 
 Place a service-account file at `backend/firebase-service-account.json`, or set:
 

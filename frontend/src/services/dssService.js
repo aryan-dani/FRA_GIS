@@ -95,6 +95,14 @@ export async function fetchDssWhatIf(payload) {
   });
 }
 
+export async function fetchDssReasons(payload) {
+  requireApi();
+  return apiFetch("/api/dss/reasons", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
 export async function fetchDssEta(payload) {
   requireApi();
   return apiFetch("/api/dss/eta", {

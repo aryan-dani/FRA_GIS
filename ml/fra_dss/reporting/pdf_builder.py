@@ -66,6 +66,296 @@ def _img(name: str, width=16 * cm):
     return _para(f"[Missing figure: {name}]")
 
 
+def _link(url: str, label: str | None = None) -> Paragraph:
+    text = label or url
+    return _para(f'<link href="{url}" color="blue"><u>{text}</u></link>')
+
+
+def _metric_table(rows: list[list[str]], col_widths: list[float] | None = None):
+    table = Table(rows, colWidths=col_widths)
+    table.setStyle(
+        TableStyle(
+            [
+                ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#1f4e3d")),
+                ("TEXTCOLOR", (0, 0), (-1, 0), colors.whitesmoke),
+                ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
+                ("FONTSIZE", (0, 0), (-1, -1), 8),
+                ("GRID", (0, 0), (-1, -1), 0.25, colors.grey),
+                ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.whitesmoke, colors.Color(0.93, 0.95, 0.93)]),
+                ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+                ("LEFTPADDING", (0, 0), (-1, -1), 4),
+                ("RIGHTPADDING", (0, 0), (-1, -1), 4),
+                ("TOPPADDING", (0, 0), (-1, -1), 3),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
+            ]
+        )
+    )
+    return table
+
+
+def build_academic_style_report() -> Path:
+    """Single PDF: abstract through references, driven by metrics JSON/CSV and figures."""
+    import pandas as pd
+
+    champ = _load("champion.json")
+    gap = _load("ablation_feature_sets.json")
+    prov = _load("run_provenance.json")
+    conf = _load("conformal.json")
+    ext = _load("extended_stats.json")
+    base = _load("baseline_existing.json")
+    timing = _load("run_timing.json")
+
+    n_rows = prov.get("n_rows", "n/a")
+    mode = prov.get("mode", "n/a")
+    champ_model = champ.get("model", "n/a")
+    s1 = champ.get("s1_macro_f1_mean", "n/a")
+    final_f1 = champ.get("final_macro_f1", "n/a")
+    gap_ba = gap.get("gap_B_minus_A", "n/a")
+    cov = conf.get("empirical_coverage", "n/a")
+    set_sz = conf.get("mean_set_size", "n/a")
+
+    leader_rows: list[list[str]] = [
+        ["Model (Set A)", "S1 macro-F1", "Final macro-F1", "S3 macro-F1", "Latency ms/1k"]
+    ]
+    bench_csv = METRICS_DIR / "benchmark_master.csv"
+    if bench_csv.exists():
+        b = pd.read_csv(bench_csv)
+        a = b[(b["feature_set"] == "A") & b["s1_macro_f1_mean"].notna()].sort_values(
+            "s1_macro_f1_mean", ascending=False
+        ).head(12)
+        for r in a.itertuples():
+            leader_rows.append(
+                [
+                    str(r.model),
+                    f"{r.s1_macro_f1_mean:.4f}",
+                    f"{r.final_macro_f1:.4f}",
+                    f"{r.s3_macro_f1:.4f}",
+                    f"{r.latency_ms_per_1k:.2f}",
+                ]
+            )
+
+    s2_snip = "See extended_stats.json."
+    s4_snip = ""
+    if ext.get("s2"):
+        parts = [
+            f"{x['model']} S2={x['s2_macro_f1_mean']:.3f} (optimism vs S1={x.get('optimism_vs_s1', 0):+.3f})"
+            for x in ext["s2"][:6]
+        ]
+        s2_snip = "; ".join(parts)
+    if ext.get("s4"):
+        parts = [f"{x['model']} S4={x['s4_macro_f1_mean']:.3f}" for x in ext["s4"][:6]]
+        s4_snip = "; ".join(parts)
+
+    # APS (American Physical Society) bibliographic style for the Adaptive Prediction Sets paper.
+    aps_ref_name = "Classification with Valid and Adaptive Coverage"
+    aps_cite = (
+        "Y. Romano, M. Sesia, and E. J. Candès, Classification with valid and adaptive coverage, "
+        "Adv. Neural Inf. Process. Syst. <b>33</b>, 3581 (2020)."
+    )
+    aps_url = "https://arxiv.org/abs/2006.02544"
+
+    sections = [
+        (
+            "Abstract",
+            [
+                _para(
+                    f"We present a leakage-aware decision-support system (DSS) for Forest Rights Act "
+                    f"(FRA) claim-outcome triage (SIH12508). On a synthetic corpus of {n_rows} claims "
+                    f"(run mode={mode}), filing-time feature Set A is compared with process-aware Set B "
+                    f"under district-grouped cross-validation. The pre-declared champion rule "
+                    f"(highest S1 macro-F1 on Set A) selects <b>{champ_model}</b> "
+                    f"(S1 macro-F1={s1}; locked final-test macro-F1={final_f1}). "
+                    f"The deployable Flask artifact remains LightGBM for TreeExplainer compatibility. "
+                    f"Set B minus Set A gap is {gap_ba}, indicating circular lift from process fields. "
+                    f"Split-conformal prediction sets (APS-style nonconformity) achieve empirical "
+                    f"coverage {cov} with mean set size {set_sz}."
+                ),
+                _para(DISCLOSURE),
+            ],
+        ),
+        (
+            "1. Introduction",
+            [
+                _para(
+                    "Ministry of Tribal Affairs workflows need early risk signals for FRA claims "
+                    "(Approved, Pending, Rejected) without using post-decision leakage. Prior "
+                    f"internal baselines report macro-F1 about {base.get('macro_f1', 'n/a')}. "
+                    "This work (i) audits leakage via Set A/B/C ablations, (ii) benchmarks a broad "
+                    "model zoo with grouped CV, (iii) ships a calibrated DSS with SHAP drivers, "
+                    "scheme hints, ETA, and conformal abstention sets, and (iv) documents results "
+                    "from metrics files only."
+                ),
+                _para(
+                    "Repository and live metrics: "
+                    '<link href="https://github.com/aryan-dani/FRA_GIS/tree/feat/ml-dss" color="blue">'
+                    "<u>github.com/aryan-dani/FRA_GIS (feat/ml-dss)</u></link>. "
+                    "Raw tables live under ml/reports/metrics/; figures under ml/reports/figures/."
+                ),
+            ],
+        ),
+        (
+            "2. Mathematical formulation",
+            [
+                _para(
+                    "<b>Multiclass status.</b> Labels y ∈ {Approved, Pending, Rejected}. "
+                    "For class c, precision P_c = TP_c / (TP_c + FP_c), recall R_c = TP_c / (TP_c + FN_c), "
+                    "and F1_c = 2 P_c R_c / (P_c + R_c). Macro-F1 = (1/C) Σ_c F1_c with C=3."
+                ),
+                _para(
+                    "<b>Log loss.</b> L = −(1/n) Σ_i Σ_c 1[y_i=c] log p̂_i(c)."
+                ),
+                _para(
+                    "<b>Soft voting.</b> For base models m=1..M with probabilities p̂^(m), "
+                    "p̂_ens(c|x) = (1/M) Σ_m p̂^(m)(c|x)."
+                ),
+                _para(
+                    "<b>Triage score (DSS).</b> "
+                    "S = 0.45 P̂(Rejected) + 0.35 delay_norm + 0.20 age_norm, "
+                    "with delay_norm and age_norm capped per configs/dss_weights.yaml."
+                ),
+                _para(
+                    "<b>Split-conformal / APS-style scores.</b> Nonconformity s(x,y) = 1 − p̂(y|x). "
+                    "On a calibration set of size n_cal, q̂ is the "
+                    "ceil((n_cal+1)(1−α)) / n_cal empirical quantile of s(x_i, y_i). "
+                    f"Prediction set C(x) = {{ y : s(x,y) ≤ q̂ }} with α={conf.get('alpha', 0.1)} "
+                    f"(target coverage {conf.get('target_coverage', 0.9)}). "
+                    f"Observed coverage={cov}, mean |C|={set_sz}, q̂={conf.get('qhat', 'n/a')}."
+                ),
+                _para(
+                    "This conformal construction follows the Adaptive Prediction Sets (APS) line of work; "
+                    f"canonical reference title: <b>{aps_ref_name}</b> (see References, APS style)."
+                ),
+            ],
+        ),
+        (
+            "3. Methodology diagram",
+            [
+                _para(
+                    "Pipeline: synthetic load → schema/leakage audit → Set A/B feature matrices → "
+                    "locked district holdout → S1 grouped CV zoo (cached OOF) → champion by S1 Set A → "
+                    "ship LightGBM contract artifact → auxiliary ETA/reasons → conformal + DSS → PDFs."
+                ),
+                _img("06_pipeline_diagram.png"),
+                _para(
+                    f"Full-run wall time: {timing.get('wall_seconds', 'n/a')} s "
+                    f"(mode={timing.get('mode', mode)})."
+                ),
+            ],
+        ),
+        (
+            "4. Experimental setup",
+            [
+                _para(
+                    f"n={n_rows}, seed={prov.get('seed', 42)}, synthetic={prov.get('synthetic', True)}. "
+                    f"Dataset SHA-256 prefix: {str(prov.get('dataset_sha256', ''))[:16]}…. "
+                    "S1: GroupKFold by district. S2: stratified random (optimism check). "
+                    "S3: temporal. S4: leave-one-state-out. Final metrics use the locked district holdout."
+                ),
+                _para(
+                    "Hyperlinks to metric artifacts (local paths in the repo):"
+                ),
+                _link(
+                    "https://github.com/aryan-dani/FRA_GIS/blob/feat/ml-dss/ml/reports/metrics/benchmark_master.csv",
+                    "benchmark_master.csv (all model scores)",
+                ),
+                _link(
+                    "https://github.com/aryan-dani/FRA_GIS/blob/feat/ml-dss/ml/reports/metrics/champion.json",
+                    "champion.json (S1 selection)",
+                ),
+                _link(
+                    "https://github.com/aryan-dani/FRA_GIS/blob/feat/ml-dss/ml/reports/metrics/extended_stats.json",
+                    "extended_stats.json (S2/S4, McNemar, bootstrap)",
+                ),
+                _link(
+                    "https://github.com/aryan-dani/FRA_GIS/blob/feat/ml-dss/ml/reports/metrics/conformal.json",
+                    "conformal.json (APS-style coverage)",
+                ),
+            ],
+        ),
+        (
+            "5. Experimental results",
+            [
+                _para(
+                    f"Champion (rule: S1 macro-F1 on Set A): <b>{champ_model}</b>. "
+                    f"S1={s1} ± {champ.get('s1_macro_f1_std', 'n/a')}; "
+                    f"final macro-F1={final_f1}; final accuracy={champ.get('final_accuracy', 'n/a')}; "
+                    f"S3 macro-F1={champ.get('s3_macro_f1', 'n/a')}."
+                ),
+                _metric_table(leader_rows, col_widths=[3.2 * cm, 2.8 * cm, 3.0 * cm, 2.8 * cm, 2.8 * cm]),
+                _img("10_leaderboard_set_a.png"),
+                _img("11_feature_set_gap.png"),
+                _para(
+                    f"Ablation: Set A macro-F1≈{gap.get('A', {}).get('macro_f1', 'n/a')}; "
+                    f"Set B≈{gap.get('B', {}).get('macro_f1', 'n/a')}; gap B−A={gap_ba}. "
+                    f"{gap.get('interpretation', '')}"
+                ),
+                _img("15_ablation_sets.png"),
+            ],
+        ),
+        (
+            "6. Performance analysis",
+            [
+                _para(
+                    f"<b>Random vs grouped CV.</b> {s2_snip} "
+                    "Positive optimism_vs_s1 means random S2 overstates deployable accuracy."
+                ),
+                _para(f"<b>State shift (S4).</b> {s4_snip or 'See s4_leave_one_state.csv.'}"),
+                _para(
+                    "<b>Latency–accuracy.</b> Boosting models are typically faster per 1k rows than "
+                    "bagging/stacking; see Pareto figure. Shipped LightGBM balances explainability "
+                    "and size even when bagging wins the S1 selection rule on full data."
+                ),
+                _img("13_pareto_latency.png"),
+                _img("14_s1_vs_s3.png"),
+                _img("12_confusion_lightgbm.png"),
+                _para(
+                    f"<b>Uncertainty.</b> Conformal coverage {cov} (target "
+                    f"{conf.get('target_coverage', 0.9)}); mean set size {set_sz}. "
+                    "Larger sets flag cases for human review."
+                ),
+                _img("21_abstention.png"),
+                _img("20_shap_bar.png"),
+            ],
+        ),
+        (
+            "7. References (APS style)",
+            [
+                _para(
+                    f"[1] {aps_cite} "
+                    f'Reference paper name: <b>"{aps_ref_name}"</b>. '
+                    f'Link: <link href="{aps_url}" color="blue"><u>{aps_url}</u></link>.'
+                ),
+                _para(
+                    "[2] G. Ke, Q. Meng, T. Finley, T. Wang, W. Chen, W. Ma, Q. Ye, and T.-Y. Liu, "
+                    "LightGBM: A highly efficient gradient boosting decision tree, "
+                    "Adv. Neural Inf. Process. Syst. <b>30</b>, 3146 (2017). "
+                    '<link href="https://papers.nips.cc/paper/2017/hash/6449f44a102fde848669bdd9eb6b76fa-Abstract.html" '
+                    'color="blue"><u>NeurIPS 2017</u></link>.'
+                ),
+                _para(
+                    "[3] T. Chen and C. Guestrin, XGBoost: A scalable tree boosting system, "
+                    "in Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge "
+                    "Discovery and Data Mining (ACM, New York, 2016), p. 785."
+                ),
+                _para(
+                    "[4] V. Vovk, A. Gammerman, and G. Shafer, Algorithmic Learning in a Random World "
+                    "(Springer, New York, 2005)."
+                ),
+                _para(
+                    "[5] A. N. Angelopoulos and S. Bates, A gentle introduction to conformal prediction "
+                    "and distribution-free uncertainty quantification, arXiv:2107.07511."
+                ),
+                _para(DISCLOSURE),
+            ],
+        ),
+    ]
+    return build_pdf(
+        "10 Academic Style Report (FRA DSS ML)",
+        "10_Academic_Style_Report.pdf",
+        sections,
+    )
+
+
 def build_executive_summary() -> Path:
     champ = _load("champion.json")
     base = _load("baseline_existing.json")
@@ -215,7 +505,7 @@ def build_data_eda_report() -> Path:
 
 
 def build_remaining_p1_pdfs() -> list[Path]:
-    paths = [build_data_eda_report()]
+    paths = [build_data_eda_report(), build_academic_style_report()]
     bench_csv = METRICS_DIR / "benchmark_master.csv"
     bench_snip = ""
     if bench_csv.exists():
